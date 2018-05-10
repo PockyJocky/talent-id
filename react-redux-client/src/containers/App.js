@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         //you can now say this.props.mappedAppActions
         mappedAddInterest: () => dispatch(intrestCardActions.addInterest()),
-        mappedAddUserInfo: addUser => dispatch(userInfoActions.addUserInfo(User))
+        mappedAddUser: addUser => dispatch(userInfoActions.addUserInfo(User))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(App);

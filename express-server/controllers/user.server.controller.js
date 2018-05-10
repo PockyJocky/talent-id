@@ -8,7 +8,7 @@ export const addUser = (req,res) => {
         if(err){
             return res.json({'success':false,'message':'Some Error'});
         }
-        return res.json({'success':true,'message':'Todo added successfully',User});
+        return res.json({'success':true,'message':'User added successfully',User});
     })
 }
 
