@@ -1,5 +1,5 @@
 {
-  "name": "express-server",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -14,8 +14,10 @@
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
+    "express-server": "^0.7.0",
     "mongoose": "^5.1.0",
     "morgan": "^1.9.0",
+    "nodemon": "^1.17.4",
     "source-map-support": "^0.5.5"
   }
 }
