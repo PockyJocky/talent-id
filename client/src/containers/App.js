@@ -7,15 +7,15 @@ import * as userInfoActions from '../actions/UserInfoCardActions';
 const mapStateToProps = (state) => {
     return {
         //you can now say this.props.mappedAppSate
-        mappedAppState: state.appState
+        mappedAppState: state.AppState
     }
 }
 // map actions to props
 const mapDispatchToProps = (dispatch) => {
     return {
         //you can now say this.props.mappedAppActions
-        mappedAddInterest: () => dispatch(intrestCardActions.addInterest()),
-        mappedAddUser: addUser => dispatch(userInfoActions.addUserInfo(User))
+        mappedAddInterest: Interest => dispatch(intrestCardActions.addInterest(Interest)),
+        mappedAddUser: User => dispatch(userInfoActions.addUser(User))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(App);

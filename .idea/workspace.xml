@@ -2,11 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cd96b54-a3cc-430c-b51c-cc69c6f6fa70" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express-server/controllers/user.server.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/express-server/controllers/user.server.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-redux-client/src/actions/UserInfoCardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-redux-client/src/actions/UserInfoCardActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-redux-client/src/containers/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-redux-client/src/containers/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-redux-client/src/reducers/UserInfoReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-redux-client/src/reducers/UserInfoReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/apiCaller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express-server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express-server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express-server/app_hooked.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app_hooked.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express-server/controllers/user.server.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user.server.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express-server/models/user.server.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/user.server.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express-server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express-server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express-server/routes/user.server.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/user.server.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/Constant.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Constant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/actions/InterestCardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/InterestCardActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/actions/UserInfoCardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/UserInfoCardActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/components/InterestCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/InterestCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/components/InterestList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/InterestList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/components/MainCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/MainCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/components/PlayersCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/PlayersCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/components/UserInfoCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInfoCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/components/UserInfoDataInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInfoDataInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/containers/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/containers/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/containers/InterestCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/containers/InterestCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/containers/UserInfoCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/containers/UserInfoCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/reducers/InterestCardReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/InterestCardReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/reducers/RootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/RootReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/reducers/UserInfoReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/UserInfoReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/reducers/appReducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/reducers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/registerServiceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/registerServiceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-redux-client/src/store/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/configureStore.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,108 +55,97 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="UserInfoCardActions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-redux-client/src/actions/UserInfoCardActions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.server.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/express-server/controllers/user.server.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.server.model.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/express-server/models/user.server.model.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-redux-client/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-redux-client/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registerServiceWorker.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-redux-client/src/registerServiceWorker.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1221" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-redux-client/src/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-              <folding>
-                <element signature="e#38#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constant.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-redux-client/src/Constant.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/express-server/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-              <folding>
-                <element signature="e#27#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="225">
+                  <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+                  <folding>
+                    <element signature="e#33#63#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/containers/App.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="InterestCardActions.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/actions/InterestCardActions.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="30">
+                  <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="UserInfoCardActions.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/src/actions/UserInfoCardActions.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="60">
+                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+                  <folding>
+                    <element signature="e#0#36#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="user.server.route.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/routes/user.server.route.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="user.server.model.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/models/user.server.model.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="user.server.model.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/models/user.server.model.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="apiCaller.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/src/apiCaller.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+                  <folding>
+                    <element signature="e#0#37#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -128,7 +156,16 @@
       <find>Interest</find>
       <find>todo</find>
       <find>Inter</find>
+      <find>request</find>
+      <find>UserInfoDataInput</find>
+      <find>/usr</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/react-redux-client</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -139,7 +176,6 @@
         <option value="$PROJECT_DIR$/express-server/app_hooked.js" />
         <option value="$PROJECT_DIR$/express-server/package.json" />
         <option value="$PROJECT_DIR$/react-redux-client/src/components/Todo.js" />
-        <option value="$PROJECT_DIR$/react-redux-client/src/reducers/appReducer.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/components/TodoForm.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/components/TodoEditForm.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/components/Todos.js" />
@@ -151,94 +187,69 @@
         <option value="$PROJECT_DIR$/react-redux-client/src/actions/InterestCardActions.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/components/InterestCard.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/components/MainCard.js" />
-        <option value="$PROJECT_DIR$/react-redux-client/src/App.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/index.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/containers/Todos.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/containers/Todo.js" />
-        <option value="$PROJECT_DIR$/react-redux-client/src/containers/InterestCard.js" />
-        <option value="$PROJECT_DIR$/react-redux-client/src/routes.js" />
         <option value="$PROJECT_DIR$/express-server/models/todo.server.model.js" />
         <option value="$PROJECT_DIR$/express-server/controllers/todo.server.controller.js" />
         <option value="$PROJECT_DIR$/express-server/routes/todo.server.route.js" />
-        <option value="$PROJECT_DIR$/express-server/routes/user.server.route.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/components/InterestList.js" />
-        <option value="$PROJECT_DIR$/react-redux-client/src/containers/App.js" />
-        <option value="$PROJECT_DIR$/express-server/app.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/actions/UserInfoActions.js" />
         <option value="$PROJECT_DIR$/react-redux-client/src/Constant.js" />
-        <option value="$PROJECT_DIR$/react-redux-client/src/reducers/UserInfoReducer.js" />
-        <option value="$PROJECT_DIR$/react-redux-client/src/store/configureStore.js" />
-        <option value="$PROJECT_DIR$/react-redux-client/src/containers/UserInfoCard.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/express-server/app.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/package.json" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/reducers/appReducer.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/containers/InterestCard.js" />
+        <option value="$PROJECT_DIR$/express-server/routes/user.server.route.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/routes.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/containers/App.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/containers/UserInfoCard.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/reducers/UserInfoReducer.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/public/manifest.json" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/actions/UserInfoCardActions.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/components/UserInfoDataInput.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/reducers/RootReducer.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/store/configureStore.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/App.js" />
+        <option value="$PROJECT_DIR$/react-redux-client/src/apiCaller.js" />
+        <option value="$PROJECT_DIR$/server/config.js" />
+        <option value="$PROJECT_DIR$/server/app.js" />
+        <option value="$PROJECT_DIR$/client/src/apiCaller.js" />
+        <option value="$PROJECT_DIR$/client/src/actions/UserInfoCardActions.js" />
       </list>
     </option>
   </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/express-server/node_modules" />
-    <handled-path value="$PROJECT_DIR$/react-redux-client/node_modules" />
+    <handled-path value="$PROJECT_DIR$/client/node_modules" />
+    <handled-path value="$PROJECT_DIR$/server/node_modules" />
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/express-server/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/asap/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/babel-runtime/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/classnames/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/core-js/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/create-react-class/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/dom-helpers/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/encoding/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/fbjs/node_modules/core-js/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/fbjs/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/history/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/hoist-non-react-statics/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/iconv-lite/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/invariant/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/is-stream/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/isomorphic-fetch/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/js-tokens/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/keycode/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/lodash-es/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/lodash/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/loose-envify/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/node-fetch/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/object-assign/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/promise/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/prop-types-extra/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/prop-types/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/query-string/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-bootstrap/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-is/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-overlays/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-prop-types/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-redux/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-router-bootstrap/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-router-redux/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-router/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/react-transition-group/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/redux-thunk/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/redux/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/regenerator-runtime/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/safer-buffer/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/setimmediate/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/strict-uri-encode/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/symbol-observable/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/ua-parser-js/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/uncontrollable/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/warning/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/whatwg-fetch/package.json" />
-      <path value="$PROJECT_DIR$/react-redux-client/package.json" />
+      <path value="$PROJECT_DIR$/client/package.json" />
+      <path value="$PROJECT_DIR$/server/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="width" value="960" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -247,7 +258,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -258,45 +269,38 @@
             <path>
               <item name="talent-id" type="b2602c69:ProjectViewProjectNode" />
               <item name="talent-id" type="462c0819:PsiDirectoryNode" />
-              <item name="express-server" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="talent-id" type="b2602c69:ProjectViewProjectNode" />
               <item name="talent-id" type="462c0819:PsiDirectoryNode" />
-              <item name="express-server" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="talent-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="talent-id" type="462c0819:PsiDirectoryNode" />
-              <item name="express-server" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="talent-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="talent-id" type="462c0819:PsiDirectoryNode" />
-              <item name="react-redux-client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="talent-id" type="b2602c69:ProjectViewProjectNode" />
-              <item name="talent-id" type="462c0819:PsiDirectoryNode" />
-              <item name="react-redux-client" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="talent-id" type="b2602c69:ProjectViewProjectNode" />
+              <item name="talent-id" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="InterestLis&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Developer/mern-starter" />
+    <property name="last_opened_file_path" value="/usr/bin" />
+    <property name="nodejs_interpreter_path" value="/usr/bin/node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="/usr/bin/npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -374,98 +378,47 @@
       <workItem from="1525970454116" duration="595000" />
       <workItem from="1525973186363" duration="4967000" />
       <workItem from="1525984730648" duration="5960000" />
+      <workItem from="1526332559702" duration="2765000" />
+      <workItem from="1526336196030" duration="1863000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17367000" />
+    <option name="totallyTimeSpent" value="27098000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-1" y="-1" width="1922" height="1061" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947807" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32837406" />
-      <window_info id="Learn" order="2" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.12447917" />
-      <window_info id="Learn" order="2" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32837406" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-    </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12447917" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32837406" />
-      <window_info id="Learn" order="2" />
+      <window_info anchor="right" id="Palette" order="2" />
+      <window_info anchor="bottom" id="TODO" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Database" order="6" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32982087" />
       <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Designer" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20208333" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32771337" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info id="Favorites" order="7" side_tool="true" />
-    </layout-to-restore>
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info id="Learn" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -473,49 +426,20 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/Todos.js" />
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/containers/UserInfoCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="66" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/actions/UserInfoCardActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="1" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/TodoForm.js" />
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/todoReducer.js" />
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/MainCard.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/MainCard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/containers/App.js">
+    <entry file="file://$PROJECT_DIR$/client/src/containers/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="20" column="64" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
@@ -525,31 +449,28 @@
     <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/TodoEditForm.js" />
     <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/Todo.js" />
     <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/Todos.js" />
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/containers/UserInfoCard.js">
+    <entry file="file://$PROJECT_DIR$/client/src/containers/UserInfoCard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="22" column="66" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/MainCard.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/MainCard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/actions/UserInfoCardActions.js">
+    <entry file="file://$PROJECT_DIR$/client/src/actions/UserInfoCardActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/App.js">
+    <entry file="file://$PROJECT_DIR$/client/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
@@ -562,53 +483,15 @@
     <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/TodoEditForm.js" />
     <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/Todo.js" />
     <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/Todos.js" />
-    <entry file="file://$PROJECT_DIR$/express-server/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/MainCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/todoReducer.js" />
-    <entry file="file://$PROJECT_DIR$/express-server/routes/user.server.route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/express-server/app_hooked.js">
+    <entry file="file://$PROJECT_DIR$/server/app_hooked.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/express-server/controllers/user.server.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/express-server/models/user.server.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/README.md">
+    <entry file="file://$PROJECT_DIR$/client/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="-40783">
@@ -630,156 +513,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/actions/InterestCardActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/Constant.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/store/configureStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/InterestCardReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/appReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/RootReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/UserInfoReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/UserInfoDataInput.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/containers/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding>
-            <element signature="e#51#89#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/actions/UserInfoCardActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/containers/UserInfoCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="84" lean-forward="true" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
-          <folding>
-            <element signature="e#55#93#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/containers/InterestCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
-          <folding>
-            <element signature="e#55#93#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="e#38#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/InterestList.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/InterestList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/src/components/InterestCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-redux-client/.gitignore">
+    <entry file="file://$PROJECT_DIR$/client/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="21" />
@@ -788,17 +529,232 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state relative-caret-position="315">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/express-server/app.js">
+    <entry file="file://$PROJECT_DIR$/server/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+        <state relative-caret-position="90">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/appReducer.js" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/InterestCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/MainCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/InterestCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding>
-            <element signature="e#27#57#0" expanded="true" />
+            <element signature="e#55#93#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/Constant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/UserInfoCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+          <folding>
+            <element signature="e#55#93#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/UserInfoReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/UserInfoCard.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/PlayersCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/InterestCardReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-redux-client/src/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="38" lean-forward="true" selection-start-line="1" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="e#38#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/RootReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/store/configureStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="40" lean-forward="true" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding>
+            <element signature="e#52#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/user.server.route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/user.server.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/UserInfoDataInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2055">
+          <caret line="137" column="48" lean-forward="true" selection-start-line="137" selection-start-column="48" selection-end-line="137" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="45" lean-forward="true" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/models/user.server.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/apiCaller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding>
+            <element signature="e#33#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/InterestCardActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/UserInfoCardActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>

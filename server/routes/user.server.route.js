@@ -4,6 +4,11 @@ import express from 'express';
 import * as userController from '../controllers/user.server.controller';
 // get an instance of express router
 const router = express.Router();
-router.route('/')
-    .post(userController.addUser);
+router.get('/', function(req, res){
+    res.render('index')
+});
+
+router.get('/adduser', function(req, res){
+    res.render(userController.addUser(res))
+})
 export default router;

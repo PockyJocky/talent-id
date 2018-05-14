@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         //you can now say this.props.mappedAppActions
-        mappedfetchInterestCardById: interestCardId => dispatch(interestCardActons.fetchInterestcardById(interestCardId))
+        mappedAddInterest: Interest => dispatch(interestCardActions.addInterest(Interest))
     }
 }
 

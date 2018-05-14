@@ -35,7 +35,7 @@ SourceMapSupport.install();
 
 app.use('/api', userRoutes);
 app.get('/', (req,res) => {
-    return res.end('Api working');
+    res.send({ express : 'Api working'});
 })
 // catch 404
 app.use((req, res, next) => {

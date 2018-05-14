@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {addUserInfo} from "../actions/UserInfoCardActions";
+import {addUser} from "../actions/UserInfoCardActions";
 import {connect} from "react-redux";
 
 class UserInfoDataInput extends Component{
@@ -135,7 +135,7 @@ class UserInfoDataInput extends Component{
 
 const mapDispatchToProps = dispatch => {
     return{
-        addUserInfo: userInfo => dispatch(addUserInfo(userInfo))
+        addUser: user => dispatch(addUser(user))
     }
 };
 
