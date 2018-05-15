@@ -1,15 +1,16 @@
 // ./express-server/controllers/user.server.controller.js
-import mongoose from 'mongoose';
 //import models
 import User from '../models/user.server.model';
 export const addUser = (req,res) => {
-    const newUser = new User(req.body);
-    newUser.save((err,User) => {
-        if(err){
-            return res.json({'success':false,'message':'Some Error'});
-        }
-        return res.json({'success':true,'message':'User added successfully',User});
-    })
-}
-
-
+    const newUser = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        edipi: req.body.edipi,
+        rank: req.body.rank,
+        squadron: req.body.squadron
+    });
+    newUser
+        .save()
+        .then(user => res.json(user))
+        .catch(err => console.log(err));
+};

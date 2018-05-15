@@ -5,45 +5,51 @@ import bodyParser from 'body-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
 import SourceMapSupport from 'source-map-support';
+import keys from "./config/keys";
 
 // import routes
 import userRoutes from '../server/routes/user.server.route'
 
-// defiene our app using express
-const serverConfig = express();
+// define our app using express
+const app = express();
 
 // allow-cors
-serverConfig.use(function(req, res, next) {
+app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Header", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
-})
+});
 
 // configure app
-serverConfig.use(logger('dev'));
-serverConfig.use(bodyParser.json());
-serverConfig.use(bodyParser.urlencoded({ extended:true }));
-serverConfig.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
 // set the port
 const port = process.env.PORT || 3001;
+
 // connect to database
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/27017');
+const db = keys.mongoURI;
+mongoose
+    .connect(db)
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
 
 // add Source Map Support
 SourceMapSupport.install();
 
-serverConfig.use('/api', userRoutes);
-serverConfig.get('/', (req, res) => {
+app.use('/api/user', userRoutes);
+app.use('/', (req, res) => {
     res.send({ express : 'Api working'});
-})
+});
 // catch 404
-serverConfig.use((req, res, next) => {
+app.use((req, res, next) => {
     res.status(404).send('<h2 align=center>Page Not Found!</h2>');
 });
 // start the server
-serverConfig.listen(port,() => {
-    console.log(`App Server Listening at ${port}`);
+app.listen(port,() => {
+    console.log(`Server running on port: ${port}`);
 });
 
-export default serverConfig;
+export { app, db };

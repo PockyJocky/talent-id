@@ -1,13 +1,23 @@
 import mongoose from 'mongoose';
-var Schema = mongoose.Schema({
+const Schema = mongoose.Schema({
+    firstName: {
+        type: String,
+    },
+    lastName: {
+        type: String,
+    },
+    edipi: {
+        type: String,
+    },
+    rank: {
+        type: String,
+    },
+    squadron: {
+        type: String,
+    },
     createdAt:{
         type: Date,
         default: Date.now
     },
-    firstName: String,
-    lastName: String,
-    edipi: String,
-    rank: String,
-    squadron: String,
 });
 export default mongoose.model('User', Schema);

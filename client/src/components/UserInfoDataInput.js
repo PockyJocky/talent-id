@@ -9,11 +9,11 @@ class UserInfoDataInput extends Component{
         if(this.props.userLocation === 2)
         {
           this.state = {
-              firstName: this.props.userInfo.firstName,
-              lastName: this.props.userInfo.lastName,
-              edipi: this.props.userInfo.edipi,
-              rank: this.props.userInfo.rank,
-              squadron: this.props.userInfo.squadron,
+              firstName: this.props.user.firstName,
+              lastName: this.props.user.lastName,
+              edipi: this.props.user.edipi,
+              rank: this.props.user.rank,
+              squadron: this.props.user.squadron,
           }
         }else {
             this.state = {

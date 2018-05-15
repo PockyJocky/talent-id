@@ -15,7 +15,7 @@ export function userCard(state = initialState, action){
         case ADD_USER:
             return {
                 ...state,
-                user:null,
+                user:user,
                 isFetching: true,
                 error: null,
                 successMsg:null,
