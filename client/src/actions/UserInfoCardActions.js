@@ -1,17 +1,15 @@
 import {ADD_USER} from '../Constant'
 import callApi from '../apiCaller'
 
-const apiUrl = "/api/addUser";
-
 export const addUser = (user) => {console.log(user)
         return (dispatch) => {
             return callApi('posts', 'post', {
-                user: {
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    edipi: user.edipi,
-                    rank: user.rank,
-                    squadron: user.squadron
+                body: {
+                    firstName: user.firstName.string,
+                    lastName: user.lastName.string,
+                    edipi: user.edipi.string,
+                    rank: user.rank.string,
+                    squadron: user.squadron.string
                 },
             }).then(res => dispatch(addUser(res.user)));
         };
@@ -19,13 +17,13 @@ export const addUser = (user) => {console.log(user)
 export const addUserInfoRequest = (user) => {
     return {
         type: ADD_USER,
-        user
+        body: user
     }
 };
 export const addUserInfoRequestSuccess = (user,message) => {
     return {
         type: 'ADD_NEW_USER_REQUEST_SUCCESS',
-        user:user,
+        body:user,
         message:message
     }
 };

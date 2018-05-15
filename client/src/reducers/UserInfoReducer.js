@@ -1,7 +1,7 @@
 import {ADD_USER} from "../Constant";
 
 const initialState = {
-    userInfo: {
+    user: {
         firstName: '',
         lastName: '',
         edipi: '',

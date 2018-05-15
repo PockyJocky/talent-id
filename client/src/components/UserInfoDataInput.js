@@ -70,7 +70,7 @@ class UserInfoDataInput extends Component{
     };
 
     updateProps = (target, value) => {
-        this.props.addUserInfo(({...this.props.userInfo, [target]: value}))
+        this.props.addUser(({...this.props.userInfo, [target]: value}))
     }
 
     render(){

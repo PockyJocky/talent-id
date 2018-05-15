@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-fetch';
-import app from '../../server/app';
 
-export const API_URL = `http://localhost:${process.env.PORT || app.port}/api`;
+export const API_URL = `http://localhost:3001/api`;
 
 export default function callApi(endpoint, method = 'get', body) {
     return fetch(`${API_URL}/${endpoint}`, {
