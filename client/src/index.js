@@ -5,9 +5,7 @@ import MainCard from "./components/MainCard";
 import {Provider} from 'react-redux'
 import {addInterest} from "./actions/InterestCardActions";
 import configureStore from "./store/configureStore";
-
-//import style sheets
-// import './styles/index.css';
+import "babel-polyfill";
 
 const initialState = {
     user: {

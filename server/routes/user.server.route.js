@@ -15,7 +15,7 @@ router.post('/add', (req, res) => {
     });
     newUser
         .save()
-        .then(user => res.json(user))
+        .then(newUser => res.json(newUser))
         .catch(err => console.log(err));
 });
 export default router;
