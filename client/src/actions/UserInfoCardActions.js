@@ -3,14 +3,16 @@ import callApi from '../apiCaller'
 
 export const addUser = (user) => {console.log(user)
         return (dispatch) => {
-            return callApi('posts', 'post', {
-                body: {
-                    firstName: user.firstName.string,
-                    lastName: user.lastName.string,
-                    edipi: user.edipi.string,
-                    rank: user.rank.string,
-                    squadron: user.squadron.string
-                },
+            const newUser = {
+                firstName: user.firstName || ' ',
+                lastName: user.lastName || ' ',
+                edipi: user.edipi || ' ',
+                rank: user.rank || ' ',
+                squadron: user.squadron || ' ',
+
+            };
+            return callApi('addUser', 'post', {
+                user: newUser,
             }).then(res => dispatch(addUser(res.user)));
         };
 };
