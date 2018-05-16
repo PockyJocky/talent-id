@@ -1,12 +1,16 @@
-import fetch from 'isomorphic-fetch';
+import 'whatwg-fetch'
 
 export const API_URL = `http://localhost:3001/api`;
 
-export default function callApi(endpoint, method = 'get', body) {
-    return fetch(`${API_URL}/${endpoint}`, {
-        headers: { 'content-type': 'application/json' },
+export  default async function callApi(endpoint, method, body) {
+    return await fetch(`${API_URL}/${endpoint}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept' : 'application/json'
+        },
+        credentials : "same-origin",
         method,
-        body: JSON.stringify(body),
+        body: body,
     })
         .then(response => response.json().then(json => ({ json, response })))
         .then(({ json, response }) => {

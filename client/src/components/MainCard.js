@@ -13,7 +13,7 @@ class MainCard extends Component {
                 place: prevState.place += 1,
             }));
         }
-    }
+    };
 
     render() {
         const place = this.state.place;

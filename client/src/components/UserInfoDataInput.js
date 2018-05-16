@@ -47,7 +47,7 @@ class UserInfoDataInput extends Component{
     handleFirstNameChange = (event) => {
         this.setState({firstName: event.target.value});
         this.updateProps('firstName', event.target.value)
-    }
+    };
 
     handleLastNameChange = (event) => {
         this.setState({lastName: event.target.value});
@@ -71,7 +71,7 @@ class UserInfoDataInput extends Component{
 
     updateProps = (target, value) => {
         this.props.addUser(({...this.props.userInfo, [target]: value}))
-    }
+    };
 
     render(){
         return(

@@ -9,7 +9,7 @@ export const addUser = (user) => {
                 rank: user.rank || ' ',
                 squadron: user.squadron || ' ',
             };
-            return callApi('user/add', 'POST', newUser)
+            return callApi('user/add', 'POST', JSON.stringify(newUser))
                 .then(res => dispatch(addUser(res.user)));
         };
 };
