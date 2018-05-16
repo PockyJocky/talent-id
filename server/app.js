@@ -13,8 +13,6 @@ import userRoutes from '../server/routes/user.server.route'
 // define our app using express
 const app = express();
 
-
-
 // allow-cors
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -27,7 +25,6 @@ app.use(function(req, res, next) {
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // set the port
 const port = process.env.PORT || 3001;
@@ -38,9 +35,6 @@ mongoose
     .connect(db)
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
-
-// add Source Map Support
-SourceMapSupport.install();
 
 app.use('/api/user', userRoutes);
 app.use('/', (req, res) => {
