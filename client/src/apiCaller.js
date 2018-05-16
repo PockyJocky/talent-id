@@ -2,13 +2,13 @@ import 'whatwg-fetch'
 
 export const API_URL = `http://localhost:3001/api`;
 
-export  default async function callApi(endpoint, method, body) {
-    return await fetch(`${API_URL}/${endpoint}`, {
+export  default function callApi(endpoint, method, body) {
+    console.log(body);
+    return fetch(`${API_URL}/${endpoint}`, {
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept' : 'application/json'
+            'Content-Type': 'application/json',
+            'Credentials' : 'same-origin'
         },
-        credentials : "same-origin",
         method,
         body: body,
     })

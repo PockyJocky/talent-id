@@ -5,7 +5,7 @@ import * as userController from "../controllers/user.server.controller"
 // get an instance of express router
 const router = express.Router();
 
-router.post('/add', (req, res) => {
+router.options('/add', (req, res) => {
     userController.addUser(req, res);
 });
 export default router;
