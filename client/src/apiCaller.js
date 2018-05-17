@@ -3,13 +3,14 @@ import 'whatwg-fetch'
 export const API_URL = `http://localhost:3001/api`;
 
 export  default function callApi(endpoint, method, body) {
-
+    console.log(body);
     return fetch(`${API_URL}/${endpoint}`, {
-        body: JSON.stringify(body),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        credentials: 'include',
+        headers: new Headers({
+            //this is required because of mode: no-cors
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }),
+        body: body,
+        //this is required to keep our backend from shitting itself
         mode: 'no-cors',
         method: method,
     })

@@ -6,6 +6,7 @@ import * as userController from "../controllers/user.server.controller"
 const router = express.Router();
 
 router.post('/add', (req, res) => {
+    console.log(req.body);
     userController.addUser(req, res);
 });
 export default router;

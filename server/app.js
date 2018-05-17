@@ -1,6 +1,5 @@
 // ./express-server/app.js
 import express from 'express';
-import path from 'path';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
@@ -8,7 +7,7 @@ import SourceMapSupport from 'source-map-support';
 import keys from "./config/keys";
 
 // import routes
-import userRoutes from '../server/routes/user.server.route'
+ import addUser from '../server/routes/user.server.route'
 
 // define our app using express
 const app = express();
@@ -36,7 +35,11 @@ mongoose
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
-app.use('/api/user', userRoutes);
+// add Source Map Support
+SourceMapSupport.install();
+
+app.use('/api/user', addUser);
+
 app.use('/', (req, res) => {
     res.send({ express : 'Api working'});
 });
