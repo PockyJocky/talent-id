@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
 import MainCard from "./components/MainCard";
 import {Provider} from 'react-redux'
 import {addInterest} from "./actions/InterestCardActions";
@@ -25,4 +24,3 @@ ReactDOM.render(
         <MainCard />
     </Provider>,
     document.getElementById('root'));
-registerServiceWorker();
