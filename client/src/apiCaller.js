@@ -3,7 +3,6 @@ import 'whatwg-fetch'
 export const API_URL = `http://localhost:3001/api`;
 
 export  default function callApi(endpoint, method, body) {
-    console.log(body);
     return fetch(`${API_URL}/${endpoint}`, {
         headers: new Headers({
             //this is required because of mode: no-cors

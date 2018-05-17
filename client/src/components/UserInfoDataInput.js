@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {addUser} from "../actions/UserInfoCardActions";
+import {update} from "../actions/UserActions";
 import {connect} from "react-redux";
 
 class UserInfoDataInput extends Component{
@@ -44,33 +44,33 @@ class UserInfoDataInput extends Component{
         }
     };
 
-    handleFirstNameChange = (event) => {
-        this.setState({firstName: event.target.value});
-        this.updateProps('firstName', event.target.value)
+    handleFirstNameChange = async (event) => {
+        await this.setState({firstName: event.target.value});
+        this.updateProps()
     };
 
-    handleLastNameChange = (event) => {
-        this.setState({lastName: event.target.value});
-        this.updateProps('lastName', event.target.value)
+    handleLastNameChange = async (event) => {
+        await this.setState({lastName: event.target.value});
+        this.updateProps()
     };
 
-    handleEDIPIChange = (event) => {
-        this.setState({edipi: event.target.value});
-        this.updateProps('edipi', event.target.value)
+    handleEDIPIChange = async (event) => {
+        await this.setState({edipi: event.target.value});
+        this.updateProps()
     };
 
-    handleRankChange = (event) => {
-        this.setState({rank: event.target.value});
-        this.updateProps('rank', event.target.value)
+    handleRankChange = async (event) => {
+        await this.setState({rank: event.target.value});
+        this.updateProps()
     };
 
-    handleSquadronChange = (event) => {
-        this.setState({squadron: event.target.value});
-        this.updateProps('squadron', event.target.value)
+    handleSquadronChange = async (event) => {
+        await this.setState({squadron: event.target.value});
+        this.updateProps()
     };
 
-    updateProps = (target, value) => {
-        this.props.addUser(({...this.props.userInfo, [target]: value}))
+    updateProps = () => {
+        this.props.update({...this.state});
     };
 
     render(){
@@ -78,29 +78,29 @@ class UserInfoDataInput extends Component{
             <ul className = 'interest_input'>
                 <li>
                     <input
-                        className = 'firstName'
-                        type = 'text'
-                        value = {this.state.firstName}
-                        onFocus = {this.handleFirstNameFocusText}
-                        onChange = {this.handleFirstNameChange}
+                        className='firstName'
+                        type='text'
+                        value={this.state.firstName}
+                        onFocus={this.handleFirstNameFocusText}
+                        onChange={this.handleFirstNameChange}
                     />
                 </li>
                 <li>
                     <input
-                        className = 'lastName'
-                        type = 'text'
-                        value = {this.state.lastName}
+                        className='lastName'
+                        type='text'
+                        value={this.state.lastName}
                         onFocus={this.handleLastNameFocusText}
-                        onChange = {this.handleLastNameChange}
+                        onChange={this.handleLastNameChange}
                     />
                 </li>
                 <li>
                     <input
-                        className = 'edipi'
-                        type = 'text'
-                        value = {this.state.edipi}
+                        className='edipi'
+                        type='text'
+                        value={this.state.edipi}
                         onFocus={this.handleEDIPIFocusText}
-                        onChange = {this.handleEDIPIChange}
+                        onChange={this.handleEDIPIChange}
                     />
                 </li>
                 <li>
@@ -110,6 +110,7 @@ class UserInfoDataInput extends Component{
                         <option value="airmenBasic">AB</option>
                         <option value="airmen">Amn</option>
                         <option value="airmenfirst">A1C</option>
+                        <option value="seniorairman">SrA</option>
                         <option value="staffsgt">SSgt</option>
                         <option value="techsgt">TSgt</option>
                         <option value="mastersgt">MSgt</option>
@@ -135,12 +136,12 @@ class UserInfoDataInput extends Component{
 
 const mapDispatchToProps = dispatch => {
     return{
-        addUser: user => dispatch(addUser(user))
+        update: user => dispatch(update(user))
     }
 };
 
 const mapStateToProps = (state) =>{
-    return{userInfo: state.userCard.userInfo}
+    return{user: state.userCard}
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(UserInfoDataInput)

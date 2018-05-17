@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import InterestCard from './InterestCard';
 import UserInfoCard from './UserInfoCard';
 import PlayersCard from "./PlayersCard";
+import {connect} from "react-redux";
+import {addNewUser} from "../actions/UserActions";
 
 // import '../styles/MainCard.css';
 
@@ -9,6 +11,10 @@ class MainCard extends Component {
     state = { place: 0, visibleCard: [true, false, false]}
     clickNext = () => {
         if( this.state.place <2 ) {
+            if( this.state.place === 0) {
+                console.log({...this.props.userInfo})
+                this.props.addUser(({...this.props.userInfo}))
+            }
             this.setState((prevState) => ({
                 place: prevState.place += 1,
             }));
@@ -31,4 +37,14 @@ class MainCard extends Component {
         );
     }
 }
-export default MainCard;
+
+const mapDispatchToProps = dispatch => {
+    return{
+        addUser: user => dispatch(addNewUser(user))
+    }
+};
+
+const mapStateToProps = (state) =>{
+    return{userInfo: state.userCard}
+};
+export default  connect(mapStateToProps,mapDispatchToProps)(MainCard);
