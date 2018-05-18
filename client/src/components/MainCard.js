@@ -8,11 +8,10 @@ import {addNewUser} from "../actions/UserActions";
 // import '../styles/MainCard.css';
 
 class MainCard extends Component {
-    state = { place: 0, visibleCard: [true, false, false]}
+    state = { place: 0, visibleCard: [true, false, false]};
     clickNext = () => {
         if( this.state.place <2 ) {
             if( this.state.place === 0) {
-                console.log({...this.props.userInfo})
                 this.props.addUser(({...this.props.userInfo}))
             }
             this.setState((prevState) => ({

@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainCard from "./components/MainCard";
+import MainCard from "./src/components/MainCard";
 import {Provider} from 'react-redux'
-import {addInterest} from "./actions/InterestCardActions";
-import configureStore from "./store/configureStore";
+import configureStore from "./src/store/configureStore";
 import "babel-polyfill";
 
 const initialState = {
@@ -18,9 +17,9 @@ const initialState = {
 
 let store = configureStore(initialState);
 window.store = store;
-window.addInterest = addInterest;
 ReactDOM.render(
-    <Provider store = {store}>
-        <MainCard />
-    </Provider>,
-    document.getElementById('root'));
+<Provider store = {store}>
+    <MainCard />
+</Provider>,
+document.getElementById('root')
+);
