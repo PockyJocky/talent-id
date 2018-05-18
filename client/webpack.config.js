@@ -46,7 +46,7 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules|.cache)/,
+                exclude: /node_modules(?!\/webpack-dev-server)/,
                 loader: 'babel-loader',
                 query: {
                     presets: ['react', 'es2015', 'stage-2'],

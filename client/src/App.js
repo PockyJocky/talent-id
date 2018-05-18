@@ -10,17 +10,6 @@ class App extends Component {
     componentDidMount() {
     }
 
-    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-    callBackendAPI = async () => {
-        const response = await fetch('/');
-        const body = await response.json();
-
-        if (response.status !== 200) {
-            throw Error(body.message)
-        }
-        return body;
-    };
-
     render() {
         return (
         <MainCard />
