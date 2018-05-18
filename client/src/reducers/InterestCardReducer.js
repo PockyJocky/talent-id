@@ -6,7 +6,7 @@ export function interestCard(state = initialState, action){
     console.log(state)
     switch(action.type){
         case ADD_INTEREST:
-            return {...state, skillList: [...state.skillList, action.payload]}
+            return {...state = ( Object.assign({}, action.payload))}
         default:
             return state
     }

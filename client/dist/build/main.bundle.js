@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2a8e1adcfacbc0c8db92"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1352e826c86e6254fd0c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -754,7 +754,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/dist/build/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -36885,6 +36885,9 @@ var InterestCard = function (_Component) {
                             )
                         )
                     ),
+                    '(skillList.length > 0) : ',
+                    _react2.default.createElement('div', null),
+                    ' ? ',
                     _react2.default.createElement(_InterestList2.default, { skillList: this.state.skillList })
                 )
             );
@@ -36979,8 +36982,7 @@ var InterestList = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                console.log(this.props.skillList),
-                this.props.skillList.map(function (skill) {
+                this.props.skillList.length > 0 && this.props.skillList.map(function (skill) {
                     return _react2.default.createElement(
                         'div',
                         { className: 'keeper_of_the_skills' },
@@ -37262,13 +37264,12 @@ var PlayersCard = function (_Component) {
     }
 
     _createClass(PlayersCard, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return _react2.default.createElement(
-                'div',
+                "div",
                 null,
-                _react2.default.createElement(_UserInfoDataInput2.default, { userLocation: this.props.userLocation }),
-                _react2.default.createElement(_InterestList2.default, null)
+                _react2.default.createElement(_UserInfoDataInput2.default, { userLocation: this.props.userLocation })
             );
         }
     }]);
@@ -37289,8 +37290,8 @@ exports.default = _default;
         return;
     }
 
-    reactHotLoader.register(PlayersCard, 'PlayersCard', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/PlayersCard.js');
-    reactHotLoader.register(_default, 'default', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/PlayersCard.js');
+    reactHotLoader.register(PlayersCard, "PlayersCard", "/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/PlayersCard.js");
+    reactHotLoader.register(_default, "default", "/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/PlayersCard.js");
     leaveModule(module);
 })();
 

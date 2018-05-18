@@ -27,7 +27,7 @@
     "whatwg-fetch": "^2.0.4"
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "react-scripts start",
     "build": "webpack",
     "test": "mocha --compilers js:babel-register --require ./test/config/helpers.js --require ./test/config/config.js --recursive",
     "build:dev": "webpack --env=dev --progress --profile --colors",

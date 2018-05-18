@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import UserInfoDataInput from "./UserInfoDataInput";
-import InterestList from './InterestList'
+import InterestList from "./InterestList";
 
 class PlayersCard extends Component{
     render(){

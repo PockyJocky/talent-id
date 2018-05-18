@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainCard from "./src/components/MainCard";
+import MainCard from "./components/MainCard";
 import {Provider} from 'react-redux'
-import configureStore from "./src/store/configureStore";
+import configureStore from "./store/configureStore";
 import "babel-polyfill";
 
 const initialState = {

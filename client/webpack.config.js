@@ -25,9 +25,9 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, publicPath),
-        filename: '[name].bundle.js',
-        publicPath: publicPath,
-        sourceMapFilename: '[name].map',
+        filename: 'main.bundle.js',
+        publicPath: "",
+        sourceMapFilename: 'main.map',
     },
 
     devServer: {
