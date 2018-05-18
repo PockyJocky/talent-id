@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import InterestList from './InterestList'
 import {connect} from 'react-redux'
-import {addInterest} from "../actions/InterestCardActions";
+import {addNewInterest, updateInterest} from "../actions/InterestCardActions";
 
 //styles
 // import '../styles/InterestCard.css'
@@ -9,38 +9,50 @@ import {addInterest} from "../actions/InterestCardActions";
 class InterestCard extends Component {
     constructor(props) {
         super(props);
-        this.state = {skillValue: '3', interestValue: '3', skillName: '', skillList: []};
+        this.state = {
+            skillValue: '3',
+            interestValue: '3',
+            skillName: '',
+            skillList: []};
     }
 
-    handleChangeSkill = (event) => {
-        this.setState({skillValue: event.target.value});
+    handleChangeSkill = async (event) => {
+        await this.setState({skillValue: event.target.value});
+        this.updateProps()
     };
 
-    handleChangeInterest = (event) => {
-        this.setState({interestValue: event.target.value});
+    handleChangeInterest = async (event) => {
+        await this.setState({interestValue: event.target.value});
+        this.updateProps()
+
     };
 
-    handleChangeSkillName = (event) => {
-        this.setState({skillName: event.target.value});
+    handleChangeSkillName = async (event) => {
+        await this.setState({skillName: event.target.value});
+        this.updateProps()
+
     };
 
-    handleClick = () =>{
+    handleClick = async () =>{
         if(this.state.skillName !== '') {
-            this.props.addInterest({
-                skillName: this.state.skillName,
-                skillValue: this.state.skillValue,
-                interestValue: this.state.interestValue
+            await this.props.addNewInterest({
+                skillName: this.props.skillName,
+                skillValue: this.props.skillValue,
+                interestValue: this.props.interestValue
             });
-            this.setState(() => {
-                    return ({
+            console.log(this.props.skillList);
+            this.setState({
                         skillName: '',
                         skillValue: '3',
                         interestValue: '3',
-                    });
-                }
-            )
+                    })
         }
     };
+
+    updateProps = () => {
+        this.props.update({...this.state});
+    };
+
     render() {
         return (
             <div className = 'main'>
@@ -95,7 +107,7 @@ class InterestCard extends Component {
                             </li>
                         </ul>
                     </li>
-                    <InterestList skillList = {this.state.skillList} />
+                    <InterestList />
                 </ul>
 
             </div>
@@ -105,8 +117,13 @@ class InterestCard extends Component {
 
 const mapDispatchToProps = dispatch => {
     return{
-        addInterest: interest => dispatch(addInterest(interest))
+        update: interest => dispatch(updateInterest(interest)),
+        addNewInterest: interest => dispatch(addNewInterest(interest))
     }
 };
 
-export default connect(null, mapDispatchToProps)(InterestCard)
+const mapStateToProps = (state) =>{
+    return{skillList : state.skillList}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InterestCard)

@@ -3,12 +3,16 @@ import {connect} from 'react-redux'
 
 class InterestList extends Component{
     // eslint-disable-next-line
-    constructor(props){ super(props) }
+    constructor(props){ super(props)
+    this.state = {
+        skillList: this.props.skillList
+    }
+    }
     render() {
         return(
             <div className = 'container'>
-                {(this.props.skillList.length > 0) ? <div/> :
-                this.props.skillList.map((skill) => {
+                {(this.state.skillList.length > 0) ? <div/> :
+                this.state.skillList.map((skill) => {
                         return (
                             <div className='keeper_of_the_skills'>
                                 <ul className='skill_list'>

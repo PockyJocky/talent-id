@@ -1,12 +1,17 @@
-import {ADD_INTEREST} from "../Constant";
 const initialState = {
-    skillList: [{}]
-}
+    skillList: []
+};
 export function interestCard(state = initialState, action){
-    console.log(state)
     switch(action.type){
-        case ADD_INTEREST:
-            return {...state = ( Object.assign({}, action.payload))}
+        case 'ADD_INTEREST':
+            return {
+                ...state,
+                skillList: [...state.skillList, action.interest]
+            };
+        case 'UPDATE_INTEREST':
+            return {
+                ...state = (Object.assign({}, action.interest))
+            };
         default:
             return state
     }
