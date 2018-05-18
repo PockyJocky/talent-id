@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f434d73be0a76e6d6bdc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5e06009709a756cfeab9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -30260,93 +30260,9 @@ var React__default = _interopDefault(React);
 var shallowEqual = _interopDefault(__webpack_require__(/*! shallowequal */ "./node_modules/shallowequal/index.js"));
 var levenshtein = _interopDefault(__webpack_require__(/*! fast-levenshtein */ "./node_modules/fast-levenshtein/levenshtein.js"));
 var PropTypes = _interopDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+var defaultPolyfill = __webpack_require__(/*! react-lifecycles-compat */ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js");
+var defaultPolyfill__default = _interopDefault(defaultPolyfill);
 var hoistNonReactStatic = _interopDefault(__webpack_require__(/*! hoist-non-react-statics */ "./node_modules/hoist-non-react-statics/index.js"));
-
-/* eslint-disable no-underscore-dangle */
-
-var isCompositeComponent = function isCompositeComponent(type) {
-  return typeof type === 'function';
-};
-
-var getComponentDisplayName = function getComponentDisplayName(type) {
-  return type.displayName || type.name || 'Component';
-};
-
-var getInternalInstance = function getInternalInstance(instance) {
-  return instance._reactInternalFiber || // React 16
-  instance._reactInternalInstance || // React 15
-  null;
-};
-
-var updateInstance = function updateInstance(instance) {
-  var updater = instance.updater,
-      forceUpdate = instance.forceUpdate;
-
-  if (typeof forceUpdate === 'function') {
-    instance.forceUpdate();
-  } else if (updater && typeof updater.enqueueForceUpdate === 'function') {
-    updater.enqueueForceUpdate(instance);
-  }
-};
-
-var isFragmentNode = function isFragmentNode(_ref) {
-  var type = _ref.type;
-  return React__default.Fragment && type === React__default.Fragment;
-};
-
-var generation = 1;
-
-var increment = function increment() {
-  return generation++;
-};
-var get = function get() {
-  return generation;
-};
-
-var PREFIX = '__reactstandin__';
-var PROXY_KEY = PREFIX + 'key';
-var GENERATION = PREFIX + 'proxyGeneration';
-var REGENERATE_METHOD = PREFIX + 'regenerateByEval';
-var UNWRAP_PROXY = PREFIX + 'getCurrent';
-var CACHED_RESULT = PREFIX + 'cachedResult';
-var PROXY_IS_MOUNTED = PREFIX + 'isMounted';
-
-var configuration = {
-  logLevel: 'error'
-};
-
-/* eslint-disable no-console */
-
-var logger = {
-  debug: function debug() {
-    if (['debug'].includes(configuration.logLevel)) {
-      var _console;
-
-      (_console = console).debug.apply(_console, arguments);
-    }
-  },
-  log: function log() {
-    if (['debug', 'log'].includes(configuration.logLevel)) {
-      var _console2;
-
-      (_console2 = console).log.apply(_console2, arguments);
-    }
-  },
-  warn: function warn() {
-    if (['debug', 'log', 'warn'].includes(configuration.logLevel)) {
-      var _console3;
-
-      (_console3 = console).warn.apply(_console3, arguments);
-    }
-  },
-  error: function error() {
-    if (['debug', 'log', 'warn', 'error'].includes(configuration.logLevel)) {
-      var _console4;
-
-      (_console4 = console).error.apply(_console4, arguments);
-    }
-  }
-};
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
@@ -30398,11 +30314,116 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
+/* eslint-disable no-underscore-dangle */
+
+var isCompositeComponent = function isCompositeComponent(type) {
+  return typeof type === 'function';
+};
+
+var getComponentDisplayName = function getComponentDisplayName(type) {
+  return type.displayName || type.name || 'Component';
+};
+
+var getInternalInstance = function getInternalInstance(instance) {
+  return instance._reactInternalFiber || // React 16
+  instance._reactInternalInstance || // React 15
+  null;
+};
+
+var updateInstance = function updateInstance(instance) {
+  var updater = instance.updater,
+      forceUpdate = instance.forceUpdate;
+
+  if (typeof forceUpdate === 'function') {
+    instance.forceUpdate();
+  } else if (updater && typeof updater.enqueueForceUpdate === 'function') {
+    updater.enqueueForceUpdate(instance);
+  }
+};
+
+var isFragmentNode = function isFragmentNode(_ref) {
+  var type = _ref.type;
+  return React__default.Fragment && type === React__default.Fragment;
+};
+
+var ContextType = React__default.createContext ? React__default.createContext() : null;
+var ConsumerType = ContextType && ContextType.Consumer.$$typeof;
+var ProviderType = ContextType && ContextType.Provider.$$typeof;
+
+var CONTEXT_CURRENT_VALUE = '_currentValue';
+
+var isContextConsumer = function isContextConsumer(_ref2) {
+  var type = _ref2.type;
+  return type && (typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type.$$typeof === ConsumerType;
+};
+var isContextProvider = function isContextProvider(_ref3) {
+  var type = _ref3.type;
+  return type && (typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type.$$typeof === ProviderType;
+};
+var getContextProvider = function getContextProvider(type) {
+  return type && type._context;
+};
+
+var generation = 1;
+
+var increment = function increment() {
+  return generation++;
+};
+var get$1 = function get() {
+  return generation;
+};
+
+var PREFIX = '__reactstandin__';
+var PROXY_KEY = PREFIX + 'key';
+var GENERATION = PREFIX + 'proxyGeneration';
+var REGENERATE_METHOD = PREFIX + 'regenerateByEval';
+var UNWRAP_PROXY = PREFIX + 'getCurrent';
+var CACHED_RESULT = PREFIX + 'cachedResult';
+var PROXY_IS_MOUNTED = PREFIX + 'isMounted';
+
+var configuration = {
+  logLevel: 'error',
+  pureSFC: false
+};
+
+/* eslint-disable no-console */
+
+var logger = {
+  debug: function debug() {
+    if (['debug'].indexOf(configuration.logLevel) !== -1) {
+      var _console;
+
+      (_console = console).debug.apply(_console, arguments);
+    }
+  },
+  log: function log() {
+    if (['debug', 'log'].indexOf(configuration.logLevel) !== -1) {
+      var _console2;
+
+      (_console2 = console).log.apply(_console2, arguments);
+    }
+  },
+  warn: function warn() {
+    if (['debug', 'log', 'warn'].indexOf(configuration.logLevel) !== -1) {
+      var _console3;
+
+      (_console3 = console).warn.apply(_console3, arguments);
+    }
+  },
+  error: function error() {
+    if (['debug', 'log', 'warn', 'error'].indexOf(configuration.logLevel) !== -1) {
+      var _console4;
+
+      (_console4 = console).error.apply(_console4, arguments);
+    }
+  }
+};
+
 /* eslint-disable no-eval, func-names */
 
 function getDisplayName(Component) {
   var displayName = Component.displayName || Component.name;
-  return displayName && displayName !== 'ReactComponent' ? displayName : 'Unknown';
+  return displayName && displayName !== 'ReactComponent' ? displayName : 'Component';
 }
 
 var reactLifeCycleMountMethods = ['componentWillMount', 'componentDidMount'];
@@ -30491,7 +30512,7 @@ function safeDefineProperty(target, key, props) {
   }
 }
 
-var RESERVED_STATICS = ['length', 'displayName', 'name', 'arguments', 'caller', 'prototype', 'toString', 'valueOf', PROXY_KEY, UNWRAP_PROXY];
+var RESERVED_STATICS = ['length', 'displayName', 'name', 'arguments', 'caller', 'prototype', 'toString', 'valueOf', 'isStatelessFunctionalProxy', PROXY_KEY, UNWRAP_PROXY];
 
 function transferStaticProps(ProxyComponent, savedDescriptors, PreviousComponent, NextComponent) {
   Object.getOwnPropertyNames(ProxyComponent).forEach(function (key) {
@@ -30610,9 +30631,10 @@ function mergeComponents(ProxyComponent, NextComponent, InitialComponent, lastIn
 
         var nextString = String(nextAttr);
         var injectedBefore = injectedMembers[key];
-        if (nextString !== String(prevAttr) || injectedBefore && nextString !== String(injectedBefore)) {
+        var isFunction = nextString.indexOf('function') >= 0 || nextString.indexOf('=>') >= 0;
+        if (nextString !== String(prevAttr) || injectedBefore && nextString !== String(injectedBefore) || isFunction) {
           if (!hasRegenerate) {
-            if (nextString.indexOf('function') < 0 && nextString.indexOf('=>') < 0) {
+            if (!isFunction) {
               // just copy prop over
               injectedCode[key] = nextAttr;
             } else {
@@ -30652,7 +30674,7 @@ function inject(target, currentGeneration, injectedMembers) {
     Object.keys(injectedMembers).forEach(function (key) {
       try {
         if (hasRegenerate) {
-          target[REGENERATE_METHOD](key, '(function REACT_HOT_LOADER_SANDBOX () {\n          var _this = this; // common babel transpile\n          var _this2 = this; // common babel transpile\n          return ' + injectedMembers[key] + ';\n          }).call(this)');
+          target[REGENERATE_METHOD](key, '(function REACT_HOT_LOADER_SANDBOX () {\n          var _this  = this; // common babel transpile\n          var _this2 = this; // common babel transpile\n          var _this3 = this; // common babel transpile\n          var _this4 = this; // common babel transpile\n          var _this5 = this; // common babel transpile\n          var _this6 = this; // common babel transpile\n          return ' + injectedMembers[key] + ';\n          }).call(this)');
         } else {
           target[key] = injectedMembers[key];
         }
@@ -30670,11 +30692,17 @@ var has = Object.prototype.hasOwnProperty;
 
 var proxies = new WeakMap();
 
-var blackListedClassMembers = ['constructor', 'render', 'componentDidMount', 'componentWillReceiveProps', 'componentWillUnmount', 'getInitialState', 'getDefaultProps'];
+var resetClassProxies = function resetClassProxies() {
+  proxies = new WeakMap();
+};
+
+var blackListedClassMembers = ['constructor', 'render', 'componentWillMount', 'componentDidMount', 'componentWillReceiveProps', 'componentWillUnmount', 'hotComponentRender', 'getInitialState', 'getDefaultProps'];
 
 var defaultRenderOptions = {
-  componentWillReceiveProps: identity,
   componentWillRender: identity,
+  componentDidUpdate: function componentDidUpdate(result) {
+    return result;
+  },
   componentDidRender: function componentDidRender(result) {
     return result;
   }
@@ -30695,6 +30723,37 @@ var defineClassMembers = function defineClassMembers(Class, methods) {
   });
 };
 
+var setSFPFlag = function setSFPFlag(component, flag) {
+  return safeDefineProperty(component, 'isStatelessFunctionalProxy', {
+    configurable: false,
+    writable: false,
+    enumerable: false,
+    value: flag
+  });
+};
+
+var copyMethodDescriptors = function copyMethodDescriptors(target, source) {
+  if (source) {
+    // it is possible to use `function-double` to construct an ideal clone, but does not make a sence
+    var keys = Object.getOwnPropertyNames(source);
+
+    keys.forEach(function (key) {
+      return safeDefineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+
+    safeDefineProperty(target, 'toString', {
+      configurable: true,
+      writable: false,
+      enumerable: false,
+      value: function toString() {
+        return String(source);
+      }
+    });
+  }
+
+  return target;
+};
+
 function createClassProxy(InitialComponent, proxyKey, options) {
   var renderOptions = _extends({}, defaultRenderOptions, options);
   // Prevent double wrapping.
@@ -30709,6 +30768,8 @@ function createClassProxy(InitialComponent, proxyKey, options) {
   var savedDescriptors = {};
   var injectedMembers = {};
   var proxyGeneration = 0;
+  var classUpdatePostponed = null;
+  var instancesCount = 0;
   var isFunctionalComponent = !isReactClass(InitialComponent);
 
   var lastInstance = null;
@@ -30716,11 +30777,16 @@ function createClassProxy(InitialComponent, proxyKey, options) {
   function postConstructionAction() {
     this[GENERATION] = 0;
 
+    lastInstance = this;
+    // is there is an update pending
+    if (classUpdatePostponed) {
+      var callUpdate = classUpdatePostponed;
+      classUpdatePostponed = null;
+      callUpdate();
+    }
     // As long we can't override constructor
     // every class shall evolve from a base class
     inject(this, proxyGeneration, injectedMembers);
-
-    lastInstance = this;
   }
 
   function proxiedUpdate() {
@@ -30732,7 +30798,7 @@ function createClassProxy(InitialComponent, proxyKey, options) {
   function lifeCycleWrapperFactory(wrapperName) {
     var sideEffect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : identity;
 
-    return function wrappedMethod() {
+    return copyMethodDescriptors(function wrappedMethod() {
       proxiedUpdate.call(this);
       sideEffect(this);
 
@@ -30741,17 +30807,17 @@ function createClassProxy(InitialComponent, proxyKey, options) {
       }
 
       return !isFunctionalComponent && CurrentComponent.prototype[wrapperName] && CurrentComponent.prototype[wrapperName].apply(this, rest);
-    };
+    }, InitialComponent.prototype && InitialComponent.prototype[wrapperName]);
   }
 
   function methodWrapperFactory(wrapperName, realMethod) {
-    return function wrappedMethod() {
+    return copyMethodDescriptors(function wrappedMethod() {
       for (var _len2 = arguments.length, rest = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         rest[_key2] = arguments[_key2];
       }
 
       return realMethod.apply(this, rest);
-    };
+    }, realMethod);
   }
 
   var fakeBasePrototype = function fakeBasePrototype(Base) {
@@ -30768,16 +30834,18 @@ function createClassProxy(InitialComponent, proxyKey, options) {
 
   var componentDidMount = lifeCycleWrapperFactory('componentDidMount', function (target) {
     target[PROXY_IS_MOUNTED] = true;
+    instancesCount++;
   });
-  var componentWillReceiveProps = lifeCycleWrapperFactory('componentWillReceiveProps', renderOptions.componentWillReceiveProps);
+  var componentDidUpdate = lifeCycleWrapperFactory('componentDidUpdate', renderOptions.componentDidUpdate);
   var componentWillUnmount = lifeCycleWrapperFactory('componentWillUnmount', function (target) {
     target[PROXY_IS_MOUNTED] = false;
+    instancesCount--;
   });
 
-  function proxiedRender() {
-    proxiedUpdate.call(this);
+  function hotComponentRender() {
+    // repeating subrender call to keep RENDERED_GENERATION up to date
     renderOptions.componentWillRender(this);
-
+    proxiedUpdate.call(this);
     var result = void 0;
 
     // We need to use hasOwnProperty here, as the cached result is a React node
@@ -30788,10 +30856,15 @@ function createClassProxy(InitialComponent, proxyKey, options) {
     } else if (isFunctionalComponent) {
       result = CurrentComponent(this.props, this.context);
     } else {
-      result = CurrentComponent.prototype.render.call(this);
+      result = (CurrentComponent.prototype.render || this.render).call(this);
     }
 
-    return renderOptions.componentDidRender(result);
+    return renderOptions.componentDidRender.call(this, result);
+  }
+
+  function proxiedRender() {
+    renderOptions.componentWillRender(this);
+    return hotComponentRender.call(this);
   }
 
   var defineProxyMethods = function defineProxyMethods(Proxy) {
@@ -30799,28 +30872,42 @@ function createClassProxy(InitialComponent, proxyKey, options) {
 
     defineClassMembers(Proxy, _extends({}, fakeBasePrototype(Base), {
       render: proxiedRender,
+      hotComponentRender: hotComponentRender,
       componentDidMount: componentDidMount,
-      componentWillReceiveProps: componentWillReceiveProps,
+      componentDidUpdate: componentDidUpdate,
       componentWillUnmount: componentWillUnmount
     }));
   };
 
-  var ProxyFacade = void 0;
+  var _ProxyFacade = void 0;
   var ProxyComponent = null;
+  var proxy = void 0;
 
   if (!isFunctionalComponent) {
     ProxyComponent = proxyClassCreator(InitialComponent, postConstructionAction);
 
     defineProxyMethods(ProxyComponent, InitialComponent.prototype);
 
-    ProxyFacade = ProxyComponent;
+    _ProxyFacade = ProxyComponent;
   } else {
     // This function only gets called for the initial mount. The actual
     // rendered component instance will be the return value.
 
     // eslint-disable-next-line func-names
-    ProxyFacade = function ProxyFacade(props, context) {
+    _ProxyFacade = function ProxyFacade(props, context) {
       var result = CurrentComponent(props, context);
+
+      // simple SFC
+      if (configuration.pureSFC) {
+        if (!CurrentComponent.contextTypes) {
+          if (!_ProxyFacade.isStatelessFunctionalProxy) {
+            setSFPFlag(_ProxyFacade, true);
+          }
+
+          return renderOptions.componentDidRender(result);
+        }
+      }
+      setSFPFlag(_ProxyFacade, false);
 
       // This is a Relay-style container constructor. We can't do the prototype-
       // style wrapping for this as we do elsewhere, so just we just pass it
@@ -30845,29 +30932,29 @@ function createClassProxy(InitialComponent, proxyKey, options) {
     };
   }
 
-  function get() {
-    return ProxyFacade;
+  function get$$1() {
+    return _ProxyFacade;
   }
 
   function getCurrent() {
     return CurrentComponent;
   }
 
-  safeDefineProperty(ProxyFacade, UNWRAP_PROXY, {
+  safeDefineProperty(_ProxyFacade, UNWRAP_PROXY, {
     configurable: false,
     writable: false,
     enumerable: false,
     value: getCurrent
   });
 
-  safeDefineProperty(ProxyFacade, PROXY_KEY, {
+  safeDefineProperty(_ProxyFacade, PROXY_KEY, {
     configurable: false,
     writable: false,
     enumerable: false,
     value: proxyKey
   });
 
-  safeDefineProperty(ProxyFacade, 'toString', {
+  safeDefineProperty(_ProxyFacade, 'toString', {
     configurable: true,
     writable: false,
     enumerable: false,
@@ -30888,11 +30975,13 @@ function createClassProxy(InitialComponent, proxyKey, options) {
     // Prevent proxy cycles
     var existingProxy = proxies.get(NextComponent);
     if (existingProxy) {
-      update(existingProxy[UNWRAP_PROXY]());
       return;
     }
 
     isFunctionalComponent = !isReactClass(NextComponent);
+
+    proxies.set(NextComponent, proxy);
+
     proxyGeneration++;
 
     // Save the next constructor so we call it
@@ -30902,7 +30991,7 @@ function createClassProxy(InitialComponent, proxyKey, options) {
     // Try to infer displayName
     var displayName = getDisplayName(CurrentComponent);
 
-    safeDefineProperty(ProxyFacade, 'displayName', {
+    safeDefineProperty(_ProxyFacade, 'displayName', {
       configurable: true,
       writable: false,
       enumerable: true,
@@ -30915,24 +31004,33 @@ function createClassProxy(InitialComponent, proxyKey, options) {
       });
     }
 
-    savedDescriptors = transferStaticProps(ProxyFacade, savedDescriptors, PreviousComponent, NextComponent);
+    savedDescriptors = transferStaticProps(_ProxyFacade, savedDescriptors, PreviousComponent, NextComponent);
 
-    if (isFunctionalComponent || !ProxyComponent) {
-      // nothing
-    } else {
-      checkLifeCycleMethods(ProxyComponent, NextComponent);
-      Object.setPrototypeOf(ProxyComponent.prototype, NextComponent.prototype);
-      defineProxyMethods(ProxyComponent, NextComponent.prototype);
-      if (proxyGeneration > 1) {
-        injectedMembers = mergeComponents(ProxyComponent, NextComponent, InitialComponent, lastInstance, injectedMembers);
+    if (isFunctionalComponent || !ProxyComponent) ; else {
+      var classHotReplacement = function classHotReplacement() {
+        checkLifeCycleMethods(ProxyComponent, NextComponent);
+        Object.setPrototypeOf(ProxyComponent.prototype, NextComponent.prototype);
+        defineProxyMethods(ProxyComponent, NextComponent.prototype);
+        if (proxyGeneration > 1) {
+          injectedMembers = mergeComponents(ProxyComponent, NextComponent, InitialComponent, lastInstance, injectedMembers);
+        }
+      };
+
+      // Was constructed once
+      if (instancesCount > 0) {
+        classHotReplacement();
+      } else {
+        classUpdatePostponed = classHotReplacement;
       }
     }
   }
 
   update(InitialComponent);
 
-  var proxy = { get: get, update: update };
-  proxies.set(ProxyFacade, proxy);
+  proxy = { get: get$$1, update: update };
+
+  proxies.set(InitialComponent, proxy);
+  proxies.set(_ProxyFacade, proxy);
 
   safeDefineProperty(proxy, UNWRAP_PROXY, {
     configurable: false,
@@ -30988,6 +31086,7 @@ var createProxyForType = function createProxyForType(type) {
 var resetProxies = function resetProxies() {
   proxiesByID = {};
   idsByType = new WeakMap();
+  resetClassProxies();
 };
 
 resetProxies();
@@ -31068,6 +31167,16 @@ function pushStack(stack, node) {
   stack.type = node.type;
   stack.children = [];
   stack.instance = typeof node.type === 'function' ? node.stateNode : stack;
+
+  if (!stack.instance) {
+    stack.instance = {
+      SFC_fake: stack.type,
+      props: {},
+      render: function render() {
+        return stack.type(stack.instance.props);
+      }
+    };
+  }
 }
 
 function hydrateFiberStack(node, stack) {
@@ -31090,6 +31199,17 @@ function pushState(stack, type, instance) {
   stack.type = type;
   stack.children = [];
   stack.instance = instance || stack;
+
+  if (typeof type === 'function' && type.isStatelessFunctionalProxy) {
+    // In React 15 SFC is wrapped by component. We have to detect our proxies and change the way it works
+    stack.instance = {
+      SFC_fake: type,
+      props: {},
+      render: function render() {
+        return type(stack.instance.props);
+      }
+    };
+  }
 }
 
 function hydrateLegacyStack(node, stack) {
@@ -31128,6 +31248,18 @@ function getReactStack(instance) {
 var UNDEFINED_NAMES = {
   Unknown: true,
   Component: true
+};
+
+var renderStack = [];
+
+var stackReport = function stackReport() {
+  var rev = renderStack.slice().reverse();
+  logger.warn('in', rev[0].name, rev);
+};
+
+var emptyMap = new Map();
+var stackContext = function stackContext() {
+  return (renderStack[renderStack.length - 1] || {}).context || emptyMap;
 };
 
 var areNamesEqual = function areNamesEqual(a, b) {
@@ -31187,7 +31319,7 @@ var equalClasses = function equalClasses(a, b) {
   var hits = 0;
   var misses = 0;
   Object.getOwnPropertyNames(prototypeA).forEach(function (key) {
-    if (typeof prototypeA[key] === 'function') {
+    if (typeof prototypeA[key] === 'function' && key !== 'constructor') {
       if (haveTextSimilarity(String(prototypeA[key]), String(prototypeB[key]))) {
         hits++;
       } else {
@@ -31213,8 +31345,10 @@ var isSwappable = function isSwappable(a, b) {
   if (isReactClass$1(a.prototype)) {
     return areNamesEqual(getComponentDisplayName(a), getComponentDisplayName(b)) && equalClasses(a, b);
   }
+
   if (isFunctional(a)) {
-    return areNamesEqual(getComponentDisplayName(a), getComponentDisplayName(b)) && haveTextSimilarity(String(a), String(b));
+    var nameA = getComponentDisplayName(a);
+    return areNamesEqual(nameA, getComponentDisplayName(b)) && nameA !== 'Component' || haveTextSimilarity(String(a), String(b));
   }
   return false;
 };
@@ -31224,7 +31358,9 @@ var render = function render(component) {
     return [];
   }
   if (isReactClass$1(component)) {
-    return component.render();
+    // not calling real render method to prevent call recursion.
+    // stateless components does not have hotComponentRender
+    return component.hotComponentRender ? component.hotComponentRender() : component.render();
   }
   if (isArray(component)) {
     return component.map(render);
@@ -31242,7 +31378,7 @@ var mapChildren = function mapChildren(children, instances) {
     children: children.filter(function (c) {
       return c;
     }).map(function (child, index) {
-      if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) !== 'object') {
+      if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) !== 'object' || child.isMerged) {
         return child;
       }
       var instanceLine = instances[index] || {};
@@ -31255,9 +31391,12 @@ var mapChildren = function mapChildren(children, instances) {
       }
 
       var newChildren = asArray(child.props && child.props.children || child.children || []);
-      var nextChildren = oldChildren.length && mapChildren(newChildren, oldChildren);
+      var nextChildren = child.type !== 'function' && oldChildren.length && mapChildren(newChildren, oldChildren);
 
-      return _extends({}, instanceLine, nextChildren || {}, {
+      return _extends({
+        nextProps: child.props,
+        isMerged: true
+      }, instanceLine, nextChildren || {}, {
         type: child.type
       });
     })
@@ -31293,18 +31432,22 @@ var mergeInject = function mergeInject(a, b, instance) {
   if (flatA.length === flatB.length) {
     return mapChildren(flatA, flatB);
   }
-  if (flatB.length === 0 && flatA.length === 1 && _typeof(flatA[0]) !== 'object') {
-    // terminal node
-  } else {
+  if (flatB.length === 0 && flatA.length === 1 && _typeof(flatA[0]) !== 'object') ; else {
     logger.warn('React-hot-loader: unable to merge ', a, 'and children of ', instance);
+    stackReport();
   }
   return NO_CHILDREN;
 };
 
 var transformFlowNode = function transformFlowNode(flow) {
   return flow.reduce(function (acc, node) {
-    if (isFragmentNode(node) && node.props && node.props.children) {
-      return [].concat(acc, node.props.children);
+    if (node && isFragmentNode(node)) {
+      if (node.props && node.props.children) {
+        return [].concat(acc, filterNullArray(asArray(node.props.children)));
+      }
+      if (node.children) {
+        return [].concat(acc, filterNullArray(asArray(node.children)));
+      }
     }
     return [].concat(acc, [node]);
   }, []);
@@ -31322,6 +31465,12 @@ var flushScheduledUpdates = function flushScheduledUpdates() {
   });
 };
 
+var unscheduleUpdate = function unscheduleUpdate(instance) {
+  scheduledUpdates = scheduledUpdates.filter(function (inst) {
+    return inst !== instance;
+  });
+};
+
 var scheduleInstanceUpdate = function scheduleInstanceUpdate(instance) {
   scheduledUpdates.push(instance);
   if (!scheduledUpdate) {
@@ -31330,6 +31479,16 @@ var scheduleInstanceUpdate = function scheduleInstanceUpdate(instance) {
 };
 
 var hotReplacementRender = function hotReplacementRender(instance, stack) {
+  if (isReactClass$1(instance)) {
+    var type = getElementType(stack);
+
+    renderStack.push({
+      name: getComponentDisplayName(type),
+      type: type,
+      props: stack.instance.props,
+      context: stackContext()
+    });
+  }
   var flow = transformFlowNode(filterNullArray(asArray(render(instance))));
 
   var children = stack.children;
@@ -31340,22 +31499,24 @@ var hotReplacementRender = function hotReplacementRender(instance, stack) {
     var next = function next(instance) {
       // copy over props as long new component may be hidden inside them
       // child does not have all props, as long some of them can be calculated on componentMount.
-      var nextProps = _extends({}, instance.props);
-      for (var key in child.props) {
-        if (child.props[key]) {
-          nextProps[key] = child.props[key];
-        }
-      }
+      var realProps = instance.props;
+      var nextProps = _extends({}, realProps, child.nextProps || {}, child.props || {});
+
       if (isReactClass$1(instance) && instance.componentWillUpdate) {
         // Force-refresh component (bypass redux renderedComponent)
-        instance.componentWillUpdate(nextProps, instance.state);
+        instance.componentWillUpdate(_extends({}, realProps), instance.state);
       }
       instance.props = nextProps;
       hotReplacementRender(instance, stackChild);
+      instance.props = realProps;
     };
 
     // text node
     if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) !== 'object' || !stackChild || !stackChild.instance) {
+      if (stackChild && stackChild.children && stackChild.children.length) {
+        logger.error('React-hot-loader: reconciliation failed', 'could not dive into [', child, '] while some elements are still present in the tree.');
+        stackReport();
+      }
       return;
     }
 
@@ -31363,20 +31524,49 @@ var hotReplacementRender = function hotReplacementRender(instance, stack) {
       // Portals could generate undefined !== null
       if (child.type && stackChild.type) {
         logger.warn('React-hot-loader: got ', child.type, 'instead of', stackChild.type);
+        stackReport();
       }
       return;
     }
 
-    if (typeof child.type !== 'function') {
+    // React context
+    if (isContextConsumer(child)) {
+      try {
+        next({
+          children: (child.props ? child.props.children : child.children[0])(stackContext().get(child.type) || child.type[CONTEXT_CURRENT_VALUE])
+        });
+      } catch (e) {
+        // do nothing, yet
+      }
+    } else if (typeof child.type !== 'function') {
+      // React
+      var childName = child.type ? getComponentDisplayName(child.type) : 'empty';
+      var extraContext = stackContext();
+
+      if (isContextProvider(child)) {
+        extraContext = new Map(extraContext);
+        extraContext.set(getContextProvider(child.type), child.props.value);
+        childName = 'ContextProvider';
+      }
+
+      renderStack.push({
+        name: childName,
+        type: child.type,
+        props: stack.instance.props,
+        context: extraContext
+      });
+
       next(
       // move types from render to the instances of hydrated tree
-      mergeInject(asArray(child.props ? child.props.children : child.children), stackChild.instance.children, stackChild.instance));
+      mergeInject(transformFlowNode(asArray(child.props ? child.props.children : child.children)), stackChild.instance.children, stackChild.instance));
+      renderStack.pop();
     } else {
       // unwrap proxy
       var childType = getElementType(child);
       if (!stackChild.type[PROXY_KEY]) {
         /* eslint-disable no-console */
         logger.error('React-hot-loader: fatal error caused by ', stackChild.type, ' - no instrumentation found. ', 'Please require react-hot-loader before React. More in troubleshooting.');
+        stackReport();
         throw new Error('React-hot-loader: wrong configuration');
       }
 
@@ -31391,17 +31581,23 @@ var hotReplacementRender = function hotReplacementRender(instance, stack) {
         next(stackChild.instance);
       } else {
         logger.warn('React-hot-loader: a ' + getComponentDisplayName(childType) + ' was found where a ' + getComponentDisplayName(stackChild) + ' was expected.\n          ' + childType);
+        stackReport();
       }
 
       scheduleInstanceUpdate(stackChild.instance);
     }
   });
+
+  if (isReactClass$1(instance)) {
+    renderStack.pop();
+  }
 };
 
 var hotReplacementRender$1 = (function (instance, stack) {
   try {
     // disable reconciler to prevent upcoming components from proxying.
     reactHotLoader.disableProxyCreation = true;
+    renderStack = [];
     hotReplacementRender(instance, stack);
   } catch (e) {
     logger.warn('React-hot-loader: reconcilation failed due to error', e);
@@ -31418,7 +31614,7 @@ var RENDERED_GENERATION = 'REACT_HOT_LOADER_RENDERED_GENERATION';
 
 var renderReconciler = function renderReconciler(target, force) {
   // we are not inside parent reconcilation
-  var currentGeneration = get();
+  var currentGeneration = get$1();
   var componentGeneration = target[RENDERED_GENERATION];
 
   target[RENDERED_GENERATION] = currentGeneration;
@@ -31436,14 +31632,12 @@ function asyncReconciledRender(target) {
   renderReconciler(target, false);
 }
 
-function syncReconciledRender(target) {
-  if (renderReconciler(target, false)) {
-    flushScheduledUpdates();
-  }
-}
-
-var proxyWrapper = function proxyWrapper(element) {
+function proxyWrapper(element) {
   // post wrap on post render
+  if (!reactHotLoader.disableProxyCreation) {
+    unscheduleUpdate(this);
+  }
+
   if (!element) {
     return element;
   }
@@ -31459,43 +31653,42 @@ var proxyWrapper = function proxyWrapper(element) {
     }
   }
   return element;
-};
+}
 
 setStandInOptions({
-  componentWillReceiveProps: syncReconciledRender,
   componentWillRender: asyncReconciledRender,
-  componentDidRender: proxyWrapper
+  componentDidRender: proxyWrapper,
+  componentDidUpdate: flushScheduledUpdates
 });
 
 var AppContainer = function (_React$Component) {
   inherits(AppContainer, _React$Component);
 
-  function AppContainer(props) {
+  function AppContainer() {
+    var _temp, _this, _ret;
+
     classCallCheck(this, AppContainer);
 
-    var _this = possibleConstructorReturn(this, _React$Component.call(this, props));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.state = {
+    return _ret = (_temp = (_this = possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
       error: null,
+      // eslint-disable-next-line react/no-unused-state
       generation: 0
-    };
-    return _this;
+    }, _temp), possibleConstructorReturn(_this, _ret);
   }
 
-  AppContainer.prototype.componentWillReceiveProps = function componentWillReceiveProps() {
-    if (this.state.generation !== get()) {
+  AppContainer.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.generation !== get$1()) {
       // Hot reload is happening.
-
-      this.setState({
+      return {
         error: null,
-        generation: get()
-      });
-
-      // perform sandboxed render to find similarities between new and old code
-      renderReconciler(this, true);
-      // it is possible to flush update out of render cycle
-      flushScheduledUpdates();
+        generation: get$1()
+      };
     }
+    return null;
   };
 
   AppContainer.prototype.shouldComponentUpdate = function shouldComponentUpdate(prevProps, prevState) {
@@ -31538,7 +31731,10 @@ AppContainer.propTypes = {
   },
 
   errorReporter: PropTypes.oneOfType([PropTypes.node, PropTypes.func])
-};
+
+  //  trying first react-lifecycles-compat.polyfill, then trying react-lifecycles-compat, which could be .default
+};var realPolyfill = defaultPolyfill.polyfill || defaultPolyfill__default;
+realPolyfill(AppContainer);
 
 var openedModules = {};
 
@@ -31620,7 +31816,7 @@ var makeHotExport = function makeHotExport(sourceModule) {
 var hot = function hot(sourceModule) {
   if (!sourceModule || !sourceModule.id) {
     // this is fatal
-    throw new Error('React-hot-loader: `hot` could not found the `id` property in the `module` you have provided');
+    throw new Error('React-hot-loader: `hot` could not find the `id` property in the `module` you have provided');
   }
   var moduleId = sourceModule.id;
   var module = hotModule(moduleId);
@@ -31640,7 +31836,7 @@ var hot = function hot(sourceModule) {
         return possibleConstructorReturn(this, _Component.apply(this, arguments));
       }
 
-      ExportedComponent.prototype.componentWillMount = function componentWillMount() {
+      ExportedComponent.prototype.componentDidMount = function componentDidMount() {
         module.instances.push(this);
       };
 
@@ -31708,6 +31904,178 @@ exports.setConfig = setConfig;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./dist/react-hot-loader.development.js */ "./node_modules/react-hot-loader/dist/react-hot-loader.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js ***!
+  \****************************************************************************/
+/*! exports provided: polyfill */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "polyfill", function() { return polyfill; });
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+function componentWillMount() {
+  // Call this.constructor.gDSFP to support sub-classes.
+  var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+  if (state !== null && state !== undefined) {
+    this.setState(state);
+  }
+}
+
+function componentWillReceiveProps(nextProps) {
+  // Call this.constructor.gDSFP to support sub-classes.
+  // Use the setState() updater to ensure state isn't stale in certain edge cases.
+  function updater(prevState) {
+    var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+    return state !== null && state !== undefined ? state : null;
+  }
+  // Binding "this" is important for shallow renderer support.
+  this.setState(updater.bind(this));
+}
+
+function componentWillUpdate(nextProps, nextState) {
+  try {
+    var prevProps = this.props;
+    var prevState = this.state;
+    this.props = nextProps;
+    this.state = nextState;
+    this.__reactInternalSnapshotFlag = true;
+    this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
+      prevProps,
+      prevState
+    );
+  } finally {
+    this.props = prevProps;
+    this.state = prevState;
+  }
+}
+
+// React may warn about cWM/cWRP/cWU methods being deprecated.
+// Add a flag to suppress these warnings for this special case.
+componentWillMount.__suppressDeprecationWarning = true;
+componentWillReceiveProps.__suppressDeprecationWarning = true;
+componentWillUpdate.__suppressDeprecationWarning = true;
+
+function polyfill(Component) {
+  var prototype = Component.prototype;
+
+  if (!prototype || !prototype.isReactComponent) {
+    throw new Error('Can only polyfill class components');
+  }
+
+  if (
+    typeof Component.getDerivedStateFromProps !== 'function' &&
+    typeof prototype.getSnapshotBeforeUpdate !== 'function'
+  ) {
+    return Component;
+  }
+
+  // If new component APIs are defined, "unsafe" lifecycles won't be called.
+  // Error if any of these lifecycles are present,
+  // Because they would work differently between older and newer (16.3+) versions of React.
+  var foundWillMountName = null;
+  var foundWillReceivePropsName = null;
+  var foundWillUpdateName = null;
+  if (typeof prototype.componentWillMount === 'function') {
+    foundWillMountName = 'componentWillMount';
+  } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
+    foundWillMountName = 'UNSAFE_componentWillMount';
+  }
+  if (typeof prototype.componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'componentWillReceiveProps';
+  } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
+  }
+  if (typeof prototype.componentWillUpdate === 'function') {
+    foundWillUpdateName = 'componentWillUpdate';
+  } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
+    foundWillUpdateName = 'UNSAFE_componentWillUpdate';
+  }
+  if (
+    foundWillMountName !== null ||
+    foundWillReceivePropsName !== null ||
+    foundWillUpdateName !== null
+  ) {
+    var componentName = Component.displayName || Component.name;
+    var newApiName =
+      typeof Component.getDerivedStateFromProps === 'function'
+        ? 'getDerivedStateFromProps()'
+        : 'getSnapshotBeforeUpdate()';
+
+    throw Error(
+      'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' +
+        componentName +
+        ' uses ' +
+        newApiName +
+        ' but also contains the following legacy lifecycles:' +
+        (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') +
+        (foundWillReceivePropsName !== null
+          ? '\n  ' + foundWillReceivePropsName
+          : '') +
+        (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') +
+        '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' +
+        'https://fb.me/react-async-component-lifecycle-hooks'
+    );
+  }
+
+  // React <= 16.2 does not support static getDerivedStateFromProps.
+  // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
+  // Newer versions of React will ignore these lifecycles if gDSFP exists.
+  if (typeof Component.getDerivedStateFromProps === 'function') {
+    prototype.componentWillMount = componentWillMount;
+    prototype.componentWillReceiveProps = componentWillReceiveProps;
+  }
+
+  // React <= 16.2 does not support getSnapshotBeforeUpdate.
+  // As a workaround, use cWU to invoke the new lifecycle.
+  // Newer versions of React will ignore that lifecycle if gSBU exists.
+  if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
+    if (typeof prototype.componentDidUpdate !== 'function') {
+      throw new Error(
+        'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
+      );
+    }
+
+    prototype.componentWillUpdate = componentWillUpdate;
+
+    var componentDidUpdate = prototype.componentDidUpdate;
+
+    prototype.componentDidUpdate = function componentDidUpdatePolyfill(
+      prevProps,
+      prevState,
+      maybeSnapshot
+    ) {
+      // 16.3+ will not execute our will-update method;
+      // It will pass a snapshot value to did-update though.
+      // Older versions will require our polyfilled will-update value.
+      // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
+      // Because for <= 15.x versions this might be a "prevContext" object.
+      // We also can't just check "__reactInternalSnapshot",
+      // Because get-snapshot might return a falsy value.
+      // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
+      var snapshot = this.__reactInternalSnapshotFlag
+        ? this.__reactInternalSnapshot
+        : maybeSnapshot;
+
+      componentDidUpdate.call(this, prevProps, prevState, snapshot);
+    };
+  }
+
+  return Component;
+}
+
+
 
 
 /***/ }),
