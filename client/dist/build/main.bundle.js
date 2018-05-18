@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5e06009709a756cfeab9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cf2868805315478b684b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -36675,7 +36675,7 @@ exports.default = callApi;
 
 __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
 
-var API_URL = exports.API_URL = 'http://ec2-18-191-97-5.us-east-2.compute.amazonaws.com:3001/api/';
+var API_URL = exports.API_URL = 'http://ec2-18-191-97-5.us-east-2.compute.amazonaws.com:3001/api';
 
 function callApi(endpoint, method, body) {
     return fetch(API_URL + '/' + endpoint, {
