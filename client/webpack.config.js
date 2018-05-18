@@ -43,6 +43,7 @@ module.exports = {
         hot: true
     },
     module: {
+
         rules: [
             {
                 test: /\.jsx?$/,
