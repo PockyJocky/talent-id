@@ -36675,7 +36675,7 @@ exports.default = callApi;
 
 __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
 
-var API_URL = exports.API_URL = 'http://ec2-18-191-97-5.us-east-2.compute.amazonaws.com:3001/';
+var API_URL = exports.API_URL = 'http://ec2-18-191-97-5.us-east-2.compute.amazonaws.com:3001/api/';
 
 function callApi(endpoint, method, body) {
     return fetch(API_URL + '/' + endpoint, {
