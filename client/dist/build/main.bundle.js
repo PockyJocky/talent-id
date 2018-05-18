@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cf2868805315478b684b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2a8e1adcfacbc0c8db92"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -37127,7 +37127,7 @@ var MainCard = function (_Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MainCard.__proto__ || Object.getPrototypeOf(MainCard)).call.apply(_ref, [this].concat(args))), _this), _this.state = { place: 0, visibleCard: [true, false, false] }, _this.clickNext = function () {
-            if (_this.state.place < 2) {
+            if (_this.state.place < 1) {
                 if (_this.state.place === 0) {
                     _this.props.addUser(_extends({}, _this.props.userInfo));
                 }
@@ -37156,8 +37156,8 @@ var MainCard = function (_Component) {
                     'div',
                     { className: 'main_card' },
                     place === 0 && _react2.default.createElement(_UserInfoCard2.default, { userLocation: place }),
-                    place === 1 && _react2.default.createElement(_InterestCard2.default, null),
-                    place === 2 && _react2.default.createElement(_PlayersCard2.default, { userLocation: place }),
+                    place === 2 && _react2.default.createElement(_InterestCard2.default, null),
+                    place === 1 && _react2.default.createElement(_PlayersCard2.default, { userLocation: place }),
                     _react2.default.createElement(
                         'button',
                         { onClick: this.clickNext, className: 'next_button' },
@@ -37594,7 +37594,7 @@ var UserInfoDataInput = function (_Component) {
             _this.props.update(_extends({}, _this.state));
         };
 
-        if (_this.props.userLocation === 2) {
+        if (_this.props.userLocation === 1) {
             _this.state = {
                 firstName: _this.props.user.firstName,
                 lastName: _this.props.user.lastName,
