@@ -1,6 +1,7 @@
 const initialState = {
     skillList: []
 };
+
 export function interestCard(state = initialState, action){
     switch(action.type){
         case 'ADD_INTEREST':

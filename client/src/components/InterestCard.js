@@ -24,27 +24,25 @@ class InterestCard extends Component {
     handleChangeInterest = async (event) => {
         await this.setState({interestValue: event.target.value});
         this.updateProps()
-
     };
 
     handleChangeSkillName = async (event) => {
         await this.setState({skillName: event.target.value});
         this.updateProps()
-
     };
 
     handleClick = async () =>{
-        if(this.state.skillName !== '') {
+        if(this.props.skillName !== '') {
             await this.props.addNewInterest({
-                skillName: this.props.skillName,
-                skillValue: this.props.skillValue,
-                interestValue: this.props.interestValue
+                skillName: this.props.interest.skillName,
+                skillValue: this.props.interest.skillValue,
+                interestValue: this.props.interest.interestValue
             });
-            console.log(this.props.skillList);
             this.setState({
                         skillName: '',
                         skillValue: '3',
                         interestValue: '3',
+                        skillList: this.props.interest.skillList
                     })
         }
     };
@@ -123,7 +121,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = (state) =>{
-    return{skillList : state.skillList}
+    return{interest : state.interestCard}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterestCard)

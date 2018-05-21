@@ -12,7 +12,11 @@ const initialState = {
         edipi: '',
         rank: 'AB',
         squadron: '13 IS'
-    }
+    },
+    skillValue: '3',
+    interestValue: '3',
+    skillName: '',
+    skillList: []
 };
 
 let store = configureStore(initialState);

@@ -11,8 +11,8 @@ class InterestList extends Component{
     render() {
         return(
             <div className = 'container'>
-                {(this.state.skillList.length > 0) ? <div/> :
-                this.state.skillList.map((skill) => {
+                {
+                this.props.skillList.map((skill) => {
                         return (
                             <div className='keeper_of_the_skills'>
                                 <ul className='skill_list'>
