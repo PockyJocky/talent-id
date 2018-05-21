@@ -4,6 +4,7 @@ import UserInfoCard from './UserInfoCard';
 import PlayersCard from "./PlayersCard";
 import {connect} from "react-redux";
 import {addNewUser} from "../actions/UserActions";
+import WelcomeCard from "./WelcomeCard";
 
 // import '../styles/MainCard.css';
 
@@ -11,7 +12,7 @@ class MainCard extends Component {
     state = { place: 0, visibleCard: [true, false, false]};
     clickNext = () => {
         if( this.state.place <2 ) {
-            if( this.state.place === 0) {
+            if( this.state.place === 1) {
                 this.props.addUser(({...this.props.userInfo}))
             }
             this.setState((prevState) => ({
@@ -26,9 +27,10 @@ class MainCard extends Component {
             <div>
                 <div className="side_bar" > </div>
                 <div className="main_card">
-                    {place === 0 && <UserInfoCard userLocation = {place}/>}
-                    {place === 1 && <InterestCard />}
-                    {place === 2 && <PlayersCard userLocation = {place}/>}
+                    {place === 0 && <WelcomeCard/>}
+                    {place === 1 && <UserInfoCard userLocation = {place}/>}
+                    {place === 2 && <InterestCard />}
+                    {place === 3 && <PlayersCard userLocation = {place}/>}
                     <button onClick={this.clickNext} className="next_button">Next</button>
                 </div>
                 <div className="side_bar" />
