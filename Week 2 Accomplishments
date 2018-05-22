@@ -1,7 +1,7 @@
-#Week 2
+# Week 2
 This week we have completed some primary objectives while identifying some errors as well as completing hte connection from our front end to the backend.
 
-##Major Changes
+## Major Changes
 ..* This week we have completed a refactor of our redux store twice which enables the ability to correctly keep our data in the store.  This enabled us to keep our source of truth to be more accurate and have an effecitve connection to our backend.  The redux store is a key part of how we generate our POST calls from the front end to the back end.  
 
 ..* Completed front end to back end API calls for userAdd
