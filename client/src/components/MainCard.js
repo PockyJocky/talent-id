@@ -11,7 +11,7 @@ import WelcomeCard from "./WelcomeCard";
 class MainCard extends Component {
     state = { place: 0, visibleCard: [true, false, false]};
     clickNext = () => {
-        if( this.state.place <2 ) {
+        if( this.state.place <3 ) {
             if( this.state.place === 1) {
                 this.props.addUser(({...this.props.userInfo}))
             }

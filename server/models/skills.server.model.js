@@ -12,6 +12,10 @@ const Schema = mongoose.Schema({
     },
     interestValue: {
         type: String
+    },
+    createdAt:{
+        type: Date,
+        default: Date.now
     }
 });
 

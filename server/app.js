@@ -7,7 +7,8 @@ import SourceMapSupport from 'source-map-support';
 import keys from "./config/keys";
 
 // import routes
- import addUser from '../server/routes/user.server.route'
+import addUser from '../server/routes/user.server.route'
+import addInterest from "../server/routes/skills.server.route";
 
 // define our app using express
 const app = express();
@@ -39,6 +40,7 @@ mongoose
 SourceMapSupport.install();
 
 app.use('/api/user', addUser);
+app.use('/api/interest', addInterest);
 
 app.use('/', (req, res) => {
     res.send({ express : 'Api working'});

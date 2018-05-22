@@ -6,7 +6,7 @@ class UserInfoDataInput extends Component{
 
     constructor(props) {
         super(props);
-        if(this.props.userLocation !== 0)
+        if(this.props.userLocation !== 1)
         {
           this.state = {
               firstName: this.props.user.firstName,

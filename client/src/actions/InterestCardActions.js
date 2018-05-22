@@ -2,8 +2,9 @@ import callApi from "../apiCaller";
 
 export const addNewInterest = (interest) => {
     return async (dispatch) => {
+        // (null != user.edipi) ? user.edipi : '')
         await dispatch(addInterest(interest));
-        const newInterest = 'edipi= 8675309' + //((null != user.edipi) ? user.edipi : '')
+        const newInterest = 'edipi=' + '8675309'
                             + '&skillName=' + ((null != interest.skillName) ? interest.skillName : '')
                             + '&skillValue=' + ((null != interest.skillValue)? interest.skillValue : '')
                             + '&interestValue=' + ((null != interest.interestValue) ? interest.interestValue : '');
