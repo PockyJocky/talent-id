@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1352e826c86e6254fd0c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3f9c55e93c926171befa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -761,86 +761,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire("./index.js")(__webpack_require__.s = "./index.js");
+/******/ 	return hotCreateRequire("./src/index.js")(__webpack_require__.s = "./src/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-(function () {
-    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
-
-    enterModule && enterModule(module);
-})();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _MainCard = __webpack_require__(/*! ./src/components/MainCard */ "./src/components/MainCard.js");
-
-var _MainCard2 = _interopRequireDefault(_MainCard);
-
-var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-
-var _configureStore = __webpack_require__(/*! ./src/store/configureStore */ "./src/store/configureStore.js");
-
-var _configureStore2 = _interopRequireDefault(_configureStore);
-
-__webpack_require__(/*! babel-polyfill */ "./node_modules/babel-polyfill/lib/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var initialState = {
-    user: {
-        firstName: '',
-        lastName: '',
-        edipi: '',
-        rank: 'AB',
-        squadron: '13 IS'
-    }
-};
-
-var store = (0, _configureStore2.default)(initialState);
-window.store = store;
-_reactDom2.default.render(_react2.default.createElement(
-    _reactRedux.Provider,
-    { store: store },
-    _react2.default.createElement(_MainCard2.default, null)
-), document.getElementById('root'));
-;
-
-(function () {
-    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
-
-    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
-
-    if (!reactHotLoader) {
-        return;
-    }
-
-    reactHotLoader.register(initialState, 'initialState', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/index.js');
-    reactHotLoader.register(store, 'store', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/index.js');
-    leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
-
-/***/ }),
 
 /***/ "./node_modules/babel-polyfill/lib/index.js":
 /*!**************************************************!*\
@@ -36435,49 +36359,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./src/Constant.js":
-/*!*************************!*\
-  !*** ./src/Constant.js ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-(function () {
-  var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
-
-  enterModule && enterModule(module);
-})();
-
-var ADD_INTEREST = exports.ADD_INTEREST = "ADD_INTEREST";
-var ADD_USER = exports.ADD_USER = "ADD_USER";
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
-
-  var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(ADD_INTEREST, "ADD_INTEREST", "/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/Constant.js");
-  reactHotLoader.register(ADD_USER, "ADD_USER", "/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/Constant.js");
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
-
-/***/ }),
-
 /***/ "./src/actions/InterestCardActions.js":
 /*!********************************************!*\
   !*** ./src/actions/InterestCardActions.js ***!
@@ -36491,7 +36372,7 @@ var ADD_USER = exports.ADD_USER = "ADD_USER";
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.addInterest = undefined;
+exports.updateInterest = exports.addInterest = exports.update = exports.addNewInterest = undefined;
 
 (function () {
     var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
@@ -36499,12 +36380,79 @@ exports.addInterest = undefined;
     enterModule && enterModule(module);
 })();
 
-var _Constant = __webpack_require__(/*! ../Constant */ "./src/Constant.js");
+var _apiCaller = __webpack_require__(/*! ../apiCaller */ "./src/apiCaller.js");
+
+var _apiCaller2 = _interopRequireDefault(_apiCaller);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+var addNewInterest = exports.addNewInterest = function addNewInterest(interest, user) {
+    return function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
+            var newInterest;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            console.log(user);
+                            _context.next = 3;
+                            return dispatch(addInterest(interest));
+
+                        case 3:
+                            newInterest = 'edipi=' + (null != user.edipi ? user.edipi : '') + '&skillName=' + (null != interest.skillName ? interest.skillName : '') + '&skillValue=' + (null != interest.skillValue ? interest.skillValue : '') + '&interestValue=' + (null != interest.interestValue ? interest.interestValue : '');
+                            return _context.abrupt('return', (0, _apiCaller2.default)('interest/add', 'POST', newInterest));
+
+                        case 5:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, _callee, undefined);
+        }));
+
+        return function (_x) {
+            return _ref.apply(this, arguments);
+        };
+    }();
+};
+
+var update = exports.update = function update(interest) {
+    return function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch) {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                    switch (_context2.prev = _context2.next) {
+                        case 0:
+                            _context2.next = 2;
+                            return dispatch(updateInterest(interest));
+
+                        case 2:
+                        case 'end':
+                            return _context2.stop();
+                    }
+                }
+            }, _callee2, undefined);
+        }));
+
+        return function (_x2) {
+            return _ref2.apply(this, arguments);
+        };
+    }();
+};
 
 var addInterest = exports.addInterest = function addInterest(interest) {
     return {
-        type: _Constant.ADD_INTEREST,
-        payload: interest
+        type: 'ADD_INTEREST',
+        interest: interest
+    };
+};
+
+var updateInterest = exports.updateInterest = function updateInterest(interest) {
+    return {
+        type: 'UPDATE_INTEREST',
+        interest: interest
     };
 };
 ;
@@ -36518,7 +36466,10 @@ var addInterest = exports.addInterest = function addInterest(interest) {
         return;
     }
 
+    reactHotLoader.register(addNewInterest, 'addNewInterest', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/actions/InterestCardActions.js');
+    reactHotLoader.register(update, 'update', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/actions/InterestCardActions.js');
     reactHotLoader.register(addInterest, 'addInterest', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/actions/InterestCardActions.js');
+    reactHotLoader.register(updateInterest, 'updateInterest', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/actions/InterestCardActions.js');
     leaveModule(module);
 })();
 
@@ -36676,6 +36627,7 @@ exports.default = callApi;
 __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
 
 var API_URL = exports.API_URL = 'http://ec2-18-191-97-5.us-east-2.compute.amazonaws.com:3001/api';
+// export const API_URL = `http://localhost:3001/api`;
 
 function callApi(endpoint, method, body) {
     return fetch(API_URL + '/' + endpoint, {
@@ -36740,6 +36692,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 (function () {
@@ -36762,6 +36716,8 @@ var _InterestCardActions = __webpack_require__(/*! ../actions/InterestCardAction
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -36775,40 +36731,131 @@ var InterestCard = function (_Component) {
     _inherits(InterestCard, _Component);
 
     function InterestCard(props) {
+        var _this2 = this;
+
         _classCallCheck(this, InterestCard);
 
         var _this = _possibleConstructorReturn(this, (InterestCard.__proto__ || Object.getPrototypeOf(InterestCard)).call(this, props));
 
-        _this.handleChangeSkill = function (event) {
-            _this.setState({ skillValue: event.target.value });
+        _this.handleChangeSkill = function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.setState({ skillValue: event.target.value });
+
+                            case 2:
+                                _this.updateProps();
+
+                            case 3:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this2);
+            }));
+
+            return function (_x) {
+                return _ref.apply(this, arguments);
+            };
+        }();
+
+        _this.handleChangeInterest = function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(event) {
+                return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return _this.setState({ interestValue: event.target.value });
+
+                            case 2:
+                                _this.updateProps();
+
+                            case 3:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, _this2);
+            }));
+
+            return function (_x2) {
+                return _ref2.apply(this, arguments);
+            };
+        }();
+
+        _this.handleChangeSkillName = function () {
+            var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(event) {
+                return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                _context3.next = 2;
+                                return _this.setState({ skillName: event.target.value });
+
+                            case 2:
+                                _this.updateProps();
+
+                            case 3:
+                            case 'end':
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, _this2);
+            }));
+
+            return function (_x3) {
+                return _ref3.apply(this, arguments);
+            };
+        }();
+
+        _this.handleClick = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var newInterest;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                    switch (_context4.prev = _context4.next) {
+                        case 0:
+                            if (!(_this.props.skillName !== '')) {
+                                _context4.next = 5;
+                                break;
+                            }
+
+                            newInterest = {
+                                skillName: _this.props.interest.skillName,
+                                skillValue: _this.props.interest.skillValue,
+                                interestValue: _this.props.interest.interestValue
+                            };
+                            _context4.next = 4;
+                            return _this.props.addNewInterest(newInterest, _this.props.user);
+
+                        case 4:
+                            _this.setState({
+                                skillName: '',
+                                skillValue: '3',
+                                interestValue: '3',
+                                skillList: _this.props.interest.skillList
+                            });
+
+                        case 5:
+                        case 'end':
+                            return _context4.stop();
+                    }
+                }
+            }, _callee4, _this2);
+        }));
+
+        _this.updateProps = function () {
+            _this.props.update(_extends({}, _this.state));
         };
 
-        _this.handleChangeInterest = function (event) {
-            _this.setState({ interestValue: event.target.value });
-        };
-
-        _this.handleChangeSkillName = function (event) {
-            _this.setState({ skillName: event.target.value });
-        };
-
-        _this.handleClick = function () {
-            if (_this.state.skillName !== '') {
-                _this.props.addInterest({
-                    skillName: _this.state.skillName,
-                    skillValue: _this.state.skillValue,
-                    interestValue: _this.state.interestValue
-                });
-                _this.setState(function () {
-                    return {
-                        skillName: '',
-                        skillValue: '3',
-                        interestValue: '3'
-                    };
-                });
-            }
-        };
-
-        _this.state = { skillValue: '3', interestValue: '3', skillName: '', skillList: [] };
+        _this.state = {
+            skillValue: '3',
+            interestValue: '3',
+            skillName: '',
+            skillList: [] };
         return _this;
     }
 
@@ -36885,10 +36932,7 @@ var InterestCard = function (_Component) {
                             )
                         )
                     ),
-                    '(skillList.length > 0) : ',
-                    _react2.default.createElement('div', null),
-                    ' ? ',
-                    _react2.default.createElement(_InterestList2.default, { skillList: this.state.skillList })
+                    _react2.default.createElement(_InterestList2.default, null)
                 )
             );
         }
@@ -36899,13 +36943,20 @@ var InterestCard = function (_Component) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        addInterest: function addInterest(interest) {
-            return dispatch((0, _InterestCardActions.addInterest)(interest));
+        update: function update(interest) {
+            return dispatch((0, _InterestCardActions.updateInterest)(interest));
+        },
+        addNewInterest: function addNewInterest(interest, user) {
+            return dispatch((0, _InterestCardActions.addNewInterest)(interest, user));
         }
     };
 };
 
-var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(InterestCard);
+var mapStateToProps = function mapStateToProps(state) {
+    return { interest: state.interestCard, user: state.userCard };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(InterestCard);
 
 exports.default = _default;
 ;
@@ -36921,6 +36972,7 @@ exports.default = _default;
 
     reactHotLoader.register(InterestCard, 'InterestCard', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/InterestCard.js');
     reactHotLoader.register(mapDispatchToProps, 'mapDispatchToProps', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/InterestCard.js');
+    reactHotLoader.register(mapStateToProps, 'mapStateToProps', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/InterestCard.js');
     reactHotLoader.register(_default, 'default', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/InterestCard.js');
     leaveModule(module);
 })();
@@ -36973,7 +37025,12 @@ var InterestList = function (_Component) {
     function InterestList(props) {
         _classCallCheck(this, InterestList);
 
-        return _possibleConstructorReturn(this, (InterestList.__proto__ || Object.getPrototypeOf(InterestList)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (InterestList.__proto__ || Object.getPrototypeOf(InterestList)).call(this, props));
+
+        _this.state = {
+            skillList: _this.props.skillList
+        };
+        return _this;
     }
 
     _createClass(InterestList, [{
@@ -36982,7 +37039,7 @@ var InterestList = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                this.props.skillList.length > 0 && this.props.skillList.map(function (skill) {
+                this.props.skillList.map(function (skill) {
                     return _react2.default.createElement(
                         'div',
                         { className: 'keeper_of_the_skills' },
@@ -37104,6 +37161,10 @@ var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-r
 
 var _UserActions = __webpack_require__(/*! ../actions/UserActions */ "./src/actions/UserActions.js");
 
+var _WelcomeCard = __webpack_require__(/*! ./WelcomeCard */ "./src/components/WelcomeCard.js");
+
+var _WelcomeCard2 = _interopRequireDefault(_WelcomeCard);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37129,8 +37190,8 @@ var MainCard = function (_Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MainCard.__proto__ || Object.getPrototypeOf(MainCard)).call.apply(_ref, [this].concat(args))), _this), _this.state = { place: 0, visibleCard: [true, false, false] }, _this.clickNext = function () {
-            if (_this.state.place < 1) {
-                if (_this.state.place === 0) {
+            if (_this.state.place < 3) {
+                if (_this.state.place === 1) {
                     _this.props.addUser(_extends({}, _this.props.userInfo));
                 }
                 _this.setState(function (prevState) {
@@ -37157,9 +37218,10 @@ var MainCard = function (_Component) {
                 _react2.default.createElement(
                     'div',
                     { className: 'main_card' },
-                    place === 0 && _react2.default.createElement(_UserInfoCard2.default, { userLocation: place }),
+                    place === 0 && _react2.default.createElement(_WelcomeCard2.default, null),
+                    place === 1 && _react2.default.createElement(_UserInfoCard2.default, { userLocation: place }),
                     place === 2 && _react2.default.createElement(_InterestCard2.default, null),
-                    place === 1 && _react2.default.createElement(_PlayersCard2.default, { userLocation: place }),
+                    place === 3 && _react2.default.createElement(_PlayersCard2.default, { userLocation: place }),
                     _react2.default.createElement(
                         'button',
                         { onClick: this.clickNext, className: 'next_button' },
@@ -37269,7 +37331,8 @@ var PlayersCard = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 null,
-                _react2.default.createElement(_UserInfoDataInput2.default, { userLocation: this.props.userLocation })
+                _react2.default.createElement(_UserInfoDataInput2.default, { userLocation: this.props.userLocation }),
+                _react2.default.createElement(_InterestList2.default, null)
             );
         }
     }]);
@@ -37595,7 +37658,7 @@ var UserInfoDataInput = function (_Component) {
             _this.props.update(_extends({}, _this.state));
         };
 
-        if (_this.props.userLocation === 1) {
+        if (_this.props.userLocation !== 1) {
             _this.state = {
                 firstName: _this.props.user.firstName,
                 lastName: _this.props.user.lastName,
@@ -37789,6 +37852,166 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./src/components/WelcomeCard.js":
+/*!***************************************!*\
+  !*** ./src/components/WelcomeCard.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var WelcomeCard = function (_Component) {
+    _inherits(WelcomeCard, _Component);
+
+    function WelcomeCard() {
+        _classCallCheck(this, WelcomeCard);
+
+        return _possibleConstructorReturn(this, (WelcomeCard.__proto__ || Object.getPrototypeOf(WelcomeCard)).apply(this, arguments));
+    }
+
+    _createClass(WelcomeCard, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'welcome_card' },
+                'Welcome'
+            );
+        }
+    }]);
+
+    return WelcomeCard;
+}(_react.Component);
+
+var _default = WelcomeCard;
+exports.default = _default;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(WelcomeCard, 'WelcomeCard', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/WelcomeCard.js');
+    reactHotLoader.register(_default, 'default', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/components/WelcomeCard.js');
+    leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+(function () {
+    var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _MainCard = __webpack_require__(/*! ./components/MainCard */ "./src/components/MainCard.js");
+
+var _MainCard2 = _interopRequireDefault(_MainCard);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _configureStore = __webpack_require__(/*! ./store/configureStore */ "./src/store/configureStore.js");
+
+var _configureStore2 = _interopRequireDefault(_configureStore);
+
+__webpack_require__(/*! babel-polyfill */ "./node_modules/babel-polyfill/lib/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+    user: {
+        firstName: '',
+        lastName: '',
+        edipi: '',
+        rank: 'AB',
+        squadron: '13 IS'
+    },
+    skillValue: '3',
+    interestValue: '3',
+    skillName: '',
+    skillList: []
+};
+
+var store = (0, _configureStore2.default)(initialState);
+window.store = store;
+_reactDom2.default.render(_react2.default.createElement(
+    _reactRedux.Provider,
+    { store: store },
+    _react2.default.createElement(_MainCard2.default, null)
+), document.getElementById('root'));
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(initialState, 'initialState', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/index.js');
+    reactHotLoader.register(store, 'store', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/index.js');
+    leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
 /***/ "./src/reducers/InterestCardReducer.js":
 /*!*********************************************!*\
   !*** ./src/reducers/InterestCardReducer.js ***!
@@ -37813,21 +38036,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.interestCard = interestCard;
 
-var _Constant = __webpack_require__(/*! ../Constant */ "./src/Constant.js");
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var initialState = {
-    skillList: [{}]
+    skillList: []
 };
+
 function interestCard() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
 
-    console.log(state);
     switch (action.type) {
-        case _Constant.ADD_INTEREST:
-            return _extends({}, state, { skillList: [].concat(_toConsumableArray(state.skillList), [action.payload]) });
+        case 'ADD_INTEREST':
+            return _extends({}, state, {
+                skillList: [].concat(_toConsumableArray(state.skillList), [action.interest])
+            });
+        case 'UPDATE_INTEREST':
+            return _extends({}, state = Object.assign({}, action.interest));
         default:
             return state;
     }
@@ -37843,8 +38068,8 @@ function interestCard() {
         return;
     }
 
-    reactHotLoader.register(interestCard, "interestCard", "/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/reducers/InterestCardReducer.js");
-    reactHotLoader.register(initialState, "initialState", "/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/reducers/InterestCardReducer.js");
+    reactHotLoader.register(interestCard, 'interestCard', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/reducers/InterestCardReducer.js');
+    reactHotLoader.register(initialState, 'initialState', '/home/pocky-jocky/Desktop/Programming-Projects/talent-id/client/src/reducers/InterestCardReducer.js');
     leaveModule(module);
 })();
 
