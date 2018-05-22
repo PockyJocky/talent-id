@@ -1,4 +1,10 @@
-var jsdom = require('jsdom');
+process.env.NODE_ENV = 'test'
+
+require('babel-register')();
+require.extensions['.css'] = function () {return null}
+
+let jsdom = require('jsdom');
+
 const { JSDOM } = jsdom;
 let exposedProperties = ['window', 'navigator', 'document'];const { document } = (new JSDOM('')).window;
 global.document = document;
