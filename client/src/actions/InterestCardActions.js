@@ -1,10 +1,10 @@
 import callApi from "../apiCaller";
 
-export const addNewInterest = (interest) => {
+export const addNewInterest = (interest, user) => {
     return async (dispatch) => {
-        // (null != user.edipi) ? user.edipi : '')
+        console.log(user)
         await dispatch(addInterest(interest));
-        const newInterest = 'edipi=' + '8675309'
+        const newInterest = 'edipi=' + ((null != user.edipi) ? user.edipi : '')
                             + '&skillName=' + ((null != interest.skillName) ? interest.skillName : '')
                             + '&skillValue=' + ((null != interest.skillValue)? interest.skillValue : '')
                             + '&interestValue=' + ((null != interest.interestValue) ? interest.interestValue : '');
