@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 
 export class UserInfoDataInput extends Component{
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         if(this.props.userLocation !== 1)
         {
           this.state = {

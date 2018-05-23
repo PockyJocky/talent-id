@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {addNewUser} from "../actions/UserActions";
 import WelcomeCard from "./WelcomeCard";
 
-import '../styles/MainCard.css';
+// import '../styles/MainCard.css';
 
 export class MainCard extends Component {
 

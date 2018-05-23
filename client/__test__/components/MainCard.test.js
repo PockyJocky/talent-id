@@ -1,16 +1,17 @@
-import { MainCard } from "../../src/components/MainCard"
-import WelcomeCard from "../../src/components/WelcomeCard";
-import UserInfoCard from "../../src/components/UserInfoCard";
-import InterestCard from "../../src/components/InterestCard";
-import PlayersCard from "../../src/components/PlayersCard";
-import configureStore from "../../src/store/configureStore";
-
 import React from 'react'
 import {configure, mount, shallow} from "enzyme";
 import {Provider} from "react-redux";
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
+
+import { MainCard } from "../../src/components/MainCard"
+import WelcomeCard from "../../src/components/WelcomeCard";
+import UserInfoCard from "../../src/components/UserInfoCard";
+import InterestCard from "../../src/components/InterestCard";
+import PlayersCard from "../../src/components/PlayersCard";
+
+import configureStore from "../../src/store/configureStore";
 
 describe("MainCard", () => {
     const initialState = { };
