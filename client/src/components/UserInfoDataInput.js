@@ -4,18 +4,10 @@ import {connect} from "react-redux";
 
 export class UserInfoDataInput extends Component{
 
-    constructor() {
-        super();
-        if(this.props.userLocation !== 1)
+    constructor(props) {
+        super(props);
+        if(this.props.userLocation === 1)
         {
-          this.state = {
-              firstName: this.props.user.firstName,
-              lastName: this.props.user.lastName,
-              edipi: this.props.user.edipi,
-              rank: this.props.user.rank,
-              squadron: this.props.user.squadron,
-          }
-        }else {
             this.state = {
                 firstName: 'First Name',
                 lastName: 'Last Name',
@@ -23,6 +15,14 @@ export class UserInfoDataInput extends Component{
                 rank: 'AB',
                 squadron: '13 IS'
             };
+        }else {
+            this.state = {
+                firstName: this.props.user.firstName,
+                lastName: this.props.user.lastName,
+                edipi: this.props.user.edipi,
+                rank: this.props.user.rank,
+                squadron: this.props.user.squadron,
+            }
         }
     }
 
