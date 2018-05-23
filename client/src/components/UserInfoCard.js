@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import UserInfoDataInput from './UserInfoDataInput'
 
-class UserInfoCard extends Component{
+export class UserInfoCard extends Component{
 
 
     render() {

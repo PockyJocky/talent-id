@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {update} from "../actions/UserActions";
 import {connect} from "react-redux";
 
-class UserInfoDataInput extends Component{
+export class UserInfoDataInput extends Component{
 
     constructor(props) {
         super(props);

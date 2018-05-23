@@ -8,11 +8,18 @@ import WelcomeCard from "./WelcomeCard";
 
 // import '../styles/MainCard.css';
 
-class MainCard extends Component {
-    state = { place: 0, visibleCard: [true, false, false]};
-    clickNext = () => {
-        if( this.state.place <3 ) {
-            if( this.state.place === 1) {
+export class MainCard extends Component {
+
+    constructor () {
+        super();
+        this.state = { place: 0 };
+        this.clickNext = this.clickNext.bind(this)
+    }
+
+
+    clickNext() {
+        if( this.props.place <3 ) {
+            if( this.props.place === 1) {
                 this.props.addUser(({...this.props.userInfo}))
             }
             this.setState((prevState) => ({
@@ -46,6 +53,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = (state) =>{
-    return{userInfo: state.userCard}
+    return{userInfo: state.userCard, place: this.state.place}
 };
 export default  connect(mapStateToProps,mapDispatchToProps)(MainCard);
