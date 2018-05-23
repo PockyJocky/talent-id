@@ -1,3 +1,5 @@
+import {ADD_INTEREST, UPDATE_INTEREST} from "../Constant"
+
 import callApi from "../apiCaller";
 
 export const addNewInterest = (interest, user) => {
@@ -21,14 +23,14 @@ export const update = (interest) => {
 
 export const addInterest = (interest) => {
     return{
-        type: 'ADD_INTEREST',
+        type: ADD_INTEREST,
         interest
     }
 };
 
 export const updateInterest = (interest) => {
     return {
-        type: 'UPDATE_INTEREST',
+        type: UPDATE_INTEREST,
         interest
     }
 };

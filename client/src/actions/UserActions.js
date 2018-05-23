@@ -1,3 +1,5 @@
+import {ADD_USER, UPDATE_USER} from "../Constant";
+
 import callApi from '../apiCaller'
 
 export const addNewUser = (user) => {
@@ -23,14 +25,14 @@ export const update = (user) => {
 //dispatchs
 export const addUser = (user) => {
     return {
-        type: 'ADD_USER',
+        type: ADD_USER,
         user
     }
 };
 
 export const updateUser = (user) => {
     return {
-        type: 'UPDATE_USER',
+        type: UPDATE_USER,
         user
     }
 };
