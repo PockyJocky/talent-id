@@ -1,3 +1,5 @@
+import {UPDATE_USER, ADD_USER} from "../Constant";
+
 const initialState = {
     user: {
         firstName: '',
@@ -10,11 +12,11 @@ const initialState = {
 
 export function userCard(state = initialState , action){
     switch(action.type){
-        case 'UPDATE_USER':
+        case UPDATE_USER:
             return{
                 ...state = ( Object.assign({}, action.user))
             };
-        case 'ADD_USER':
+        case ADD_USER:
             return{
                 ...state = ( Object.assign({}, action.user))
             };
