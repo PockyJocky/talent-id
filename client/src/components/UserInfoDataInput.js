@@ -24,6 +24,8 @@ export class UserInfoDataInput extends Component{
                 squadron: this.props.user.squadron,
             }
         }
+        this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
+        this.updateProps = this.updateProps.bind(this)
     }
 
     handleFirstNameFocusText = () => {
@@ -44,8 +46,8 @@ export class UserInfoDataInput extends Component{
         }
     };
 
-    handleFirstNameChange = async (event) => {
-        await this.setState({firstName: event.target.value});
+    handleFirstNameChange(event) {
+        this.setState({firstName: event.target.value});
         this.updateProps()
     };
 
@@ -69,7 +71,7 @@ export class UserInfoDataInput extends Component{
         this.updateProps()
     };
 
-    updateProps = () => {
+    updateProps() {
         this.props.update({...this.state});
     };
 

@@ -5,11 +5,10 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 import { UserInfoDataInput } from "../../src/components/UserInfoDataInput";
-import {UserInfoCard} from "../../src/components/UserInfoCard";
-import * as sinon from "sinon";
+import { UserInfoCard } from "../../src/components/UserInfoCard";
 describe('UserInfoDataInput', () => {
 
-    let wrapper;
+    let wrapper, input, spy;
     let props = {
         userLocation: 1,
         user: {
@@ -37,15 +36,24 @@ describe('UserInfoDataInput', () => {
 
             beforeEach(() => {
                 wrapper = shallow(<UserInfoDataInput {...props} />)
+                input = wrapper.find('.firstName');
             });
-
             it('that exists', () => {
-                expect(wrapper.find('.firstName').length).toEqual(1)
+                expect(input.length).toEqual(1)
             });
 
             it('should be able to take input', () => {
-
+                expect(input.type()).toEqual('input')
             });
+
+            it('should fire onChange when changed', () => {
+                spy = jest.spyOn(UserInfoDataInput.prototype, 'handleFirstNameChange')
+                console.log(input.debug())
+                expect(spy).toHaveNotBeenCalled
+                input.props().onChange( {target: { value: '7' } })
+                expect(spy).toHaveBeenCalled
+            });
+
         });
     });
 });
