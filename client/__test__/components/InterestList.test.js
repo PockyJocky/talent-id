@@ -4,29 +4,20 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-import { UserInfoDataInput } from "../../src/components/UserInfoDataInput";
-import { UserInfoCard } from "../../src/components/UserInfoCard";
-describe('UserInfoDataInput', () => {
+import { InterestCard } from "../../src/components/InterestCard";
+import { InterestList } from "../../src/components/InterestList";
 
-    let wrapper, input, spy;
-    let props = {
-        userLocation: 1,
-        user: {
-            firstName: 'First Name',
-            lastName: 'Last Name',
-            edipi: 'DOD Military ID Number',
-            rank: 'AB',
-            squadron: '13 IS'
-        }};
+describe('InterestList', () => {
+    let wrapper, input;
 
     beforeEach(() => {
-        wrapper = shallow(<UserInfoCard/>);
+        wrapper = shallow(<InterestCard/>);
     });
 
     describe('renders', () => {
 
         it('at all', () => {
-            expect(wrapper.find('Connect(UserInfoDataInput)').length).toEqual(1)
+            expect(wrapper.find('Connect(InterestList)').length).toEqual(1)
         });
     });
 
@@ -35,8 +26,7 @@ describe('UserInfoDataInput', () => {
         describe('input block', () => {
 
             beforeEach(() => {
-                wrapper = shallow(<UserInfoDataInput {...props} />)
-                input = wrapper.find('.firstName');
+                input = wrapper.find('.skill_name_input');
             });
             it('that exists', () => {
                 expect(input.length).toEqual(1)

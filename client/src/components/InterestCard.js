@@ -6,7 +6,7 @@ import {addNewInterest, updateInterest} from "../actions/InterestCardActions";
 //styles
 // import '../styles/InterestCard.css'
 
-class InterestCard extends Component {
+export class InterestCard extends Component {
     constructor(props) {
         super(props);
         this.state = {

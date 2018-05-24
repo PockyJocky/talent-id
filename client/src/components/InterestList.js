@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-class InterestList extends Component{
+export class InterestList extends Component{
     // eslint-disable-next-line
     constructor(props){ super(props)
     this.state = {
