@@ -56,9 +56,14 @@ describe("MainCard", () => {
         });
 
         it('should increment the place when clicked', () => {
-            wrapper = mount(<MainCard/>);
+            const spy = jest.spyOn(MainCard.prototype, 'clickNext');
+            wrapper = shallow(<MainCard/>);
             wrapper.update();
-            expect(wrapper.find('.next_button').length).toEqual(1);
+            let button =  wrapper.find('.next_button');
+
+            expect(spy).toNotHaveBeenCalled;
+            button.simulate("click");
+            expect(spy).toHaveBeenCalled;
         });
     });
 });

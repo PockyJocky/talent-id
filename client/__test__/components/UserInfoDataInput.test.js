@@ -6,7 +6,7 @@ configure({ adapter: new Adapter() });
 
 import { UserInfoDataInput } from "../../src/components/UserInfoDataInput";
 import {UserInfoCard} from "../../src/components/UserInfoCard";
-
+import * as sinon from "sinon";
 describe('UserInfoDataInput', () => {
 
     let wrapper;
@@ -21,12 +21,31 @@ describe('UserInfoDataInput', () => {
         }};
 
     beforeEach(() => {
-        wrapper = shallow(<UserInfoCard props={{userLocation : 1}}/>);
-        wrapper.update()
+        wrapper = shallow(<UserInfoCard/>);
     });
 
-    it('renders', () => {
-        wrapper = shallow(<UserInfoDataInput props={{...props}} />)
-        expect(wrapper.find(UserInfoDataInput).length).toEqual(1)
+    describe('renders', () => {
+
+        it('at all', () => {
+            expect(wrapper.find('Connect(UserInfoDataInput)').length).toEqual(1)
+        });
+    });
+
+    describe('has a', () => {
+
+        describe('input block', () => {
+
+            beforeEach(() => {
+                wrapper = shallow(<UserInfoDataInput {...props} />)
+            });
+
+            it('that exists', () => {
+                expect(wrapper.find('.firstName').length).toEqual(1)
+            });
+
+            it('should be able to take input', () => {
+
+            });
+        });
     });
 });
