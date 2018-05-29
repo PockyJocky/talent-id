@@ -80,6 +80,7 @@ export class InterestCard extends Component {
                             <li>
                                 <input
                                     className = 'big_slider'
+                                    id="skill_level"
                                     type = 'range'
                                     min = '1'
                                     max = '5'
@@ -93,6 +94,7 @@ export class InterestCard extends Component {
                             <li>
                                 <input
                                     className = 'big_slider'
+                                    id="interest_level"
                                     type = 'range'
                                     min = '1'
                                     max = '5'

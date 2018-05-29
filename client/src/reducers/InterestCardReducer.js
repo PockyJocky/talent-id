@@ -15,11 +15,11 @@ export function interestCard(state = initialState, action){
             return {
                 ...state = (Object.assign({}, action.interest))
             };
-        case INPUT_ALL_INTERESTS:
-            return{
-                ...state,
-                skillList: action.interestList
-            }
+        // case INPUT_ALL_INTERESTS:
+        //     return{
+        //         ...state,
+        //         skillList: action.interestList
+        //     }
         default:
             return state
     }

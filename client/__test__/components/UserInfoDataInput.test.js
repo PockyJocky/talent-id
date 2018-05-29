@@ -45,7 +45,6 @@ describe('UserInfoDataInput', () => {
             it('should be able to take input', () => {
                 expect(input.type()).toEqual('input')
             });
-
             it('should fire onChange when changed', () => {
                 // spy = jest.spyOn(UserInfoDataInput.prototype, 'handleFirstNameChange')
                 // wrapper = shallow(<UserInfoDataInput {...props} />)
