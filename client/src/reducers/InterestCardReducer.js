@@ -1,4 +1,4 @@
-import {ADD_INTEREST, UPDATE_INTEREST} from "../Constant";
+import {ADD_INTEREST, INPUT_ALL_INTERESTS, UPDATE_INTEREST} from "../Constant";
 
 const initialState = {
     skillList: []
@@ -15,6 +15,11 @@ export function interestCard(state = initialState, action){
             return {
                 ...state = (Object.assign({}, action.interest))
             };
+        case INPUT_ALL_INTERESTS:
+            return{
+                ...state,
+                skillList: action.interestList
+            }
         default:
             return state
     }

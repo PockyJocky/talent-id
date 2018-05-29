@@ -9,7 +9,7 @@ const user = {
     squadron: '707CS'
 }
 
-const initalUser = {user : {
+const initialUser = {user : {
         edipi: "",
         firstName: "",
         lastName: "",
@@ -18,8 +18,8 @@ const initalUser = {user : {
 }}
 
 describe('UserInfoReducer', () => {
-    it('should return the intial state', () => {
-        expect(reducer.userCard(undefined, {})).toEqual(initalUser)
+    it('should return the initial state', () => {
+        expect(reducer.userCard(undefined, {})).toEqual(initialUser)
     })
     it('should handle ADD_USER', () => {
         expect(reducer.userCard(

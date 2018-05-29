@@ -1,5 +1,5 @@
 body{
-    background: url('resources/what-the-hex-dark.png') repeat;
+    background: url('resources/what-the-hex-dark.png');
 }
 
 .main_card{
@@ -8,8 +8,7 @@ body{
     background-color: #090909;
     max-width: 600px;
     min-height: 800px;
-    margin: 0 auto;
-    margin-top: 40px;
+    margin: 40px auto 0;
 }
 
 ul{
@@ -18,14 +17,14 @@ ul{
 }
 
 .title {
-    font-family: AvenirNext-Bold;
+    font-family: AvenirNext-Bold, serif;
     font-size: 64px;
     color: #4E4E4E;
 }
 
 
 .welcome_card{
-    font-family: AvenirNext-Bold;
+    font-family: AvenirNext-Bold, serif;
     font-size: 84px;
     color: #4A4A4A;
 }

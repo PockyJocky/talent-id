@@ -1,4 +1,4 @@
-import {ADD_INTEREST, UPDATE_INTEREST} from "../Constant"
+import {ADD_INTEREST, INPUT_ALL_INTERESTS, UPDATE_INTEREST} from "../Constant"
 
 import callApi from "../apiCaller";
 
@@ -34,3 +34,10 @@ export const updateInterest = (interest) => {
         interest
     }
 };
+
+export const inputAllInterests = (interestList) => {
+    return {
+        type: INPUT_ALL_INTERESTS,
+        interestList
+    }
+}

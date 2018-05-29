@@ -37,6 +37,11 @@
     "build:dist": "webpack --env=prod --progress --profile --colors",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
   "proxy": "http://localhost:3000",
   "devDependencies": {
     "babel-core": "^6.26.3",
