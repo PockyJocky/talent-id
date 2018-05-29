@@ -125,3 +125,19 @@ ul{
     max-height: 400px;
     overflow-y: scroll;
 }
+
+.drop_box{
+    color: white;
+    background: #090909;
+    font-family: AvenirNext;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0px;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0px 0px 8px #4F4F4F;
+    text-shadow: none;
+    text-align: left;
+    width: 20%;
+    min-width: 400px;
+}

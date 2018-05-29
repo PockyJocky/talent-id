@@ -107,7 +107,8 @@ export class UserInfoDataInput extends Component{
                 </li>
                 <li>
                     <select
-                    onChange={this.handleRankChange}
+                        className = 'drop_box'
+                        onChange={this.handleRankChange}
                     >
                         <option value="airmenBasic">AB</option>
                         <option value="airmen">Amn</option>
@@ -122,7 +123,8 @@ export class UserInfoDataInput extends Component{
                 </li>
                 <li>
                     <select
-                    onChange={this.handleSquadronChange}
+                        className = 'drop_box'
+                        onChange={this.handleSquadronChange}
                     >
                         <option value="13 IS">13 IS</option>
                         <option value="48 IS">48 IS</option>
