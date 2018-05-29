@@ -6,9 +6,10 @@ body{
     text-align: center;
     min-width: 400px;
     background-color: #090909;
-    max-width: 600px;
+    max-width: 800px;
     min-height: 800px;
     margin: 40px auto 0;
+    max-height: 975px;
 }
 
 ul{
@@ -41,10 +42,26 @@ ul{
     min-width: 400px;
     font-size: 48px;
     color: #FFFFFF;
-    font-family: AvenirNext;
+    font-family: AvenirNext-Bold;
     background-color: #0F0F0F
 }
 
+.text_input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0px;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0px 0px 8px #4F4F4F;
+    text-shadow: none;
+    text-align: left;
+    width: 20%;
+    min-width: 400px;
+    font-size: 24px;
+    color: #FFFFFF;
+    font-family: AvenirNext-Bold;
+    background-color: #0F0F0F
+
+}
 .big_slider{
     width: 20%;
     min-width: 400px;
@@ -84,4 +101,27 @@ ul{
     min-width: 200px;
     display: inline-block;
     color: white;
+}
+
+.skill_item{
+    display: inline-block;
+}
+
+.skill_item_name{
+    text-align: left;
+    font-family: AvenirNext;
+    font-size: 33px;
+    color: white;
+    width: 50%;
+}
+
+.small_slider{
+    text-align: right;
+    min-width: 130px;
+    width: 10%;
+}
+
+.container{
+    max-height: 400px;
+    overflow-y: scroll;
 }

@@ -16,7 +16,7 @@ This week we have completed some primary objectives while identifying some error
 
 1. Add controller for interests
 
-1. contorler model and roots for interest list
+1. Controller model and roots for interest list
 
 1. Interest list WIP API caller
 

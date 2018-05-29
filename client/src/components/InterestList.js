@@ -17,10 +17,9 @@ export class InterestList extends Component{
                             <div className='keeper_of_the_skills'>
                                 <ul className='skill_list'>
                                     <li className='color_edge'/>
-                                    <li className='skill_item'>{skill.skillName}</li>
-                                    <li className='skill_item'>
+                                    <li className='skill_item skill_item_name'>{skill.skillName}</li>
+                                    <li className='skill_item small_slider'>
                                         <input
-                                            className="small_slider"
                                             type="range"
                                             min='1'
                                             max='5'
@@ -29,9 +28,8 @@ export class InterestList extends Component{
                                             value={skill.skillValue}
                                         />
                                     </li>
-                                    <li className='skill_item'>
+                                    <li className='skill_item small_slider'>
                                         <input
-                                            className="small_slider"
                                             type="range"
                                             min='1'
                                             max='5'

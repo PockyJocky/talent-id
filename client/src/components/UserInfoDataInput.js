@@ -80,7 +80,7 @@ export class UserInfoDataInput extends Component{
             <ul className = 'interest_input'>
                 <li>
                     <input
-                        className='firstName'
+                        className='firstName text_input'
                         type='text'
                         value={this.state.firstName}
                         onFocus={this.handleFirstNameFocusText}
@@ -89,7 +89,7 @@ export class UserInfoDataInput extends Component{
                 </li>
                 <li>
                     <input
-                        className='lastName'
+                        className='lastName text_input'
                         type='text'
                         value={this.state.lastName}
                         onFocus={this.handleLastNameFocusText}
@@ -98,7 +98,7 @@ export class UserInfoDataInput extends Component{
                 </li>
                 <li>
                     <input
-                        className='edipi'
+                        className='edipi text_input'
                         type='text'
                         value={this.state.edipi}
                         onFocus={this.handleEDIPIFocusText}
