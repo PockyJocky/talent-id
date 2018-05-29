@@ -34,10 +34,3 @@ export const updateInterest = (interest) => {
         interest
     }
 };
-
-export const inputAllInterests = (interestList) => {
-    return {
-        type: INPUT_ALL_INTERESTS,
-        interestList
-    }
-}

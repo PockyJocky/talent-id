@@ -75,6 +75,8 @@ export class InterestCard extends Component {
                                 />
 
                             </li>
+                            <div className = "labels_left">Unskilled</div>
+                            <div className = "labels_right">Very Skilled</div>
                             <li>
                                 <input
                                     className = 'big_slider'
@@ -86,6 +88,8 @@ export class InterestCard extends Component {
                                     value = {this.state.skillValue}
                                 />
                             </li>
+                            <div className = "labels_left">No Interest</div>
+                            <div className = "labels_right">Very Interested</div>
                             <li>
                                 <input
                                     className = 'big_slider'

@@ -70,3 +70,18 @@ ul{
     font-size: 16px;
     padding: 15px 32px;
 }
+
+.labels_left{
+    text-align: left;
+    width: 10%;
+    min-width: 200px;
+    display: inline-block;
+    color: white;
+}
+.labels_right{
+    text-align: right;
+    width: 10%;
+    min-width: 200px;
+    display: inline-block;
+    color: white;
+}
