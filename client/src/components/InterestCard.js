@@ -88,7 +88,7 @@ export class InterestCard extends Component {
                                     value = {this.state.skillValue}
                                 />
                             </li>
-                            <div className = "labels_left">No Interest</div>
+                            <div className = "labels_left">Little Interest</div>
                             <div className = "labels_right">Very Interested</div>
                             <li>
                                 <input
