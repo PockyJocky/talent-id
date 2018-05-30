@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: node
+    tag: latest
+
+inputs:
+  - name: talent_id
+  - name: dependency-cache
+
+run:
+  path: talent_id/ci/scripts/run_tests.sh
