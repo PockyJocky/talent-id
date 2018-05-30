@@ -30,7 +30,8 @@ jobs:
     plan:
       - get: talent_id
         trigger: true
-      - get: dependency-cache
+      - get: client-dependency-cache
+      - get: server-dependency-cache
   - name: Run tests
     plan:
       - get: talent_id
