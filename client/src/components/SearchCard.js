@@ -4,7 +4,7 @@ import PlayersCard from "./PlayersCard";
 import UserSearchCard from "./UserSearchCard";
 
 
-class SearchCard extends Component {
+export class SearchCard extends Component {
     constructor(props){
         super(props);
         this.state = {

@@ -32,7 +32,7 @@ const Users = [
     },
 ]
 
-class UserSearchCard extends Component{
+export class UserSearchCard extends Component{
     constructor(props){
         super(props);
         this.state = {users: Users, filteredUsers: [emptyUser]}
@@ -55,7 +55,7 @@ class UserSearchCard extends Component{
                                             style = {{color:'white'}}
                                             className = 'person'
                                         >
-                                            {person.rank + ' ' + person.lastname + ' ' + person.squadron}
+                                            {person.rank + ' ' + person.lastName + ' ' + person.squadron}
                                             </div>
                                     </div>
                                 )
