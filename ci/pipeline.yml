@@ -16,6 +16,6 @@ jobs:
   - name: CodeceptJS UI Tests
     plan:
       - get: talent_id
-        triger: true
+        trigger: true
       - task: run the UI test suite
         file: talent_id/ci/tasks/UI_tests.yml
