@@ -12,13 +12,18 @@ resources:
     source: &repo-source
       uri: https://github.com/demonintherough/talent-id
       branch: master
-  - name: dependency-cache
+  - name: client-dependency-cache
     type: npm-cache
     source:
       <<: *repo-source
       paths:
-        - client/package.json
-        - server/package.json
+        - /client/package.json
+  - name: server-dependency-cache
+    type: npm-cache
+    source:
+      <<: *repo-source
+      paths:
+        - /server/package.json
 
 jobs:
   - name: Install dependencies
@@ -31,7 +36,9 @@ jobs:
       - get: talent_id
         trigger: true
         passed: [Install dependencies]
-      - get: dependency-cache
+      - get: client-dependency-cache
+        passed: [Install dependencies]
+      - get: server-dependency-cache
         passed: [Install dependencies]
       - task: run the test suite
         file: talent_id/ci/tasks/run_tests.yml
