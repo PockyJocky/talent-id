@@ -3,5 +3,6 @@
 set -e -u -x
 
 cd talent_id/testing
-npm install codeceptjs
+npm install
+npm run
 codeceptjs run
