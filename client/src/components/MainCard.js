@@ -7,6 +7,7 @@ import {addNewUser} from "../actions/UserActions";
 import WelcomeCard from "./WelcomeCard";
 
 import '../styles/MainCard.css';
+import {SearchCard} from "./SearchCard";
 
 export class MainCard extends Component {
 
@@ -38,6 +39,7 @@ export class MainCard extends Component {
                     {place === 1 && <UserInfoCard userLocation = {place}/>}
                     {place === 2 && <InterestCard />}
                     {place === 3 && <PlayersCard userLocation = {place}/>}
+                    {place === 4 && <SearchCard/>}
                     <button onClick={this.clickNext} className="next_button">Next</button>
                 </div>
                 <div className="side_bar" />
