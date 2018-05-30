@@ -2,7 +2,8 @@
 
 set -e -u -x
 
-cd talent_id/testing
+cd talent_id/client
 npm install
-npm run
+npm start &
+cd talent_id/testing
 codeceptjs run

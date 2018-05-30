@@ -1,0 +1,12 @@
+{
+  "name": "react-redux-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "codeceptjs": "^1.2.1",
+    "nightmare": "^3.0.1"
+  },
+  "scripts": {
+    "test": "codeceptjs run"
+  }
+}
