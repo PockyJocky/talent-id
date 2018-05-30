@@ -11,4 +11,4 @@ inputs:
   - name: talent_id
 
 run:
-  path: talent_id/ci/scripts/run_tests.sh
+  path: talent_id/ci/scripts/Unit_tests.sh

@@ -7,9 +7,15 @@ resources:
       branch: master
 
 jobs:
-  - name: Run tests
+  - name: Jest Unit Tests
     plan:
       - get: talent_id
         trigger: true
-      - task: run the test suite
-        file: talent_id/ci/tasks/run_tests.yml
+      - task: run the Unit test suite
+        file: talent_id/ci/tasks/Unit_tests.yml
+  - name: CodeceptJS UI Tests
+    plan:
+      - get: talent_id
+        triger: true
+      - task: run the UI test suite
+        file: talent_id/ci/tasks/UI_tests.yml
