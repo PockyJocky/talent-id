@@ -2,5 +2,6 @@
 
 set -e -u -x
 
-mv client-dependency-cache/node_modules talent_id
-cd talent_id/client && npm test
+cd talent_id/client
+npm install
+npm test

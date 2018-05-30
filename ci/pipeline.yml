@@ -1,45 +1,15 @@
 ---
-resource_types:
-  - name: npm-cache
-    type: docker-image
-    source:
-      repository: ymedlop/npm-cache-resource
-      tag: latest
-
 resources:
   - name: talent_id
     type: git
     source: &repo-source
       uri: https://github.com/demonintherough/talent-id
       branch: master
-  - name: client-dependency-cache
-    type: npm-cache
-    source:
-      <<: *repo-source
-      paths:
-        - /client/package.json
-  - name: server-dependency-cache
-    type: npm-cache
-    source:
-      <<: *repo-source
-      paths:
-        - /server/package.json
 
 jobs:
-  - name: Install dependencies
-    plan:
-      - get: talent_id
-        trigger: true
-      - get: client-dependency-cache
-      - get: server-dependency-cache
   - name: Run tests
     plan:
       - get: talent_id
         trigger: true
-        passed: [Install dependencies]
-      - get: client-dependency-cache
-        passed: [Install dependencies]
-      - get: server-dependency-cache
-        passed: [Install dependencies]
       - task: run the test suite
         file: talent_id/ci/tasks/run_tests.yml

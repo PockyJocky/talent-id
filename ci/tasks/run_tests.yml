@@ -9,8 +9,6 @@ image_resource:
 
 inputs:
   - name: talent_id
-  - name: client-dependency-cache
-  - name: server-dependency-cache
 
 run:
   path: talent_id/ci/scripts/run_tests.sh
