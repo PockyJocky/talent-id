@@ -6,11 +6,11 @@ image_resource:
   source:
     repository: node
     tag: latest
-    
+
 inputs:
   - name: dev
 outputs:
   - name: master
 
 run:
-  path: talent_id/ci/scripts/push_to_master.sh
+  path: dev/ci/scripts/push_to_master.sh
