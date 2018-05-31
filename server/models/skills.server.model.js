@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const Skill = new Schema({
     edipi: {
         type: String,
     },

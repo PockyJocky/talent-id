@@ -13,3 +13,12 @@ export const addSkill = (req, res) => {
         .then(skill => console.log("Posted: " + skill + " to the database"))
         .catch(err => console.log(err));
 };
+
+export const fetchSkills = (req, res) => {
+    Skill.find().exec((skills, err) => {
+        if(err){
+            return res.json({'success': false, 'message': 'Skills could not be found'});
+        }
+        return res.json({skills});
+    });
+};

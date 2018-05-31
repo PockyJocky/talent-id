@@ -11,7 +11,7 @@ export const addUser = (req,res) => {
     });
     newUser
         .save()
-        .then(user => res.json(user))
-        .then(user => console.log("Posted: " + user + " to the database"))
-        .catch(err => console.log(err));
-};
+        .then(user => res.json(user);)
+        .then(user => console.log("Posted: " + user + " to the database");)
+        .catch(err => console.log(err);)
+}
