@@ -2,6 +2,6 @@
 
 set -e -u -x
 
-cd talent_id/client
+cd dev/client
 npm install
 npm test

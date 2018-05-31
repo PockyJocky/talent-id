@@ -11,4 +11,4 @@ inputs:
   - name: dev
 
 run:
-  path: talent_id/ci/scripts/Unit_tests.sh
+  path: dev/ci/scripts/Unit_tests.sh
