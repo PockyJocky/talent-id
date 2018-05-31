@@ -1,13 +1,19 @@
 ---
 resources:
-  - name: talent_id
+  - name: dev
     type: git
-    source: &repo-source
+    source: &dev-source
+      uri: https://github.com/demonintherough/talent-id
+      branch: dev
+  - name: master
+    type: git
+     source: &master-source
       uri: https://github.com/demonintherough/talent-id
       branch: master
 
+
 jobs:
-  - name: Jest Unit Tests
+  - name: JUnit Tests
     plan:
       - get: talent_id
         trigger: true
@@ -15,7 +21,22 @@ jobs:
         file: talent_id/ci/tasks/Unit_tests.yml
   - name: CodeceptJS UI Tests
     plan:
-      - get: talent_id
+      - get: dev
         trigger: true
       - task: run the UI test suite
         file: talent_id/ci/tasks/UI_tests.yml
+  - name: push to master
+    plan:
+      - get: dev
+        trigger: true
+        passed: [JUnit Tests]
+      - task: push to master
+        file: talent_id/ci/tasks/push_to_master.yml
+         config:
+            inputs:
+            - name: dev
+            outputs:
+            - name: master
+      - put: dev
+        params:
+          repository: master

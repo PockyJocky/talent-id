@@ -1,0 +1,8 @@
+---
+inputs:
+  - name: dev
+outputs:
+  - name: master
+
+run:
+  path: talent_id/ci/scripts/push_to_master.sh
