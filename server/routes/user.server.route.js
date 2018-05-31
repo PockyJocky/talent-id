@@ -9,4 +9,8 @@ router.post('/add', (req, res) => {
     console.log(req.body);
     userController.addUser(req, res);
 });
+
+router.get('/get', (req, res) => {
+    userController.findUserBySkill(req, res);
+})
 export default router;
