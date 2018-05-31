@@ -8,7 +8,7 @@ image_resource:
     tag: latest
 
 inputs:
-  - name: talent_id
+  - name: dev
 
 run:
   path: talent_id/ci/scripts/UI_tests.sh
