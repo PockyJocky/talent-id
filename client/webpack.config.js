@@ -53,6 +53,15 @@ module.exports = {
                     presets: ['react', 'es2015', 'stage-2'],
                     plugins: ['syntax-decorators']
                 }
+            },
+            {
+                test: /\.css$/, use: 'css-loader'
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     }
