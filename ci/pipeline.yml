@@ -2,20 +2,19 @@
 resources:
   - name: dev
     type: git
-    source: &dev-source
+    source:
       uri: https://github.com/demonintherough/talent-id
       branch: dev
   - name: master
     type: git
-     source: &master-source
+    source:
       uri: https://github.com/demonintherough/talent-id
       branch: master
-
 
 jobs:
   - name: JUnit Tests
     plan:
-      - get: talent_id
+      - get: dev
         trigger: true
       - task: run the Unit test suite
         file: talent_id/ci/tasks/Unit_tests.yml
@@ -32,11 +31,6 @@ jobs:
         passed: [JUnit Tests]
       - task: push to master
         file: talent_id/ci/tasks/push_to_master.yml
-         config:
-            inputs:
-            - name: dev
-            outputs:
-            - name: master
-      - put: dev
+      - put: master
         params:
-          repository: master
+          repository: dev
