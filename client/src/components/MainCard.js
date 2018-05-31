@@ -40,7 +40,9 @@ export class MainCard extends Component {
                     {place === 2 && <InterestCard />}
                     {place === 3 && <PlayersCard userLocation = {place}/>}
                     {place === 4 && <SearchCard/>}
+                    <div className="button_container">
                     <button onClick={this.clickNext} className="next_button">Next</button>
+                    </div>
                 </div>
                 <div className="side_bar" />
             </div>
