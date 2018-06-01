@@ -18,9 +18,11 @@ export class MainCard extends Component {
     }
 
 
-    clickNext() {
+    clickNext = () => {
+        console.log("hit me")
         if( this.state.place <3 ) {
-            if( this.props.place === 1) {
+            console.log(this.state.place)
+            if( this.state.place === 1) {
                 this.props.addUser(({...this.props.userInfo}))
             }
             this.setState((prevState) => ({

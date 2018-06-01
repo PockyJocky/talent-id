@@ -10,7 +10,7 @@ router.post('/add', (req, res) => {
     userController.addUser(req, res);
 });
 
-router.get('/get', (req, res) => {
-    userController.findUserBySkill(req, res);
-})
+router.get('/getUsers', (req, res) => {
+    userController.getUsers(req, res);
+});
 export default router;
