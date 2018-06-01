@@ -13,14 +13,13 @@ export class MainCard extends Component {
 
     constructor () {
         super();
-        this.state = { place: 0};
+        this.state = { place: 4};
         this.clickNext = this.clickNext.bind(this)
     }
 
 
     clickNext = () => {
-        console.log("hit me")
-        if( this.state.place <3 ) {
+        if( this.state.place <4 ) {
             console.log(this.state.place)
             if( this.state.place === 1) {
                 this.props.addUser(({...this.props.userInfo}))

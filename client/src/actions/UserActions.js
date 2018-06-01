@@ -1,4 +1,4 @@
-import {ADD_USER, UPDATE_USER} from "../Constant";
+import {ADD_USER, UPDATE_USER, GET_USERS} from "../Constant";
 
 import callApi from '../apiCaller'
 
@@ -16,6 +16,15 @@ export const addNewUser = (user) => {
     }
 };
 
+export const getUsers = () => {
+    return async (dispatch) => {
+        let users = [];
+        console.log(await callApi('user/getAll', 'GET'));
+        await dispatch(getAllUsers(users));
+        return users
+    }
+};
+
 export const update = (user) => {
     return async (dispatch) => {
         await dispatch(updateUser(user));
@@ -27,6 +36,13 @@ export const addUser = (user) => {
     return {
         type: ADD_USER,
         user
+    }
+};
+
+export const getAllUsers = (users) => {
+    return {
+        type: GET_USERS,
+        users
     }
 };
 

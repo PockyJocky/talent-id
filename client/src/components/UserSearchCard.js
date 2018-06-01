@@ -1,12 +1,8 @@
 import React, {Component} from 'react'
-const emptyUser = {
-    firstName: 'Just',
-    lastName: 'an',
-    edipi: 'example',
-    rank: 'AB',
-    squadron: '13 IS'
-}
-const Users = [
+import {getUsers} from "../actions/UserActions";
+import {connect} from "react-redux";
+
+let Users = [
     {
         firstName: 'bobi',
         lastName: 'sanders',
@@ -35,7 +31,8 @@ const Users = [
 export class UserSearchCard extends Component{
     constructor(props){
         super(props);
-        this.state = {users: Users, filteredUsers: [emptyUser]}
+        Users = this.props.getUsers();
+        this.state = {filteredUsers: Users}
     }
 
     render(){
@@ -48,19 +45,19 @@ export class UserSearchCard extends Component{
                     />
                     <div>
                         {
-                            this.state.filteredUsers.map((person) =>{
-                                return(
-                                    <div>
-                                        <div
-                                            style = {{color:'white'}}
-                                            className = 'person'
-                                        >
-                                            {person.rank + ' ' + person.lastName + ' ' + person.squadron}
-                                            </div>
-                                    </div>
-                                )
-                                }
-                            )
+                            // this.state.filteredUsers.map((person) =>{
+                            //     return(
+                            //         <div>
+                            //             <div
+                            //                 style = {{color:'white'}}
+                            //                 className = 'person'
+                            //             >
+                            //                 {person.rank + ' ' + person.lastName + ' ' + person.squadron}
+                            //                 </div>
+                            //         </div>
+                            //     )
+                            //     }
+                            // )
                         }
                     </div>
             </div>
@@ -68,4 +65,14 @@ export class UserSearchCard extends Component{
     }
 }
 
-export default UserSearchCard
+const mapDispatchToProps = dispatch => {
+    return{
+        getUsers: users => dispatch(getUsers(users))
+    }
+};
+
+const mapStateToProps = (state) =>{
+    return{user: state.userCard}
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSearchCard)

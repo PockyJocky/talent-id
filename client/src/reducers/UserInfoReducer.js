@@ -1,4 +1,4 @@
-import {UPDATE_USER, ADD_USER} from "../Constant";
+import {UPDATE_USER, ADD_USER, GET_USERS} from "../Constant";
 
 const initialState = {
     user: {
@@ -20,6 +20,10 @@ export function userCard(state = initialState , action){
             return{
                 ...state = ( Object.assign({}, action.user))
             };
+        case GET_USERS:
+            return{
+                ...state = ( Object.assign({}, action.users))
+            }
         default:
             return state
         }
