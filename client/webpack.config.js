@@ -30,7 +30,7 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, publicPath),
-        filename: 'main.bundle.js',
+        filename: 'main.bundle-0.0.1.js',
         publicPath: "",
         sourceMapFilename: 'main.map',
     },
