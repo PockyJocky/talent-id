@@ -13,3 +13,7 @@ export const addSkill = (req, res) => {
         .then(skill => console.log("Posted: " + skill + " to the database"))
         .catch(err => console.log(err));
 };
+
+export const fetchAllSkills = (req,res) => {
+    
+}

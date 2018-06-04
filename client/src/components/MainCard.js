@@ -18,7 +18,7 @@ export class MainCard extends Component {
     }
 
 
-    clickNext = () => {
+    clickNext () {
         if( this.state.place <4 ) {
             console.log(this.state.place)
             if( this.state.place === 1) {

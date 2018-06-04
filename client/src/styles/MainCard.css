@@ -141,3 +141,8 @@ ul{
     width: 20%;
     min-width: 400px;
 }
+
+.search_card{
+    display: flex;
+    flex-direction: row;
+}

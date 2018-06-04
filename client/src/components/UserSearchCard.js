@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import {getUsers} from "../actions/UserActions";
+import _ from 'lodash'
 import {connect} from "react-redux";
 
 let Users = [
     {
         firstName: 'bobi',
         lastName: 'sanders',
-        edipi: '',
+        edipi: '1',
         rank: 'AB',
         squadron: '13 IS'
     },
@@ -14,7 +15,7 @@ let Users = [
     {
         firstName: 'bill',
         lastName: 'brewski',
-        edipi: '',
+        edipi: '2',
         rank: 'AB',
         squadron: '13 IS'
     },
@@ -22,7 +23,7 @@ let Users = [
     {
         firstName: 'banjo',
         lastName: 'cruse',
-        edipi: '',
+        edipi: '3',
         rank: 'AB',
         squadron: '13 IS'
     },
@@ -32,7 +33,24 @@ export class UserSearchCard extends Component{
     constructor(props){
         super(props);
         Users = this.props.getUsers();
-        this.state = {filteredUsers: Users}
+        this.state = {users: Users, filteredUsers: Users, search: '', searchBox: ''}
+        this.onChange = this.onChange.bind(this)
+    }
+
+    onChange () {
+        this.setState(
+            {
+                searchBox: event.target.value,
+                filteredUsers: _.compact(_.map(this.state.user, (user) => {
+                if(user.firstName.includes(event.target.value)|| user.lastName.includes(event.target.value)){
+                    return user;
+                }
+            }))
+            })
+    };
+
+    onClick = (event) => {
+        console.log(event.target)
     }
 
     render(){
@@ -42,17 +60,18 @@ export class UserSearchCard extends Component{
                         type = 'text'
                         className = 'search_box'
                         onChange={this.onChange}
+                        value={this.state.searchBox}
                     />
                     <div>
                         {
                             // this.state.filteredUsers.map((person) =>{
                             //     return(
-                            //         <div>
+                            //         <div onClick = {this.onClick}>
                             //             <div
                             //                 style = {{color:'white'}}
                             //                 className = 'person'
                             //             >
-                            //                 {person.rank + ' ' + person.lastName + ' ' + person.squadron}
+                            //                 {person.firstName + ' ' + person.lastName + ' ' + person.squadron + ' ' + person.edipi}
                             //                 </div>
                             //         </div>
                             //     )

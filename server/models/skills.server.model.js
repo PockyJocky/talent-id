@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
-const Skill = new Schema({
+
+const Schema = new mongoose.Schema({
     edipi: {
         type: String,
     },
@@ -19,4 +19,4 @@ const Skill = new Schema({
     }
 });
 
-export default mongoose.model('Skill', Skill)
+export default mongoose.model('Skill', Schema)
