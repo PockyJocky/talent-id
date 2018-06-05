@@ -6,20 +6,13 @@ export const addNewUser = (user) => {
     return async (dispatch) => {
         await dispatch(update(user));
         await dispatch(addUser(user));
-        const newUser =
-            'firstName=' + ((null != user.firstName) ? user.firstName : '')
-            + '&lastName=' + ((null != user.lastName) ? user.lastName : '')
-            + '&edipi=' + ((null != user.edipi) ? user.edipi : '')
-            + '&rank=' + ((null != user.rank) ? user.rank : '')
-            + '&squadron=' + ((null != user.squadron) ? user.squadron : '');
-        return callApi('user/add', 'POST', newUser)
+        return callApi('user/add', 'POST', user)
     }
 };
 
 export const getUsers = () => {
     return async (dispatch) => {
-        let users = [];
-        console.log(await callApi('user/getAll', 'GET'));
+        let users = await callApi('user/getAll', 'GET');
         await dispatch(getAllUsers(users));
         return users
     }
