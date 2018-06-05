@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
 
 // export const API_URL = `http://ec2-18-191-97-5.us-east-2.compute.amazonaws.com:3001/api`;
-export const API_URL = `http://localhost:3001/api`;
+export const API_URL = `http://${process.env.REACT_APP_HOST || 'localhost'}:3001/api`;
 
 export  default function callApi(endpoint, method, body) {
     console.log("hit")
@@ -15,16 +15,11 @@ export  default function callApi(endpoint, method, body) {
         mode: 'no-cors',
         method: method,
     })
-        .then(response => response.json().then(json => ({json, response})))
-        .then(({json, response}) => {
+        .then(response => {
             console.log(response);
             if (!response.ok) {
-                return Promise.reject(json);
+                throw new Error("API Request failed.");
             }
-            return json;
-        })
-        .then(
-            response => response,
-            error => error
-        );
+            return response.json()
+        });
 }

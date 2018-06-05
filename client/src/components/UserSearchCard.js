@@ -37,7 +37,7 @@ export class UserSearchCard extends Component{
         this.onChange = this.onChange.bind(this)
     }
 
-    onChange () {
+    onChange (event) {
         this.setState(
             {
                 searchBox: event.target.value,
