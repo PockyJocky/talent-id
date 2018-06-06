@@ -4,7 +4,6 @@ import 'whatwg-fetch'
 export const API_URL = `http://${process.env.REACT_APP_HOST || 'localhost'}:3001/api`;
 
 export  default function callApi(endpoint, method, body) {
-    console.log(body)
     return fetch(`${API_URL}/${endpoint}`, {
         method: method,
         headers: { 'Content-Type': 'application/json' },
@@ -14,6 +13,6 @@ export  default function callApi(endpoint, method, body) {
             console.error(response);
             throw new Error("API Request failed.");
         }
-        return response.json()
-    });
+        return response.json();
+    })
 }

@@ -36,7 +36,7 @@ const Users = [
     },
 ];
 
-const initialState = { userCard: { user: {}, users: Users } };
+const initialState = { userCard: {}, userList: Users };
 
 describe('UserSearchCard', () => {
     let wrapper, searchTextBox, users;

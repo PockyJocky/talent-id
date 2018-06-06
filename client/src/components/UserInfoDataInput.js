@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {update} from "../actions/UserActions";
+import {update} from "../actions/UserInfoActions";
 import {connect} from "react-redux";
 
 export class UserInfoDataInput extends Component{
@@ -139,7 +139,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = (state) =>{
-    return { user: state.userCard.user };
+    return { user: state.userCard };
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(UserInfoDataInput)

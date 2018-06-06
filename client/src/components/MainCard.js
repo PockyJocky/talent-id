@@ -3,7 +3,7 @@ import InterestCard from './InterestCard';
 import UserInfoCard from './UserInfoCard';
 import PlayersCard from "./PlayersCard";
 import { connect } from "react-redux";
-import { addNewUser } from "../actions/UserActions";
+import { addNewUser } from "../actions/UserInfoActions";
 import { updatePlace } from "../actions/NavigationActions";
 import WelcomeCard from "./WelcomeCard";
 
@@ -55,7 +55,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state) =>{
     return {
-        userInfo: state.userCard.user, 
+        userInfo: state.userCard, 
         place: state.navigation.place
     }
 };

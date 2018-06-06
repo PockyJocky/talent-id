@@ -4,7 +4,7 @@ const initialState = {
     place: 0
 };
 
-export default function interestCard(state = initialState, action){
+export default function(state = initialState, action){
     switch(action.type){
         case UPDATE_PLACE:
             return {

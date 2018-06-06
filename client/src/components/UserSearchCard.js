@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {getUsers} from "../actions/UserActions";
+import { fetchList } from "../actions/UserListActions";
 import {connect} from "react-redux";
 
 export class UserSearchCard extends Component {
@@ -10,7 +10,7 @@ export class UserSearchCard extends Component {
     }
 
     componentDidMount() {
-        this.props.getUsers();
+        this.props.fetchList();
     }
 
     onChange(event) {
@@ -53,14 +53,14 @@ export class UserSearchCard extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getUsers: () => dispatch(getUsers())
+        fetchList: () => dispatch(fetchList())
     }
 };
 
 const mapStateToProps = state => {
     return { 
-        user: state.userCard.user,
-        users: state.userCard.users || [],
+        user: state.userCard,
+        users: state.userList,
     };
 };
 

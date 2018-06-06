@@ -1,5 +1,5 @@
 import * as Actions from '../../src/Constant'
-import * as UserActions from '../../src/actions/UserActions'
+import * as UserActions from '../../src/actions/UserInfoActions'
 
 const user = {
     firstName: 'Johnny',
@@ -8,7 +8,8 @@ const user = {
     rank: 'Maj',
     squadron: '707CS'
 }
-describe('InterestActions', () => {
+
+describe('UserInfoActions', () => {
     it('should create an action to add a user', () => {
         const addUser = user;
         const expectedAction = {
