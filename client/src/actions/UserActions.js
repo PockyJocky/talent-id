@@ -6,6 +6,7 @@ export const addNewUser = (user) => {
     return async (dispatch) => {
         await dispatch(update(user));
         await dispatch(addUser(user));
+        console.log(user);
         return callApi('user/add', 'POST', user)
     }
 };

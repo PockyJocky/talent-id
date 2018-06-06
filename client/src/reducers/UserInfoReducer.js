@@ -7,22 +7,27 @@ const initialState = {
         edipi: '',
         rank: 'AB',
         squadron: '13 IS'
-    }
+    },
+    users: []
 };
 
 export function userCard(state = initialState , action){
     switch(action.type){
         case UPDATE_USER:
-            return{
-                ...state = ( Object.assign({}, action.user))
+            return {
+                ...state,
+                user: action.user
             };
         case ADD_USER:
-            return{
-                ...state = ( Object.assign({}, action.user))
+            return {
+                ...state,
+                user: action.user,
+                users: [ ...state.users, action.user ]
             };
         case GET_USERS:
-            return{
-                ...state = ( Object.assign({}, action.users))
+            return {
+                ...state,
+                users: action.users
             }
         default:
             return state

@@ -4,3 +4,4 @@ export const UPDATE_INTEREST = "UPDATE_INTEREST";
 export const UPDATE_USER = "UPDATE_USER";
 export const INPUT_ALL_INTERESTS = "INPUT_ALL_INTERESTS";
 export const GET_USERS = "GET_USERS";
+export const UPDATE_PLACE = "UPDATE_PLACE";

@@ -9,24 +9,29 @@ const user = {
     squadron: '707CS'
 }
 
-const initialUser = {user : {
+const initialState = {
+    user : {
         edipi: "",
         firstName: "",
         lastName: "",
         rank: "AB",
         squadron: "13 IS"
-}}
+    },
+    users: []
+}
 
-describe('UserInfoReducer', () => {
+describe('UserReducer', () => {
     it('should return the initial state', () => {
-        expect(reducer.userCard(undefined, {})).toEqual(initialUser)
+        expect(reducer.userCard(undefined, {})).toEqual(initialState)
     })
     it('should handle ADD_USER', () => {
-        expect(reducer.userCard(
-            undefined, { user: user, type: actions.ADD_USER})).toEqual(user)
+        let action = { user: user, type: actions.ADD_USER };
+        let state = { ...initialState, user, users: [user] };
+        expect(reducer.userCard(undefined, action)).toEqual(state)
     });
     it('should handle UPDATE_USER', () => {
-        expect(reducer.userCard(
-            undefined, { user: user, type: actions.UPDATE_USER})).toEqual(user)
+        let action = { user: user, type: actions.UPDATE_USER };
+        let state = { ...initialState, user };
+        expect(reducer.userCard(undefined, action)).toEqual(state)
     });
 });
