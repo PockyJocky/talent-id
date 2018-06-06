@@ -1,4 +1,4 @@
-import { ADD_USER, UPDATE_USER, GET_USERS } from "../Constant";
+import { ADD_USER, UPDATE_USER } from "../Constant";
 import { addToList } from './UserListActions';
 
 import callApi from '../apiCaller'
@@ -11,12 +11,12 @@ export const addNewUser = (user) => {
     }
 };
 
-// export const update = (user) => {
-//     return async (dispatch) => {
-//         await dispatch(updateUser(user));
-//         // Should update user on server?
-//     }
-// };
+export const update = (user) => {
+    return async (dispatch) => {
+        await dispatch(updateUser(user));
+        // Should update user on server?
+    }
+};
 
 //dispatchs
 export const addUser = (user) => {
