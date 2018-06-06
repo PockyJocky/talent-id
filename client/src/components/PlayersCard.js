@@ -7,7 +7,7 @@ class PlayersCard extends Component{
         return(
             <div>
                 <div className ='title'>Let's Review</div>
-                <UserInfoDataInput userLocation={ this.props.userLocation}/>
+                <UserInfoDataInput userLocation={this.props.userLocation}/>
                 <InterestList />
             </div>
         )

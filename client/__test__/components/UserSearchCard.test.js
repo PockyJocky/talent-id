@@ -1,11 +1,14 @@
 import React from 'react'
+import {Provider} from "react-redux";
 import {configure, shallow, mount} from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-import { UserSearchCard } from "../../src/components/UserSearchCard";
+import { default as Connected, UserSearchCard } from "../../src/components/UserSearchCard";
 import { SearchCard } from "../../src/components/SearchCard";
+
+import configureStore from "../../src/store/configureStore";
 
 const Users = [
     {
@@ -33,11 +36,12 @@ const Users = [
     },
 ];
 
+const initialState = { userCard: {}, userList: Users };
+
 describe('UserSearchCard', () => {
     let wrapper, searchTextBox, users;
     beforeEach(() => {
         wrapper = shallow(<SearchCard/>);
-
     });
 
     describe('renders', () => {
@@ -50,26 +54,27 @@ describe('UserSearchCard', () => {
     });
 
     describe('has a', () => {
+        let store = configureStore(initialState);
+        let wrapper = mount(<Provider store={store}><Connected/></Provider>);
+
         describe('search text box', () => {
-            beforeEach(() => {
-                wrapper = mount(<UserSearchCard/>)
-                searchTextBox = wrapper.find('.search_box')
-                users = wrapper.find('.person')
-            });
+            searchTextBox = wrapper.find('.search_box');
+
             it('that exists', () =>{
                 expect(searchTextBox.length).toEqual(1)
             });
+
             it('should be able to take input', () => {
                 expect(searchTextBox.type()).toEqual('input')
             });
+
             it('should have a list of users', () => {
                 const spy = jest.spyOn(UserSearchCard.prototype, 'onChange')
-                wrapper.setState({users: Users});
                 wrapper.update();
-                expect(spy).toNotHaveBeenCalled
+                users = wrapper.find('.person');
+                expect(spy).not.toHaveBeenCalled();
                 expect(users.length).toEqual(3)
             });
         })
     })
-
 });

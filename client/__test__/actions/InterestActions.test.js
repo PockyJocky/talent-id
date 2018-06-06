@@ -7,6 +7,7 @@ const interest = {
     skillValue: '5',
     interestValue: '5'
 }
+
 describe('UserActions', () => {
     it('should create an action to add a user', () => {
         const addInterest = interest;

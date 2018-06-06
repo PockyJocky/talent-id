@@ -14,7 +14,7 @@ export class InterestList extends Component{
                 {
                 this.props.skillList.map((skill) => {
                         return (
-                            <div className='keeper_of_the_skills'>
+                            <div className='keeper_of_the_skills' key={skill.skillName}>
                                 <ul className='skill_list'>
                                     <li className='color_edge'/>
                                     <li className='skill_item skill_item_name'>{skill.skillName}</li>
