@@ -7,7 +7,7 @@ export default function(state = initialState, action){
         case ADD_TO_LIST:
             return [...state, action.user];
         case UPDATE_LIST:
-            return action.list;
+            return [ ...action.list ];
         default:
             return state
     }
