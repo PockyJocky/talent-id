@@ -10,7 +10,12 @@ router.post('/add', (req, res) => {
     userController.addUser(req, res);
 });
 
-router.find('/getUsers', (req, res) => {
+router.get('/getAll', (req, res) => {
+    userController.getUsers(req, res);
+});
 
+router.get('/fight', (req, res) => {
+    console.log("My name is Tron and I fight for the Users")
+    res.send({Tron: "I fight for the Users"})
 });
 export default router;

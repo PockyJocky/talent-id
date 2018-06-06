@@ -6,17 +6,25 @@ import configureStore from "./store/configureStore";
 import "babel-polyfill";
 
 const initialState = {
-    user: {
-        firstName: '',
-        lastName: '',
-        edipi: '',
-        rank: 'AB',
-        squadron: '13 IS'
+    navigation: {
+        place: 0
     },
-    skillValue: '3',
-    interestValue: '3',
-    skillName: '',
-    skillList: []
+    userCard: {
+        user: {
+            firstName: '',
+            lastName: '',
+            edipi: '',
+            rank: 'AB',
+            squadron: '13 IS'
+        },
+        users: []
+    },
+    interestCard: {
+        skillValue: '3',
+        interestValue: '3',
+        skillName: '',
+        skillList: []
+    }
 };
 
 let store = configureStore(initialState);

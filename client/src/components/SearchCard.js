@@ -13,7 +13,7 @@ export class SearchCard extends Component {
     //Get all user's and interests from the backend
     render() {
         return(
-            <div>
+            <div className = "search_card">
                 <UserSearchCard/>
                 <PlayersCard/>
             </div>

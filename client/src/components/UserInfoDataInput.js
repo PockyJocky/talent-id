@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {update} from "../actions/UserActions";
+import {update} from "../actions/UserInfoActions";
 import {connect} from "react-redux";
 
 export class UserInfoDataInput extends Component{
@@ -15,14 +15,8 @@ export class UserInfoDataInput extends Component{
                 rank: 'AB',
                 squadron: '13 IS'
             };
-        }else {
-            this.state = {
-                firstName: this.props.user.firstName,
-                lastName: this.props.user.lastName,
-                edipi: this.props.user.edipi,
-                rank: this.props.user.rank,
-                squadron: this.props.user.squadron,
-            }
+        } else {
+            this.state = this.props.user;
         }
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
         this.updateProps = this.updateProps.bind(this)
@@ -72,7 +66,7 @@ export class UserInfoDataInput extends Component{
     };
 
     updateProps() {
-        this.props.update({...this.state});
+        this.props.update(this.state);
     };
 
     render(){
@@ -145,7 +139,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = (state) =>{
-    return{user: state.userCard}
+    return { user: state.userCard };
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(UserInfoDataInput)

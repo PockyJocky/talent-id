@@ -244,3 +244,8 @@ ul{
         font-size: 5vh;
     }
 }
+
+.search_card{
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,17 @@
+{
+    "name": "talent-id",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "postinstall": "cd client && npm i && cd ../server && npm i && cd ../testing && npm i",
+        "dev:server": "cd ./server && npm start",
+        "dev:client": "cd ./client && npm start",
+        "dev": "run-p dev:*",
+        "test:client": "cd ./client && npm test",
+        "test:end-to-end": "cd ./testing && npm test",
+        "test": "run-p test:*"
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.1.3"
+    }
+}

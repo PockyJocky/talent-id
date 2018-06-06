@@ -1,16 +1,11 @@
-import {ADD_INTEREST, INPUT_ALL_INTERESTS, UPDATE_INTEREST} from "../Constant"
+import {ADD_INTEREST, UPDATE_INTEREST} from "../Constant"
 
 import callApi from "../apiCaller";
 
 export const addNewInterest = (interest, user) => {
     return async (dispatch) => {
-        console.log(user)
         await dispatch(addInterest(interest));
-        const newInterest = 'edipi=' + ((null != user.edipi) ? user.edipi : '')
-                            + '&skillName=' + ((null != interest.skillName) ? interest.skillName : '')
-                            + '&skillValue=' + ((null != interest.skillValue)? interest.skillValue : '')
-                            + '&interestValue=' + ((null != interest.interestValue) ? interest.interestValue : '');
-        return callApi('interest/add', 'POST', newInterest)
+        return callApi('interest/add', 'POST', { edipi: user.edipi, ...interest })
     }
 };
 

@@ -1,5 +1,9 @@
 export const ADD_INTEREST = "ADD_INTEREST";
 export const ADD_USER = "ADD_USER";
-export const UPDATE_INTEREST = "UPDATE_INTEREST"
-export const UPDATE_USER = "UPDATE_USER"
-export const INPUT_ALL_INTERESTS = "INPUT_ALL_INTERESTS"
+export const UPDATE_INTEREST = "UPDATE_INTEREST";
+export const UPDATE_USER = "UPDATE_USER";
+export const INPUT_ALL_INTERESTS = "INPUT_ALL_INTERESTS";
+export const GET_USERS = "GET_USERS";
+export const UPDATE_PLACE = "UPDATE_PLACE";
+export const UPDATE_LIST = "UPDATE_LIST";
+export const ADD_TO_LIST = "ADD_TO_LIST";

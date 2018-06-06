@@ -2,35 +2,33 @@ import React, { Component } from 'react';
 import InterestCard from './InterestCard';
 import UserInfoCard from './UserInfoCard';
 import PlayersCard from "./PlayersCard";
-import {connect} from "react-redux";
-import {addNewUser} from "../actions/UserActions";
+import { connect } from "react-redux";
+import { addNewUser } from "../actions/UserInfoActions";
+import { updatePlace } from "../actions/NavigationActions";
 import WelcomeCard from "./WelcomeCard";
 
 import '../styles/MainCard.css';
-import {SearchCard} from "./SearchCard";
+import { SearchCard } from "./SearchCard";
 
 export class MainCard extends Component {
 
     constructor () {
         super();
-        this.state = { place: 0};
         this.clickNext = this.clickNext.bind(this)
     }
 
-
-    clickNext() {
-        if( this.state.place <3 ) {
-            if( this.props.place === 1) {
-                this.props.addUser(({...this.props.userInfo}))
+    clickNext () {
+        const { place, userInfo } = this.props;
+        if (place < 4) {
+            if (place === 1) {
+                this.props.addUser(userInfo)
             }
-            this.setState((prevState) => ({
-                place: prevState.place += 1,
-            }));
+            this.props.updatePlace(place + 1);
         }
     };
 
     render() {
-        const place = this.state.place;
+        const { place } = this.props;
         return (
             <div>
                 <div className="side_bar" > </div>
@@ -51,12 +49,16 @@ export class MainCard extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-    return{
-        addUser: user => dispatch(addNewUser(user))
+    return {
+        addUser: user => dispatch(addNewUser(user)),
+        updatePlace: place => dispatch(updatePlace(place))
     }
 };
 
 const mapStateToProps = (state) =>{
-    return{userInfo: state.userCard, place: state.place}
+    return {
+        userInfo: state.userCard,
+        place: state.navigation.place
+    }
 };
 export default  connect(mapStateToProps,mapDispatchToProps)(MainCard);
