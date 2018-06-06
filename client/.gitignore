@@ -21,4 +21,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # index.html is different for production
-index.html
+/dist/build/index.html
