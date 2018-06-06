@@ -36,8 +36,8 @@ export class UserSearchCard extends Component {
     };
 
     render(){
-        const filteredList = this.state.filteredUsers.map( person => (
-            <div onClick={e => this.onClick(e)} key={person.edipi} >
+        const filteredList = this.state.filteredUsers.map( (person, index) => (
+            <div onClick={e => this.onClick(e)} key={index} >
                 <div style={{color:'white'}} className='person' >
                     {person.firstName + ' ' + person.lastName + ' ' + person.squadron + ' ' + person.edipi}
                 </div>
