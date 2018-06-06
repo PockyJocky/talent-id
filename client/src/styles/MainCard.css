@@ -4,12 +4,12 @@ body{
 
 .main_card{
     text-align: center;
-    min-width: 400px;
-    background-color: #090909;
-    max-width: 800px;
-    min-height: 800px;
+    min-width: 75vw;
+    background-color: rgba(0,0,0,.2);
+    max-width: 75vw;
+    max-height: 10vh;
     margin: 40px auto 0;
-    max-height: 975px;
+
 }
 
 ul{
@@ -19,73 +19,158 @@ ul{
 
 .title {
     font-family: AvenirNext-Bold, serif;
-    font-size: 64px;
+    font-size: 6vh;
     color: #4E4E4E;
+    text-shadow: 2px 1px 1px rgba(255,255,255,0.2);
 }
 
 
 .welcome_card{
     font-family: AvenirNext-Bold, serif;
-    font-size: 84px;
+    font-size: 10vw;
     color: #4A4A4A;
+    text-shadow: 2px 1px 1px rgba(255,255,255,0.7);
 }
 
 .skill_name_input{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0px;
-    border-bottom: 1px solid #000000;
-    box-shadow: 0px 0px 8px #4F4F4F;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    border: 1px solid rgba(0,0,0,0);
+    border-radius: 3px;
+    box-shadow: 0 2vw 4vw rgba(255,255,255,0.15);
     text-shadow: none;
     text-align: left;
-    width: 20%;
-    min-width: 400px;
-    font-size: 48px;
+    width: 55vw;
+    height: 10vh;
+    font-size: 5vw;
     color: #FFFFFF;
     font-family: AvenirNext-Bold;
     background-color: #0F0F0F
 }
 
 .text_input{
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0 10px 0;
+    padding: 1%;
     border: 0px;
-    border-bottom: 1px solid #000000;
+    border-radius: 3px;
     box-shadow: 0px 0px 8px #4F4F4F;
-    text-shadow: none;
     text-align: left;
     width: 20%;
-    min-width: 400px;
-    font-size: 24px;
+    min-width: 50vw;
+    font-size: 3vh;
     color: #FFFFFF;
     font-family: AvenirNext-Bold;
     background-color: #0F0F0F
 
 }
-.big_slider{
-    width: 20%;
-    min-width: 400px;
-    margin-top: 15px;
 
+.drop_box{
+    color: white;
+    background-color: #090909;
+    font-family: AvenirNext;
+    font-size: 2vh;
+    margin: 10px 0 10px 0;
+    padding: 1%;
+    border: 0px;
+    border-radius: 3px;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0px 0px 8px #4F4F4F;
+    text-shadow: none;
+    text-align: left;
+    width: 52vw;
+}
+
+.big_slider{
+    -webkit-appearance: none;
+    width: 50vw;
+    height: 2vh;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.big_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0099cc;
+    cursor: pointer;
+}
+
+.big_slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #0099cc;
+    cursor: pointer;
+}
+
+.small_slider{
+    text-align: right;
+    min-width: 130px;
+    width: 10%;
+    -webkit-appearance: none;
+    height: 15px;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+.small_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #0099cc;
+    cursor: pointer;
+}
+
+.small_slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #0099cc;
+    cursor: pointer;
 }
 
 .next_button{
-    background-color: #4CAF50;
+    background-color: #0099cc;
     border: none;
+    width: 13vw;
+    height: 8vh;
+    border-radius: 5px;
     color: white;
     text-align: center;
-    font-size: 16px;
-    padding: 15px 32px;
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    font-size: 3vw;
+    box-shadow: 1vw 1vw 1vw rgba(255,255,255,0.1);
+    margin-bottom: 15vh;
 }
 
 .submit_button{
-    margin-top: 10px;
-    background-color: #008CBA;
+    margin-top: 1vh;
+    width: 13vw;
+    height: 8vh;
+    background-color: #009933;
     border: none;
+    border-radius: 5px;
     color: white;
     text-align: center;
-    font-size: 16px;
-    padding: 15px 32px;
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    font-size: 3vw;
+    box-shadow: 1vw 1vw 1vw rgba(255,255,255,0.1);
+}
+
+.labels_holder {
+    margin: 5px 0 5px 0;
+    padding: 10px 0 10px 0;
 }
 
 .labels_left{
@@ -115,31 +200,49 @@ ul{
     width: 50%;
 }
 
-.small_slider{
-    text-align: right;
-    min-width: 130px;
-    width: 10%;
-}
+
 
 .container{
     max-height: 400px;
     overflow-y: scroll;
 }
 
-.drop_box{
-    color: white;
-    background: #090909;
-    font-family: AvenirNext;
-    font-size: 24px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 0px;
-    border-bottom: 1px solid #000000;
-    box-shadow: 0px 0px 8px #4F4F4F;
-    text-shadow: none;
-    text-align: left;
-    width: 20%;
-    min-width: 400px;
+.button_container {
+    padding-top: 5%;
+}
+
+@media screen and (max-width: 375px){
+    .next_button{
+        width: 20vw;
+        height: 6vh;
+    }
+
+    .submit_button{
+        width: 20vw;
+        height: 6vh;
+    }
+
+    .skill_name_input{
+        width: 55vw;
+        height: 10vh;
+        font-size: 5vw;
+    }
+
+    .text_input{
+        font-size: 1vh;
+    }
+
+    .drop_box{
+        font-size: 1vh;
+    }
+
+    .title {
+        font-size: 3vh;
+    }
+
+    .welcome_card{
+        font-size: 5vh;
+    }
 }
 
 .search_card{

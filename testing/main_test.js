@@ -50,7 +50,7 @@ Scenario('move on from interest input', (I) => {
 });
 
 Scenario('see both my information and my interests', (I) => {
-    //This doesn't seem to work:
+    // This doesn't seem to work:
 
     // I.see('John','.interest_input');
     // I.see('Smith', '.lastName');

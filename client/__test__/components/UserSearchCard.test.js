@@ -56,18 +56,18 @@ describe('UserSearchCard', () => {
     describe('has a', () => {
         let store = configureStore(initialState);
         let wrapper = mount(<Provider store={store}><Connected/></Provider>);
-        
+
         describe('search text box', () => {
             searchTextBox = wrapper.find('.search_box');
-            
+
             it('that exists', () =>{
                 expect(searchTextBox.length).toEqual(1)
             });
-            
+
             it('should be able to take input', () => {
                 expect(searchTextBox.type()).toEqual('input')
             });
-            
+
             it('should have a list of users', () => {
                 const spy = jest.spyOn(UserSearchCard.prototype, 'onChange')
                 wrapper.update();

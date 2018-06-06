@@ -1,0 +1,147 @@
+body{
+    background: url(00dc0de315c0dff17dbcf84adbcf60c8.png);
+}
+
+.main_card{
+    text-align: center;
+    min-width: 400px;
+    background-color: #090909;
+    max-width: 800px;
+    min-height: 800px;
+    margin: 40px auto 0;
+    max-height: 975px;
+}
+
+ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.title {
+    font-family: AvenirNext-Bold, serif;
+    font-size: 64px;
+    color: #4E4E4E;
+}
+
+
+.welcome_card{
+    font-family: AvenirNext-Bold, serif;
+    font-size: 84px;
+    color: #4A4A4A;
+}
+
+.skill_name_input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0px;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0px 0px 8px #4F4F4F;
+    text-shadow: none;
+    text-align: left;
+    width: 20%;
+    min-width: 400px;
+    font-size: 48px;
+    color: #FFFFFF;
+    font-family: AvenirNext-Bold;
+    background-color: #0F0F0F
+}
+
+.text_input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0px;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0px 0px 8px #4F4F4F;
+    text-shadow: none;
+    text-align: left;
+    width: 20%;
+    min-width: 400px;
+    font-size: 24px;
+    color: #FFFFFF;
+    font-family: AvenirNext-Bold;
+    background-color: #0F0F0F
+
+}
+.big_slider{
+    width: 20%;
+    min-width: 400px;
+    margin-top: 15px;
+
+}
+
+.next_button{
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5$;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 15px 32px;
+    box-shadow: 10px 10px rgba(255,255,255,0.5);
+}
+
+.submit_button{
+    margin-top: 10px;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 15px 32px;
+}
+
+.labels_left{
+    text-align: left;
+    width: 10%;
+    min-width: 200px;
+    display: inline-block;
+    color: white;
+}
+.labels_right{
+    text-align: right;
+    width: 10%;
+    min-width: 200px;
+    display: inline-block;
+    color: white;
+}
+
+.skill_item{
+    display: inline-block;
+}
+
+.skill_item_name{
+    text-align: left;
+    font-family: AvenirNext;
+    font-size: 33px;
+    color: white;
+    width: 50%;
+}
+
+.small_slider{
+    text-align: right;
+    min-width: 130px;
+    width: 10%;
+}
+
+.container{
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.drop_box{
+    color: white;
+    background: #090909;
+    font-family: AvenirNext;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0px;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0px 0px 8px #4F4F4F;
+    text-shadow: none;
+    text-align: left;
+    width: 20%;
+    min-width: 400px;
+}
+
+/*# sourceMappingURL=main.map*/

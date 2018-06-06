@@ -25,7 +25,7 @@ export class UserSearchCard extends Component {
         this.setState({
             searchBox: event.target.value,
             filteredUsers: this.props.users.filter( user => {
-                return user.firstName.includes(event.target.value) 
+                return user.firstName.includes(event.target.value)
                     || user.lastName.includes(event.target.value)
             })
         })
@@ -33,7 +33,7 @@ export class UserSearchCard extends Component {
 
     onClick = (event) => {
         console.log(event.target)
-    }
+    };
 
     render(){
         const filteredList = this.state.filteredUsers.map( person => (
@@ -66,7 +66,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-    return { 
+    return {
         user: state.userCard,
         users: state.userList,
     };

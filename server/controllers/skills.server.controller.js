@@ -14,6 +14,11 @@ export const addSkill = (req, res) => {
         .catch(err => console.log(err));
 };
 
-export const fetchAllSkills = (req,res) => {
-    
-}
+export const fetchSkills = (req, res) => {
+    Skill.find().exec((skills, err) => {
+        if(err){
+            return res.json({'success': false, 'message': 'Skills could not be found'});
+        }
+        return res.json({skills});
+    });
+};

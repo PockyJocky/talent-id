@@ -2,6 +2,7 @@ let path = require('path');
 let webpack = require('webpack');
 const publicPath = '/dist/build/';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     //Content
@@ -20,12 +21,16 @@ module.exports = {
             title: 'Talent Identification Manager'
         }),
         //Auto replacement of page when i save some file, even css
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        })
     ],
 
     output: {
         path: path.join(__dirname, publicPath),
-        filename: 'main.bundle.js',
+        filename: 'main.bundle-0.0.1.js',
         publicPath: "",
         sourceMapFilename: 'main.map',
     },
@@ -53,6 +58,19 @@ module.exports = {
                     presets: ['react', 'es2015', 'stage-2'],
                     plugins: ['syntax-decorators']
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     }

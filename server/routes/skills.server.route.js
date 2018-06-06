@@ -9,8 +9,8 @@ router.post('/add', (req, res) => {
     skillController.addSkill(req, res);
 });
 
-router.get('.allSkill', (req,res) => {
-    console.log(req.body)
-    skillController.fetchAllSkills(req,res)
-})
+router.get('/fetchAll', (req, res) => {
+    console.log(req.body);
+    skillController.fetchSkills(req, res);
+});
 export default router;

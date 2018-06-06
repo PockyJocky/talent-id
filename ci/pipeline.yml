@@ -3,13 +3,15 @@ resources:
   - name: dev
     type: git
     source:
-      uri: https://github.com/demonintherough/talent-id
+      uri: https://github.com/demonintherough/talent-id.git
       branch: dev
   - name: master
     type: git
     source:
-      uri: https://github.com/demonintherough/talent-id
+      uri: https://github.com/demonintherough/talent-id.git
       branch: master
+      username: PockyJocky
+      password: Y0sh1m0t@
 
 jobs:
   - name: JUnit Tests
@@ -24,13 +26,11 @@ jobs:
         trigger: true
       - task: run the UI test suite
         file: dev/ci/tasks/UI_tests.yml
-  - name: push to master
+  - name: Push to Master
     plan:
-      - get: dev
-        trigger: true
-        passed: [JUnit Tests]
-      - task: push to master
-        file: dev/ci/tasks/push_to_master.yml
-      - put: master
-        params:
-          repository: dev
+    - get: dev
+      trigger: true
+      passed: [JUnit Tests]
+    - put: master
+      params:
+        repository: dev
