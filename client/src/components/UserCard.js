@@ -10,21 +10,20 @@ import { addNewUser } from '../actions/UserInfoActions';
 import { updatePlace } from '../actions/NavigationActions';
 
 const UserCard = props => {
-    const { place, clickNext } = this.props;
+    const { place, userInfo } = props;
     return (
         <div className="new_user_card">
             {place === 0 && <UserInfoCard userLocation={place}/>}
             {place === 1 && <InterestCard />}
             {place === 2 && <PlayersCard userLocation={place}/>}
-            <button onClick={clickNext} className="next_button">Next</button>
+            <button onClick={() => props.nextClick(place, userInfo)} className="next_button">Next</button>
         </div>
     );
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
-    nextClick: () => {
-        const { place, userInfo } = props;
-        if (place < 2) {
+    nextClick: (place, userInfo) => {
+        if ( place < 2 ) {
             if (place === 0) {
                 dispatch(addNewUser(userInfo))
             }
@@ -42,4 +41,4 @@ const mapStateToProps = (state) =>{
     }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(UserCard);
+export default connect(mapStateToProps, mapDispatchToProps)(UserCard);

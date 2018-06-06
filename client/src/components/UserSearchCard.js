@@ -13,6 +13,14 @@ export class UserSearchCard extends Component {
         this.props.fetchList();
     }
 
+    static getDerivedStateFromProps(props, state) {
+        return { 
+            ...state,
+            users: props.users, 
+            filteredUsers: props.users
+        };
+    }
+
     onChange(event) {
         this.setState({
             searchBox: event.target.value,
