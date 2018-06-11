@@ -45,6 +45,7 @@ export class UserSearchCard extends Component {
         ));
         return(
             <div>
+                <label htmlFor="search_box" className="labels_right">Search:</label>
                 <input
                         type='text'
                         className='search_box'

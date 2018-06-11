@@ -6,7 +6,7 @@ Before((I) => {
 });
 
 Scenario('can see a welcome message', (I) => {
-    I.amOnPage('/')
+    I.amOnPage('/');
     I.see('Welcome');
 });
 
@@ -50,14 +50,47 @@ Scenario('move on from interest input', (I) => {
     I.click('Next');
 });
 
-Scenario('see both my information and my interests', (I) => {
-    // This doesn't seem to work:
+Scenario('see my information', async (I) => {
+    I.amOnPage('/list');
 
-    // I.see('John','.interest_input');
-    // I.see('Smith', '.lastName');
-    // I.see('147852369', '.edipi');
-    // I.see('SSgt', '#rank');
-    // I.see('9 IS', '#squadron');
-    // I.see('Programming', '.firstName');
+    I.waitForElement('.person')
+    I.see('John');
+    I.see('Smith');
+    I.see('147852369');
+    I.see('9 IS');
 });
+
+Scenario('can search for people with a specific skill', async (I) => {
+    await I.amOnPage('/list');
+
+    I.see('Search:')
+    I.fillField('.search_box', "Programming")
+    I.see('John')
+
+    //make a new person to see if you can see that one instead of the previous one
+
+    await I.amOnPage('/new');
+
+    I.fillField('.firstName', 'Micheal');
+    I.fillField('.lastName', 'Jones');
+    I.fillField('.edipi', '90210');
+    I.selectOption('.rank', 'A1C');
+    I.selectOption('.squadron', '13 IS');
+
+    I.click('Next');
+
+    I.fillField('.skill_name_input', 'Design');
+    I.pressKey('Tab');
+    I.pressKey('Right');
+    I.pressKey('Tab');
+    I.pressKey('Right');
+    I.click('Submit');
+
+    await I.amOnPage('/list');
+
+    I.see('Search:');
+    I.fillField('Search:', "Design");
+    I.see('Micheal');
+    I.dontSee('John')
+})
 
