@@ -86,11 +86,13 @@ Scenario('can search for people with a specific skill', async (I) => {
     I.pressKey('Right');
     I.click('Submit');
 
+    //search for that person
+
     await I.amOnPage('/list');
 
     I.see('Search:');
     I.fillField('Search:', "Design");
     I.see('Micheal');
     I.dontSee('John')
-})
+});
 
