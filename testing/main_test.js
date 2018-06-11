@@ -2,16 +2,17 @@
 Feature('I');
 
 Before((I) => {
-    I.amOnPage('/');
+    I.amOnPage('/new');
 });
 
 Scenario('can see a welcome message', (I) => {
+    I.amOnPage('/')
     I.see('Welcome');
 });
 
 Scenario('see a next button that I can click', (I) => {
-    I.see('Next', '.next_button');
-    I.click('Next')
+    I.see('New User');
+    I.click('New User');
 });
 
 Scenario('see the next button took me to the input page', (I) => {

@@ -3,9 +3,10 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from "../reducers/RootReducer";
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState, ...middleware) {
     const middlewares = [
         thunk,
+        ...middleware
     ];
     const store = createStore(rootReducer, initialState, compose(
         applyMiddleware(...middlewares),
