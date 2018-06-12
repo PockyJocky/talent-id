@@ -36,27 +36,17 @@ export class UserSearchCard extends Component {
         this.setState({
             searchBox: event.target.value,
             filteredUsers: this.props.users.filter( user => {
-                return this.search(user, event);
-            }),
+                return user.edipi.includes(this.foundSkill(event.target.value))
+            })
         })
     };
 
-    search(key, event) {
-        let result;
-        switch(event) {
-            case key.firstName.includes(event.target.value):
-                result = key.firstName.includes(event.target.value);
-                break;
-            case key.lastName.includes(event.target.value):
-                result = key.lastName.includes(event.target.value);
-                break;
-            case key.edipi.includes(this.props.skills.find(event.target.value).edipi):
-                result = key.edipi.includes(this.props.skills.find(event.target.value).edipi);
-                break;
-            default:
-                return result
-        }
-        return result
+    foundSkill(event) {
+        let skill = this.props.skills.filter( skill => {
+            return skill.skillName.includes(event)
+        })
+
+        return skill.edipi
     }
 
     onClick = (event) => {
