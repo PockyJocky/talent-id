@@ -1,20 +1,48 @@
+import Fuse from 'fuse.js';
 import React, {Component} from 'react'
 import { fetchUserList } from "../actions/UserListActions";
 import { fetchInterestList } from "../actions/InterestListActions";
 import {connect} from "react-redux";
 
+const fuseOptions = {
+    keys: ['skills.skillName', 'firstName', 'lastName'],
+    threshold: 0.5
+};
+
+const initalState = {
+    fuse: false,
+    users: [],
+    skills: [],
+    merged: [],
+    filteredUsers: [],
+    searchBox: ''
+}
+
+function loadState(props, state = initalState) {
+    if (props.users !== state.users || props.skills !== state.skills || !state.fuse) {
+        state.users = props.users;
+        state.skills = props.skills;
+        state.merged = mergeSkillsIntoUsers(props.users, props.skills);
+        state.fuse = new Fuse(state.merged, fuseOptions);
+    }
+    state.filteredUsers = state.searchBox === ''
+        ? state.merged
+        : state.fuse.search(state.searchBox)
+    return state;
+}
+
+function mergeSkillsIntoUsers(users = [], skills = []) {
+    return users.map( user => {
+        user.skills = skills.filter( skills => skills.edipi === user.edipi );
+        return user;
+    });
+}
+
 export class UserSearchCard extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            users: props.users,
-            skills: props.skills,
-            filteredUsers: props.users,
-            filteredSkills: props.skills,
-            search: '',
-            searchBox: ''
-        }
         this.onChange = this.onChange.bind(this)
+        this.state = loadState(props);
     }
 
     componentDidMount() {
@@ -23,26 +51,12 @@ export class UserSearchCard extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        return { 
-            ...state,
-            users: props.users,
-            skills: props.skills,
-            filteredUsers: props.users,
-            filteredSkills: props.skills
-        };
+        return loadState(props, state);
     }
 
     onChange(event) {
-        let searchBox = event.target.value.toLowerCase();
-        let filteredUsers = this.props.users;
-        if (searchBox != '') {
-            let edipis = this.props.skills
-                .filter( skill => skill.skillName.toLowerCase().includes(searchBox) )
-                .map( skill => skill.edipi );
-            filteredUsers = filteredUsers
-                .filter( user => edipis.indexOf(user.edipi) !== -1 );
-        }
-        this.setState({ searchBox, filteredUsers });
+        console.log(this.state)        
+        this.setState({ searchBox: event.target.value });
     };
 
     onClick = (event) => {
