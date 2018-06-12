@@ -135,7 +135,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = (state) =>{
-    return{interest : state.interestCard, user: state.userCard.user}
+    return{interest : state.interestCard, user: state.userCard}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterestCard)

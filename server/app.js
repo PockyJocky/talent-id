@@ -9,7 +9,7 @@ import keys from "./config/keys";
 
 // import routes
 import user from '../server/routes/user.server.route'
-import addInterest from "../server/routes/skills.server.route";
+import interest from "../server/routes/skills.server.route";
 
 // define our app using express
 const app = express();
@@ -35,7 +35,7 @@ mongoose
 SourceMapSupport.install();
 
 app.use('/api/user', user);
-app.use('/api/interest', addInterest);
+app.use('/api/interest', interest);
 
 app.use('/', (req, res) => {
     res.send({ express : 'Api working'});

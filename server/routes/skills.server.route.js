@@ -9,7 +9,7 @@ router.post('/add', (req, res) => {
     skillController.addSkill(req, res);
 });
 
-router.get('/fetchAll', (req, res) => {
+router.get('/getAll', (req, res) => {
     console.log(req.body);
     skillController.fetchSkills(req, res);
 });

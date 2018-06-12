@@ -22,6 +22,7 @@ const initialState = {
         squadron: '13 IS'
     },
     userList: [],
+    interestList: [],
     interestCard: {
         skillValue: '3',
         interestValue: '3',
