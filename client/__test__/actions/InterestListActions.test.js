@@ -6,9 +6,9 @@ describe('InterestListActions', () => {
         const list = [ true, false, true ];
         const expectedAction = {
             list : list,
-            type: Actions.UPDATE_LIST
+            type: Actions.UPDATE_INTEREST_LIST
         };
-        expect(InterestListActions.updateList(list)).toEqual(expectedAction)
+        expect(InterestListActions.updateInterestList(list)).toEqual(expectedAction)
     });
 
 
@@ -16,8 +16,8 @@ describe('InterestListActions', () => {
         const interest = { name: 'test' };
         const expectedAction = {
             interest : interest,
-            type: Actions.ADD_TO_LIST
+            type: Actions.ADD_TO_INTEREST_LIST
         };
-        expect(InterestListActions.addToList(interest)).toEqual(expectedAction)
+        expect(InterestListActions.addToInterestList(interest)).toEqual(expectedAction)
     });
 });

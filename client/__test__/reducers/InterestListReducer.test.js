@@ -16,14 +16,14 @@ describe('InterestListReducer', () => {
     })
 
     it('should handle ADD_TO_LISt', () => {
-        let action = { interest: interest, type: actions.ADD_TO_LIST };
+        let action = { interest: interest, type: actions.ADD_TO_INTEREST_LIST };
         let state = [ interest ];
         expect(reducer(undefined, action)).toEqual(state);
     });
 
     it('should handle UPDATE_LIST', () => {
         let list = [ interest, interest, interest ];
-        let action = { list: list, type: actions.UPDATE_LIST };
+        let action = { list: list, type: actions.UPDATE_INTEREST_LIST };
         let state = list;
         expect(reducer(undefined, action)).toEqual(state);
     });

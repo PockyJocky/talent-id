@@ -33,21 +33,17 @@ export class UserSearchCard extends Component {
     }
 
     onChange(event) {
-        this.setState({
-            searchBox: event.target.value,
-            filteredUsers: this.props.users.filter( user => {
-                return user.edipi.includes(this.foundSkill(event.target.value))
-            })
-        })
+        let searchBox = event.target.value.toLowerCase();
+        let filteredUsers = this.props.users;
+        if (searchBox != '') {
+            let edipis = this.props.skills
+                .filter( skill => skill.skillName.toLowerCase().includes(searchBox) )
+                .map( skill => skill.edipi );
+            filteredUsers = filteredUsers
+                .filter( user => edipis.indexOf(user.edipi) !== -1 );
+        }
+        this.setState({ searchBox, filteredUsers });
     };
-
-    foundSkill(event) {
-        let skill = this.props.skills.filter( skill => {
-            return skill.skillName.includes(event)
-        })
-
-        return skill.edipi
-    }
 
     onClick = (event) => {
         console.log(event.target)

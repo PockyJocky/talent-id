@@ -6,9 +6,9 @@ describe('UserListActions', () => {
         const list = [ true, false, true ];
         const expectedAction = {
             list : list,
-            type: Actions.UPDATE_LIST
+            type: Actions.UPDATE_USER_LIST
         };
-        expect(UserListActions.updateList(list)).toEqual(expectedAction)
+        expect(UserListActions.updateUserList(list)).toEqual(expectedAction)
     });
 
     
@@ -16,8 +16,8 @@ describe('UserListActions', () => {
         const user = { name: 'test' };
         const expectedAction = {
             user : user,
-            type: Actions.ADD_TO_LIST
+            type: Actions.ADD_TO_USER_LIST
         };
-        expect(UserListActions.addToList(user)).toEqual(expectedAction)
+        expect(UserListActions.addToUserList(user)).toEqual(expectedAction)
     });
 });

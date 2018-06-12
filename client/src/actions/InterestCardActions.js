@@ -1,12 +1,12 @@
-import {ADD_INTEREST, UPDATE_INTEREST} from "../Constant"
+import { ADD_INTEREST, UPDATE_INTEREST } from "../Constant"
 
 import callApi from "../apiCaller";
-import {addToList} from "./InterestListActions";
+import { addToInterestList } from "./InterestListActions";
 
 export const addNewInterest = (interest, user) => {
     return async (dispatch) => {
         await dispatch(addInterest(interest));
-        await dispatch(addToList(interest));
+        await dispatch(addToInterestList(interest));
         console.log("Posted Interest")
         return callApi('interest/add', 'POST', { edipi: user.edipi, ...interest })
     }
