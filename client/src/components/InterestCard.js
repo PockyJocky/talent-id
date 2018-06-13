@@ -32,7 +32,7 @@ export class InterestCard extends Component {
     };
 
     handleClick = async () =>{
-        if(this.props.skillName !== '') {
+        if(this.props.skillName !== '' && this.state.skillName !== '') {
 
             const newInterest = {
                 skillName: this.props.interest.skillName,
