@@ -60,15 +60,7 @@ Scenario('see my information', async (I) => {
     I.see('9 IS');
 });
 
-Scenario('can search for people with a specific skill', async (I) => {
-    await I.amOnPage('/list');
-
-    I.see('Search:')
-    I.fillField('.search_box', "Programming")
-    I.see('John')
-
-    //make a new person to see if you can see that one instead of the previous one
-
+Scenario('make a second person', async (I) => {
     await I.amOnPage('/new');
 
     I.fillField('.firstName', 'Micheal');
@@ -85,14 +77,17 @@ Scenario('can search for people with a specific skill', async (I) => {
     I.pressKey('Tab');
     I.pressKey('Right');
     I.click('Submit');
+});
 
-    //search for that person
-
+Scenario('can search for people with a specific skill', async (I) => {
     await I.amOnPage('/list');
 
     I.see('Search:');
-    I.fillField('Search:', "Design");
+    I.fillField('.search_box', "Programming");
+    I.see('John');
+    I.dontSee('Micheal');
+
+    I.fillField('.search_box', "Design");
     I.see('Micheal');
     I.dontSee('John')
 });
-
