@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 
 const fuseOptions = {
     keys: ['skills.skillName', 'firstName', 'lastName'],
-    threshold: 0.5
+    threshold: 0.1
 };
 
 const initalState = {
