@@ -1,4 +1,4 @@
-import { UPDATE_PLACE } from "../Constant";
+import {UPDATE_PLACE} from "../Constant";
 
 const initialState = {
     place: 0

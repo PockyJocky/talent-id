@@ -8,7 +8,6 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 import MainCard from "../../src/components/MainCard"
-import UserCard from "../../src/components/UserCard"
 import WelcomeCard from "../../src/components/WelcomeCard";
 import UserInfoCard from "../../src/components/UserInfoCard";
 import InterestCard from "../../src/components/InterestCard";
@@ -42,7 +41,7 @@ describe("MainCard", () => {
             history.push('/');
             expect(wrapper.update().find(WelcomeCard).length).toEqual(1);
         });
-        
+
         it('with a user info card', () => {
             history.push('/new');
             store.dispatch(updatePlace(0));
