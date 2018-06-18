@@ -8,7 +8,11 @@ import configureStore from "./store/configureStore";
 import createHistory from 'history/createBrowserHistory'
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 
+import { initializeIcons } from '@uifabric/icons';
+
 import MainCard from "./components/MainCard";
+
+initializeIcons();
 
 const initialState = {
     navigation: {

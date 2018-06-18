@@ -16,4 +16,5 @@ export class UserInfoCard extends Component{
         );
     }
 }
+
 export default UserInfoCard
