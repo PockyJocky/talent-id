@@ -7,6 +7,7 @@ configure({ adapter: new Adapter() });
 
 import { default as Connected, UserSearchCard } from "../../src/components/UserSearchCard";
 import { SearchCard } from "../../src/components/SearchCard";
+import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 
 import configureStore from "../../src/store/configureStore";
 
@@ -58,22 +59,22 @@ describe('UserSearchCard', () => {
         let wrapper = mount(<Provider store={store}><Connected/></Provider>);
 
         describe('search text box', () => {
-            searchTextBox = wrapper.find('.search_box');
+            searchTextBox = wrapper.find('.search_box').first();
 
             it('that exists', () =>{
                 expect(searchTextBox.length).toEqual(1)
             });
 
             it('should be able to take input', () => {
-                expect(searchTextBox.type()).toEqual('input')
+                expect(searchTextBox.type()).toEqual(SearchBox)
             });
 
             it('should have a list of users', () => {
                 const spy = jest.spyOn(UserSearchCard.prototype, 'onChange')
                 wrapper.update();
-                users = wrapper.find('.person');
+                users = wrapper.find('.user_list');
                 expect(spy).not.toHaveBeenCalled();
-                expect(users.length).toEqual(3)
+                expect(users.length).toEqual(1)
             });
         })
     })

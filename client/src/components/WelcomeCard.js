@@ -6,10 +6,6 @@ import { Fabric } from "office-ui-fabric-react";
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export class WelcomeCard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <Fabric>

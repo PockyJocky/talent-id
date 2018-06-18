@@ -2,6 +2,11 @@ import Fuse from 'fuse.js';
 import React, {Component} from 'react'
 import { fetchUserList } from "../actions/UserListActions";
 import { fetchInterestList } from "../actions/InterestListActions";
+
+import { Fabric } from "office-ui-fabric-react";
+import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+
 import {connect} from "react-redux";
 
 const fuseOptions = {
@@ -18,6 +23,8 @@ const initalState = {
     searchBox: ''
 }
 
+
+
 function loadState(props, state = initalState) {
     if (props.users !== state.users || props.skills !== state.skills || !state.fuse) {
         state.users = props.users;
@@ -27,7 +34,7 @@ function loadState(props, state = initalState) {
     }
     state.filteredUsers = state.searchBox === ''
         ? state.merged
-        : state.fuse.search(state.searchBox)
+        : state.fuse.search(state.searchBox);
     return state;
 }
 
@@ -37,6 +44,24 @@ function mergeSkillsIntoUsers(users = [], skills = []) {
         return user;
     });
 }
+
+const _columns: IColumn[] = [
+    {
+        key: 'column1',
+        name: 'Rank',
+        fieldName: 'rank'
+    },
+    {
+        key: 'column2',
+        name: 'Last Name',
+        fieldName: 'lastName'
+    },
+    {
+        key: 'column3',
+        name: 'First Name',
+        fieldName: 'firstName'
+    }
+]
 
 export class UserSearchCard extends Component {
     constructor(props){
@@ -55,8 +80,7 @@ export class UserSearchCard extends Component {
     }
 
     onChange(event) {
-        console.log(this.state)
-        this.setState({ searchBox: event.target.value });
+        this.setState({ searchBox: event });
     };
 
     onClick = (event) => {
@@ -64,26 +88,25 @@ export class UserSearchCard extends Component {
     };
 
     render(){
-        const filteredList = this.state.filteredUsers.map( (person, index) => (
-            <div onClick={e => this.onClick(e)} key={index} >
-                <div style={{color:'white'}} className='person' >
-                    {person.firstName + ' ' + person.lastName + ' ' + person.squadron + ' ' + person.edipi}
-                </div>
-            </div>
-        ));
         return(
-            <div>
-                <label htmlFor="search_box" className="labels_right">Search:</label>
-                <input
-                        type='text'
-                        className='search_box'
-                        onChange={this.onChange}
-                        value={this.state.searchBox}
-                    />
+            <Fabric>
+                <div>
+                    <SearchBox
+                            type='text'
+                            placeholder="Search"
+                            className='search_box'
+                            onChange={this.onChange}
+                            value={this.state.searchBox}
+                        />
                     <div>
-                        { filteredList }
+                        <DetailsList
+                            className='user_list'
+                            items={ this.state.filteredUsers }
+                            columns={ _columns }
+                        />
                     </div>
-            </div>
+                </div>
+            </Fabric>
         )
     }
 }
