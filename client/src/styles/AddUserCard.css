@@ -25,7 +25,7 @@ form .form_row {
     min-height: 90px;
 }
 
-.interest_form .form_row:not(:last-child) {
+.skill_list .form_row:not(:last-child) {
     padding-bottom: 1em;
     border-bottom: rgba(0,0,0,.4) 1px solid;
 }

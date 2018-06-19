@@ -7,11 +7,11 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Formik, Form, FieldArray } from 'formik';
 import { object, string, mixed, number, array } from 'yup';
 
-import { addInterests } from '../actions/InterestListActions.js';
+import { addNewInterest } from '../actions/InterestCardActions.js';
 import { addNewUser } from '../actions/UserInfoActions.js';
+import { push } from 'react-router-redux';
 
 import '../styles/AddUserCard.css';
-import { addNewInterest } from '../actions/InterestCardActions.js';
 
 const rankList = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
 const squadronList = ['13 IS', '48 IS' ,'548 OSS', '9 IS', '548 ISRG'];
@@ -71,10 +71,11 @@ const initialValues = {
 class AddUserCard extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.renderUserForm.bind(this);
         this.renderInterestForm.bind(this);
-        this.pages = [this.renderUserForm, this.renderInterestForm];
+        this.renderReview.bind(this);
+        this.pages = [this.renderUserForm, this.renderInterestForm, this.renderReview];
 
         this.state = {
             pageNum: 0,
@@ -99,99 +100,142 @@ class AddUserCard extends React.Component {
             // .then( () => this.props.history.push('/list') );
     }
 
+    renderCurrentActions(props) {
+        let buttons;
+        const { pageNum } = this.state;
+        const { touched, errors, values } = props;
+
+        switch (pageNum) {
+            case 0:
+                buttons = [
+                    <DefaultButton
+                        key='next'
+                        className='next_page_button'
+                        onClick={ e => this.nextPage()}
+                        disabled={!touched || !touched.user || (errors && errors.user)}
+                    >
+                        Next
+                    </DefaultButton>
+                ];
+                break;
+            case 1:
+                buttons = [
+                    <DefaultButton
+                        key='prev'
+                        className='prev_page_button'
+                        onClick={ e => this.prevPage()}
+                    >
+                        Prev
+                    </DefaultButton>,
+                    <DefaultButton
+                        className='next_page_button'
+                        onClick={ e => this.nextPage()}
+                        disabled={errors && errors.skills}
+                    >
+                        Next
+                    </DefaultButton>
+                ];
+                break;
+            default:
+                buttons = [
+                    <DefaultButton
+                        key='submit'
+                        className='submit_page_button'
+                        onClick={ e => this.handleSubmit(values)}
+                    >
+                        Submit
+                    </DefaultButton>
+                ];
+        }
+
+        return (
+            <div key='actions' className='actions'>
+                { buttons }
+            </div>
+        );
+    }
+
     renderPage(props) {
         const { pageNum } = this.state;
-        const page = this.pages[pageNum];
-        const isFirstPage = pageNum === 0;
-        const isLastPage = pageNum === (this.pages.length - 1);
+        const renderCurrentPage = this.pages[pageNum];
         
-        return [
-            page(props),
-            <div key='actions' className='actions'>
-                <DefaultButton onClick={e => this.prevPage()} disabled={isFirstPage}>
-                    Prev
-                </DefaultButton>
-                <DefaultButton onClick={e => this.nextPage()} disabled={isLastPage}>
-                    Next
-                </DefaultButton>
-                <DefaultButton onClick={e => this.handleSubmit(props.values)} disabled={!isLastPage || !props.isValid}>
-                    Submit
-                </DefaultButton>
-            </div>
-        ];
+        return (
+            <Form>
+                { renderCurrentPage(props) }
+                { this.renderCurrentActions(props) }
+            </Form>
+        );
     }
 
     renderUserForm(props) {
         const { values, errors, touched, setFieldTouched, setFieldValue } = props;
-        return (
-            <Form key='user' className='user_form'>
-                <div className='form_row'>
-                    <TextField
-                        key='edipi'
-                        className='form_input form_input_text user_edipi'
-                        label='DOD ID Number'
-                        name='user.edipi'
-                        errorMessage={ touched.user && touched.user.edipi && errors.user && errors.user.edipi }
-                        onBlur={ e => setFieldTouched('user.edipi') }
-                        onChanged={v => setFieldValue('user.edipi', v)}
-                        value={values.user.edipi} 
-                        required
-                    />
-                </div>
-                <div className='form_row'>
-                    <TextField
-                        key='firstName'
-                        className='form_input form_input_text user_first_name'
-                        name='user.firstName'
-                        label='First Name'
-                        errorMessage={ touched.user && touched.user.firstName && errors.user && errors.user.firstName }
-                        onBlur={e => setFieldTouched('user.firstName')}
-                        onChanged={v => setFieldValue('user.firstName', v)}
-                        value={values.user.firstName} 
-                        required
-                    />
-                    <TextField
-                        key='lastName'
-                        className='form_input form_input_text user_last_name'
-                        name='user.lastName'
-                        label='Last Name'
-                        errorMessage={ touched.user && touched.user.lastName && errors.user && errors.user.lastName }
-                        onBlur={ e => setFieldTouched('user.lastName') }
-                        onChanged={v => setFieldValue('user.lastName', v)}
-                        value={values.user.lastName} 
-                        required
-                    />
-                </div>
-                <div className='form_row'>
-                    <Dropdown
-                        key='rank'
-                        className='form_input form_input_dropdown user_rank'
-                        label='Rank'
-                        placeHolder='Select a rank'
-                        defaultSelectedKey={values.user.rank}
-                        errorMessage={ touched.user && touched.user.rank && errors.user && errors.user.rank }
-                        onBlur={ e => setFieldTouched('user.rank') }
-                        onChanged={v => setFieldValue('user.rank', v.key)}
-                        options={rankList.map( val => ({ key: val, text: val }) )}
-                        value={values.user.rank} 
-                        required
-                    />
-                    <Dropdown
-                        key='unit'
-                        className='form_input form_input_dropdown user_unit'
-                        label='Unit'
-                        placeHolder='Select a unit'
-                        defaultSelectedKey={values.user.squadron}
-                        errorMessage={ touched.user && touched.user.squadron && errors.user && errors.user.squadron }
-                        onBlur={ e => setFieldTouched('user.squadron') }
-                        onChanged={v => setFieldValue('user.squadron', v.key)}
-                        options={squadronList.map( val => ({ key: val, text: val }) )}
-                        value={values.user.squadron} 
-                        required
-                    />
-                </div>
-            </Form>
-        );
+        return [
+            <div key='id' className='form_row'>
+                <TextField
+                    key='edipi'
+                    className='form_input form_input_text user_edipi'
+                    label='DOD ID Number'
+                    name='user.edipi'
+                    errorMessage={ touched.user && touched.user.edipi && errors.user && errors.user.edipi }
+                    onBlur={ e => setFieldTouched('user.edipi') }
+                    onChanged={v => setFieldValue('user.edipi', v)}
+                    value={values.user.edipi} 
+                    required
+                />
+                <Dropdown
+                    key='rank'
+                    className='form_input form_input_dropdown user_rank'
+                    label='Rank'
+                    placeHolder='Select a rank'
+                    defaultSelectedKey={values.user.rank}
+                    errorMessage={ touched.user && touched.user.rank && errors.user && errors.user.rank }
+                    onBlur={ e => setFieldTouched('user.rank') }
+                    onChanged={v => setFieldValue('user.rank', v.key)}
+                    options={rankList.map( val => ({ key: val, text: val }) )}
+                    value={values.user.rank} 
+                    required
+                />
+            </div>,
+            <div key='name' className='form_row'>
+                <TextField
+                    key='firstName'
+                    className='form_input form_input_text user_first_name'
+                    name='user.firstName'
+                    label='First Name'
+                    errorMessage={ touched.user && touched.user.firstName && errors.user && errors.user.firstName }
+                    onBlur={e => setFieldTouched('user.firstName')}
+                    onChanged={v => setFieldValue('user.firstName', v)}
+                    value={values.user.firstName} 
+                    required
+                />
+                <TextField
+                    key='lastName'
+                    className='form_input form_input_text user_last_name'
+                    name='user.lastName'
+                    label='Last Name'
+                    errorMessage={ touched.user && touched.user.lastName && errors.user && errors.user.lastName }
+                    onBlur={ e => setFieldTouched('user.lastName') }
+                    onChanged={v => setFieldValue('user.lastName', v)}
+                    value={values.user.lastName} 
+                    required
+                />
+            </div>,
+            <div key='org' className='form_row'>
+                <Dropdown
+                    key='unit'
+                    className='form_input form_input_dropdown user_unit'
+                    label='Unit'
+                    placeHolder='Select a unit'
+                    defaultSelectedKey={values.user.squadron}
+                    errorMessage={ touched.user && touched.user.squadron && errors.user && errors.user.squadron }
+                    onBlur={ e => setFieldTouched('user.squadron') }
+                    onChanged={v => setFieldValue('user.squadron', v.key)}
+                    options={squadronList.map( val => ({ key: val, text: val }) )}
+                    value={values.user.squadron} 
+                    required
+                />
+            </div>
+        ];
     }
 
     renderInterestForm(props) {
@@ -217,6 +261,7 @@ class AddUserCard extends React.Component {
                                     className='form_input form_input_text skill_name'
                                     name={`skills.${index}.name`}
                                     errorMessage={errorMessage}
+                                    value={values.skills[index].name}
                                     onChanged={v => setFieldValue(`skills.${index}.name`, v)}
                                     onBlur={e => setFieldTouched(`skills.${index}.name`)}
                                     required
@@ -256,19 +301,39 @@ class AddUserCard extends React.Component {
                         );
                     });
 
-                    return (
-                        <Form className='interest_form'>
-                            <div className='skill_list'>
+                    return [
+                            <div key='list' className='skill_list'>
                                 { skillList }
-                            </div>
+                            </div>,
                             <DefaultButton key='add' className='add_button' onClick={addSkill}>
                                 Add Another Skill
                             </DefaultButton>
-                        </Form>
-                    )
+                    ];
                 }}
             />
         );
+    }
+
+    renderReview(props) {
+        const { values: { user, skills } } = props;
+        const skillsReview = skills.map( (skill, index) => (
+            <div className='form_row' key={index}>
+                <span className='review_skill_name'>{ skill.name }</span>
+            </div>
+        ))
+        return [
+            <div className='form_row' key='name'>
+                <span className='review_user_rank'>{ user.rank }</span>
+                <span className='review_user_name'>{ `${user.firstName} ${user.lastName}` }</span>
+            </div>,
+            <div className='form_row' key='org'>
+                <span className='review_user_org'>{ user.squadron }</span>
+                <span className='review_user_id'>{ user.edipi }</span>
+            </div>,
+            <div className='form_row' key='skills'>
+                { skillsReview }
+            </div>
+        ];
     }
 
     render() {
@@ -287,11 +352,18 @@ class AddUserCard extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return{
-        addUser: (user, interests) =>  {
-            return Promise.all([
-                addNewUser(user)(dispatch),
-                addNewInterest(interests)(dispatch)
-            ]);
+        addUser: (user, skills) =>  {
+            let promises =skills.map( skill => {
+                let output = {
+                    skillName: skill.name,
+                    skillValue: skill.proficiency,
+                    interestValue: skill.interest
+                }
+                return addNewInterest(output, user)(dispatch)
+            });
+            promises.push( addNewUser(user)(dispatch) );
+            return Promise.all(promises)
+                .then( () => dispatch(push('/list')) );
         },
     }
 };
