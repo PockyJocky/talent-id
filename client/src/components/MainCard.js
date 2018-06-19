@@ -11,9 +11,9 @@ const MainCard = props => (
         <div className="main_card">
             <Route exact path='/' component={WelcomeCard}/>
             <Route path='/list' component={UserSearchCard}/>
-            <Route path='/new' component={UserCard}/>
+            <Route path='/new' component={AddUserCard}/>
         </div>
     </div>
-];
+);
 
 export default MainCard;
