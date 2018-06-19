@@ -9,7 +9,6 @@ import { object, string, mixed, number, array } from 'yup';
 
 import { addNewInterest } from '../actions/InterestCardActions.js';
 import { addNewUser } from '../actions/UserInfoActions.js';
-import { push } from 'react-router-redux';
 
 import '../styles/AddUserCard.css';
 
@@ -96,8 +95,7 @@ class AddUserCard extends React.Component {
     
     handleSubmit(values) {
         this.props.addUser(values.user, values.skills)
-            .then( () => console.log('added') );
-            // .then( () => this.props.history.push('/list') );
+            .then( () => this.props.history.push('/list') );
     }
 
     renderCurrentActions(props) {
@@ -128,6 +126,7 @@ class AddUserCard extends React.Component {
                         Prev
                     </DefaultButton>,
                     <DefaultButton
+                        key='next'
                         className='next_page_button'
                         onClick={ e => this.nextPage()}
                         disabled={errors && errors.skills}
@@ -362,8 +361,7 @@ const mapDispatchToProps = dispatch => {
                 return addNewInterest(output, user)(dispatch)
             });
             promises.push( addNewUser(user)(dispatch) );
-            return Promise.all(promises)
-                .then( () => dispatch(push('/list')) );
+            return Promise.all(promises);
         },
     }
 };
