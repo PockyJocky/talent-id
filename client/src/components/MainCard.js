@@ -14,6 +14,6 @@ const MainCard = props => (
             <Route path='/new' component={UserCard}/>
         </div>
     </div>
-);
+];
 
 export default MainCard;
