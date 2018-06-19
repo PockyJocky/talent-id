@@ -23,8 +23,6 @@ const initalState = {
     searchBox: ''
 }
 
-
-
 function loadState(props, state = initalState) {
     if (props.users !== state.users || props.skills !== state.skills || !state.fuse) {
         state.users = props.users;
@@ -45,7 +43,7 @@ function mergeSkillsIntoUsers(users = [], skills = []) {
     });
 }
 
-const _columns: IColumn[] = [
+const _columns = [
     {
         key: 'column1',
         name: 'Rank',

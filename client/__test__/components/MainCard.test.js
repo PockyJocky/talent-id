@@ -9,12 +9,16 @@ configure({ adapter: new Adapter() });
 
 import MainCard from "../../src/components/MainCard"
 import WelcomeCard from "../../src/components/WelcomeCard";
-import UserInfoCard from "../../src/components/UserInfoCard";
-import InterestCard from "../../src/components/InterestCard";
-import PlayersCard from "../../src/components/PlayersCard";
+import AddUserCard from "../../src/components/AddUserCard";
 
 import configureStore from "../../src/store/configureStore";
-import { updatePlace } from '../../src/actions/NavigationActions';
+
+// Disable Icon Warnings for OfficeFabricUI
+import { setIconOptions } from 'office-ui-fabric-react/lib/Styling';
+setIconOptions({
+  disableWarnings: true
+});
+
 
 describe("MainCard", () => {
     const initialState = { };
@@ -42,49 +46,36 @@ describe("MainCard", () => {
             expect(wrapper.update().find(WelcomeCard).length).toEqual(1);
         });
 
-        it('with a user info card', () => {
+        it('with a new user card', () => {
             history.push('/new');
-            store.dispatch(updatePlace(0));
-            expect(wrapper.update().find(UserInfoCard).length).toEqual(1);
-        });
-
-        it('with a interest card', () => {
-            history.push('/new');
-            store.dispatch(updatePlace(1));
-            expect(wrapper.update().find(InterestCard).length).toEqual(1);
-        });
-
-        it('with a player card', () => {
-            history.push('/new');
-            store.dispatch(updatePlace(2));
-            expect(wrapper.update().find(PlayersCard).length).toEqual(1);
+            expect(wrapper.update().find(AddUserCard).length).toEqual(1);
         });
     });
 
-    describe('has a button', () => {
-        beforeEach(() => {
-            button = wrapper.find('.next_button');
-        });
+    // describe('has a button', () => {
+    //     beforeEach(() => {
+    //         button = wrapper.find('.next_button');
+    //     });
         
-        it('that renders', () => {
-            expect(button.length).toEqual(1)
-        });
+    //     it('that renders', () => {
+    //         expect(button.length).toEqual(1)
+    //     });
 
-        it('should increment the place when clicked', () => {
-            store.dispatch(updatePlace(0));
+    //     it('should increment the place when clicked', () => {
+    //         store.dispatch(updatePlace(0));
 
-            button.simulate("click");
-            expect(store.getState().navigation.place).toEqual(1);
-            button.simulate("click");
-            expect(store.getState().navigation.place).toEqual(2);
-        });
+    //         button.simulate("click");
+    //         expect(store.getState().navigation.place).toEqual(1);
+    //         button.simulate("click");
+    //         expect(store.getState().navigation.place).toEqual(2);
+    //     });
         
-        it('should not increment place after the second time', () => {
-            store.dispatch(updatePlace(2));
-            button.simulate("click");
-            let state = store.getState();
-            expect(state.navigation.place).toEqual(2);
-        });
+    //     it('should not increment place after the second time', () => {
+    //         store.dispatch(updatePlace(2));
+    //         button.simulate("click");
+    //         let state = store.getState();
+    //         expect(state.navigation.place).toEqual(2);
+    //     });
 
-    });
+    // });
 });
