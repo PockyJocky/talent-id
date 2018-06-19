@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
@@ -6,7 +7,11 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Formik, Form, FieldArray } from 'formik';
 import { object, string, mixed, number, array } from 'yup';
 
+import { addInterests } from '../actions/InterestListActions.js';
+import { addNewUser } from '../actions/UserInfoActions.js';
+
 import '../styles/AddUserCard.css';
+import { addNewInterest } from '../actions/InterestCardActions.js';
 
 const rankList = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
 const squadronList = ['13 IS', '48 IS' ,'548 OSS', '9 IS', '548 ISRG'];
@@ -87,6 +92,12 @@ class AddUserCard extends React.Component {
         if (pageNum < this.pages.length - 1)
             this.setState({ pageNum: pageNum + 1 });
     }
+    
+    handleSubmit(values) {
+        this.props.addUser(values.user, values.skills)
+            .then( () => console.log('added') );
+            // .then( () => this.props.history.push('/list') );
+    }
 
     renderPage(props) {
         const { pageNum } = this.state;
@@ -94,7 +105,6 @@ class AddUserCard extends React.Component {
         const isFirstPage = pageNum === 0;
         const isLastPage = pageNum === (this.pages.length - 1);
         
-        console.log(props)
         return [
             page(props),
             <div key='actions' className='actions'>
@@ -261,10 +271,6 @@ class AddUserCard extends React.Component {
         );
     }
 
-    handleSubmit(values) {
-        console.log(values);
-    }
-
     render() {
         return (
             <div className='add_user_card'>
@@ -279,4 +285,15 @@ class AddUserCard extends React.Component {
     }
 }
 
-export default AddUserCard;
+const mapDispatchToProps = dispatch => {
+    return{
+        addUser: (user, interests) =>  {
+            return Promise.all([
+                addNewUser(user)(dispatch),
+                addNewInterest(interests)(dispatch)
+            ]);
+        },
+    }
+};
+
+export default connect(undefined, mapDispatchToProps)(AddUserCard);
