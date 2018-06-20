@@ -1,7 +1,7 @@
 import Fuse from 'fuse.js';
 import React, {Component} from 'react'
-import { fetchUserList } from "../actions/UserListActions";
-import { fetchInterestList } from "../actions/InterestListActions";
+import { fetchUserList } from "../actions/UserActions";
+import { fetchSkillList } from "../actions/SkillActions";
 
 import { Fabric } from "office-ui-fabric-react";
 import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
@@ -18,7 +18,6 @@ const initalState = {
     fuse: false,
     users: [],
     skills: [],
-    merged: [],
     filteredUsers: [],
     searchBox: ''
 }
@@ -27,20 +26,12 @@ function loadState(props, state = initalState) {
     if (props.users !== state.users || props.skills !== state.skills || !state.fuse) {
         state.users = props.users;
         state.skills = props.skills;
-        state.merged = mergeSkillsIntoUsers(props.users, props.skills);
         state.fuse = new Fuse(state.merged, fuseOptions);
     }
     state.filteredUsers = state.searchBox === ''
-        ? state.merged
+        ? state.users
         : state.fuse.search(state.searchBox);
     return state;
-}
-
-function mergeSkillsIntoUsers(users = [], skills = []) {
-    return users.map( user => {
-        user.skills = skills.filter( skills => skills.edipi === user.edipi );
-        return user;
-    });
 }
 
 const _columns = [
@@ -70,7 +61,7 @@ export class UserSearchCard extends Component {
 
     componentDidMount() {
         this.props.fetchUserList();
-        this.props.fetchInterestList();
+        this.props.fetchSkillList();
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -112,17 +103,14 @@ export class UserSearchCard extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         fetchUserList: () => dispatch(fetchUserList()),
-        fetchInterestList: () => dispatch(fetchInterestList())
-
+        fetchSkillList: () => dispatch(fetchSkillList())
     }
 };
 
 const mapStateToProps = state => {
     return {
-        user: state.userCard,
-        users: state.userList,
-        skill: state.interestCard,
-        skills: state.interestList,
+        users: state.users,
+        skills: state.skills,
     };
 };
 

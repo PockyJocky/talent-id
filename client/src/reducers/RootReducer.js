@@ -1,14 +1,10 @@
 import {combineReducers} from 'redux'
-import {interestCard} from "./InterestCardReducer";
-import {userCard} from "./UserInfoReducer";
-import userList from "./UserListReducer";
-import interestList from "./InterestListReducer"
+import users from "./UserReducer";
+import skills from "./SkillReducer"
 
 const rootReducer = combineReducers({
-    interestCard,
-    interestList,
-    userCard,
-    userList,
+    users,
+    skills,
 })
 
 export default rootReducer
