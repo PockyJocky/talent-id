@@ -6,7 +6,7 @@ import {Fabric, DetailsList, Checkbox, SearchBox} from "office-ui-fabric-react";
 import {connect} from "react-redux";
 
 const fuseOptions = {
-    keys: ['skills.name'],
+    keys: ['skills.skill'],
     threshold: 0.1
 };
 
@@ -19,7 +19,7 @@ const initalState = {
     opts: {
         'firstName': false,
         'lastName': false,
-        'skills.name': true
+        'skills.skill': true
     }
 }
 
@@ -27,7 +27,7 @@ function loadState(props, state = initalState) {
     if (props.users !== state.users || props.skills !== state.skills || !state.fuse) {
         state.users = props.users;
         state.skills = props.skills;
-        state.fuse = new Fuse(state.merged, fuseOptions);
+        state.fuse = new Fuse(state.users, fuseOptions);
     }
     state.filteredUsers = state.searchBox === ''
         ? state.users
@@ -66,6 +66,7 @@ export class UserSearchCard extends Component {
     }
 
     onChange(event) {
+        console.log(this.state.users)
         this.setState({ searchBox: event });
     };
 
@@ -78,7 +79,7 @@ export class UserSearchCard extends Component {
                 options.push(prop)
             }
         }
-        const fuse = new Fuse(this.state.merged, { ...fuseOptions, keys: options});
+        const fuse = new Fuse(this.state.users, { ...fuseOptions, keys: options});
         this.setState({ fuse, opts });
     }
 
@@ -101,7 +102,7 @@ export class UserSearchCard extends Component {
                         Search by:
                         <Checkbox label="First Name" checked={this.state.opts["firstName"]} onChange={ (_e, val) => this.onCheckboxChange('firstName', val)}/>
                         <Checkbox label="Last Name" checked={this.state.opts["lastName"]} onChange={ (_e, val) => this.onCheckboxChange('lastName', val)}/>
-                        <Checkbox label="Skill" checked={this.state.opts["skills.name"]} onChange={ (_e, val) => this.onCheckboxChange('skills.name', val)}/>
+                        <Checkbox label="Skill" checked={this.state.opts["skills.skill"]} onChange={ (_e, val) => this.onCheckboxChange('skills.skill', val)}/>
                     </div>
                     <div>
                         <DetailsList
