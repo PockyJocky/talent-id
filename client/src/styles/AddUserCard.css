@@ -1,0 +1,58 @@
+.add_user_card {
+    padding: 1em;
+    max-width: 600px;
+    background: white;
+    max-height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.add_user_card form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+form {
+    margin-bottom: 2em;
+}
+
+form .form_row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 90px;
+}
+
+.skill_list .form_row:not(:last-child) {
+    padding-bottom: 1em;
+    border-bottom: rgba(0,0,0,.4) 1px solid;
+}
+
+.skill_sliders {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form_input {
+    margin: .3em .5em;
+}
+
+.form_input_slider {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form_input_text {
+    min-width: 200px;
+}
+
+.form_input_dropdown {
+    min-width: 100px;
+}
+
+.skill_name {
+    min-height: 80px;
+}

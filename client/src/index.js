@@ -6,14 +6,15 @@ import {Provider} from 'react-redux'
 import configureStore from "./store/configureStore";
 
 import createHistory from 'history/createBrowserHistory'
-import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
+import { Router } from 'react-router'
+
+import { initializeIcons } from '@uifabric/icons';
 
 import MainCard from "./components/MainCard";
 
+initializeIcons();
+
 const initialState = {
-    navigation: {
-        place: 0
-    },
     userCard: {
         firstName: '',
         lastName: '',
@@ -32,14 +33,14 @@ const initialState = {
 };
 
 const history = createHistory();
-let store = configureStore(initialState, routerMiddleware(history));
+let store = configureStore(initialState);
 window.store = store;
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <Router history={history}>
             <MainCard />
-        </ConnectedRouter>
+        </Router>
     </Provider>,
     document.getElementById('root')
 );

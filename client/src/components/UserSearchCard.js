@@ -4,7 +4,7 @@ import { fetchUserList } from "../actions/UserListActions";
 import { fetchInterestList } from "../actions/InterestListActions";
 
 import { Fabric } from "office-ui-fabric-react";
-import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 
 import {connect} from "react-redux";
@@ -22,8 +22,6 @@ const initalState = {
     filteredUsers: [],
     searchBox: ''
 }
-
-
 
 function loadState(props, state = initalState) {
     if (props.users !== state.users || props.skills !== state.skills || !state.fuse) {
@@ -45,7 +43,7 @@ function mergeSkillsIntoUsers(users = [], skills = []) {
     });
 }
 
-const _columns: IColumn[] = [
+const _columns = [
     {
         key: 'column1',
         name: 'Rank',
