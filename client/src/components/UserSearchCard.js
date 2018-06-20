@@ -1,7 +1,5 @@
 import Fuse from 'fuse.js';
 import React, {Component} from 'react'
-import { fetchUserList } from "../actions/UserActions";
-import { fetchSkillList } from "../actions/SkillActions";
 
 import { Fabric } from "office-ui-fabric-react";
 import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
@@ -59,11 +57,6 @@ export class UserSearchCard extends Component {
         this.state = loadState(props);
     }
 
-    componentDidMount() {
-        this.props.fetchUserList();
-        this.props.fetchSkillList();
-    }
-
     static getDerivedStateFromProps(props, state) {
         return loadState(props, state);
     }
@@ -100,13 +93,6 @@ export class UserSearchCard extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchUserList: () => dispatch(fetchUserList()),
-        fetchSkillList: () => dispatch(fetchSkillList())
-    }
-};
-
 const mapStateToProps = state => {
     return {
         users: state.users,
@@ -114,4 +100,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserSearchCard)
+export default connect(mapStateToProps)(UserSearchCard)
