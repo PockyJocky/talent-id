@@ -8,33 +8,18 @@ import configureStore from "./store/configureStore";
 import createHistory from 'history/createBrowserHistory'
 import { Router } from 'react-router'
 
-import { initializeIcons } from '@uifabric/icons';
-
 import MainCard from "./components/MainCard";
 
+import { initializeIcons } from '@uifabric/icons';
 initializeIcons();
 
 const initialState = {
-    userCard: {
-        firstName: '',
-        lastName: '',
-        edipi: '',
-        rank: 'AB',
-        squadron: '13 IS'
-    },
-    userList: [],
-    interestList: [],
-    interestCard: {
-        skillValue: '3',
-        interestValue: '3',
-        skillName: '',
-        skillList: []
-    }
+    users: [],
+    skills: [],
 };
 
 const history = createHistory();
-let store = configureStore(initialState);
-window.store = store;
+const store = configureStore(initialState);
 
 ReactDOM.render(
     <Provider store={store}>

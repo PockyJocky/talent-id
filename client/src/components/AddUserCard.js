@@ -7,8 +7,7 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Formik, Form, FieldArray } from 'formik';
 import { object, string, mixed, number, array } from 'yup';
 
-import { addNewInterest } from '../actions/InterestCardActions.js';
-import { addNewUser } from '../actions/UserInfoActions.js';
+import { addNewUser } from '../actions/UserActions';
 
 import '../styles/AddUserCard.css';
 
@@ -93,8 +92,8 @@ class AddUserCard extends React.Component {
             this.setState({ pageNum: pageNum + 1 });
     }
     
-    handleSubmit(values) {
-        this.props.addUser(values.user, values.skills)
+    handleSubmit({ user, skills }) {
+        this.props.addUser({ ...user, skills })
             .then( () => this.props.history.push('/list') );
     }
 
@@ -354,18 +353,7 @@ class AddUserCard extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return{
-        addUser: (user, skills) =>  {
-            let promises =skills.map( skill => {
-                let output = {
-                    skillName: skill.name,
-                    skillValue: skill.proficiency,
-                    interestValue: skill.interest
-                }
-                return addNewInterest(output, user)(dispatch)
-            });
-            promises.push( addNewUser(user)(dispatch) );
-            return Promise.all(promises);
-        },
+        addUser: user => dispatch(addNewUser(user)),
     }
 };
 
