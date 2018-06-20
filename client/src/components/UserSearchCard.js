@@ -4,7 +4,7 @@ import { fetchUserList } from "../actions/UserListActions";
 import { fetchInterestList } from "../actions/InterestListActions";
 
 import { Fabric } from "office-ui-fabric-react";
-import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 
 import {connect} from "react-redux";

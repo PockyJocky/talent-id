@@ -159,10 +159,13 @@ class AddUserCard extends React.Component {
         const renderCurrentPage = this.pages[pageNum];
         
         return (
-            <Form>
-                { renderCurrentPage(props) }
-                { this.renderCurrentActions(props) }
-            </Form>
+            <div>
+                Let's Start With Some Basic Information
+                <Form>
+                    { renderCurrentPage(props) }
+                    { this.renderCurrentActions(props) }
+                </Form>
+            </div>
         );
     }
 
@@ -178,7 +181,7 @@ class AddUserCard extends React.Component {
                     errorMessage={ touched.user && touched.user.edipi && errors.user && errors.user.edipi }
                     onBlur={ e => setFieldTouched('user.edipi') }
                     onChanged={v => setFieldValue('user.edipi', v)}
-                    value={values.user.edipi} 
+                    value={values.user.edipi}
                     required
                 />
                 <Dropdown
@@ -191,7 +194,7 @@ class AddUserCard extends React.Component {
                     onBlur={ e => setFieldTouched('user.rank') }
                     onChanged={v => setFieldValue('user.rank', v.key)}
                     options={rankList.map( val => ({ key: val, text: val }) )}
-                    value={values.user.rank} 
+                    value={values.user.rank}
                     required
                 />
             </div>,
@@ -204,7 +207,7 @@ class AddUserCard extends React.Component {
                     errorMessage={ touched.user && touched.user.firstName && errors.user && errors.user.firstName }
                     onBlur={e => setFieldTouched('user.firstName')}
                     onChanged={v => setFieldValue('user.firstName', v)}
-                    value={values.user.firstName} 
+                    value={values.user.firstName}
                     required
                 />
                 <TextField
@@ -215,7 +218,7 @@ class AddUserCard extends React.Component {
                     errorMessage={ touched.user && touched.user.lastName && errors.user && errors.user.lastName }
                     onBlur={ e => setFieldTouched('user.lastName') }
                     onChanged={v => setFieldValue('user.lastName', v)}
-                    value={values.user.lastName} 
+                    value={values.user.lastName}
                     required
                 />
             </div>,
@@ -230,7 +233,7 @@ class AddUserCard extends React.Component {
                     onBlur={ e => setFieldTouched('user.squadron') }
                     onChanged={v => setFieldValue('user.squadron', v.key)}
                     options={squadronList.map( val => ({ key: val, text: val }) )}
-                    value={values.user.squadron} 
+                    value={values.user.squadron}
                     required
                 />
             </div>
@@ -249,7 +252,7 @@ class AddUserCard extends React.Component {
                         const errorMessage = touched.skills
                             && touched.skills[index]
                             && touched.skills[index].name
-                            && errors.skills 
+                            && errors.skills
                             && errors.skills[index]
                             && errors.skills[index].name;
                         return (
@@ -289,11 +292,11 @@ class AddUserCard extends React.Component {
                                         showValue={false}
                                     />
                                 </div>
-                                <IconButton 
+                                <IconButton
                                     title='Remove'
                                     disabled={values.skills.length <= 1}
                                     iconProps={{ iconName: 'Trash' }}
-                                    className='input_button remove_button' 
+                                    className='input_button remove_button'
                                     onClick={e => helpers.remove(index)}
                                 />
                             </div>
