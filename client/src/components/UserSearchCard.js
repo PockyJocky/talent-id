@@ -8,7 +8,7 @@ import {Fabric, DetailsList, Checkbox, SearchBox} from "office-ui-fabric-react";
 import {connect} from "react-redux";
 
 const fuseOptions = {
-    keys: ['skills.skillName'],
+    keys: ['skills.name'],
     threshold: 0.1
 };
 
@@ -22,7 +22,7 @@ const initalState = {
     opts: {
         'firstName': false,
         'lastName': false,
-        'skills.skillName': true
+        'skills.name': true
     }
 }
 
@@ -119,7 +119,7 @@ export class UserSearchCard extends Component {
                         Search by:
                         <Checkbox label="First Name" checked={this.state.opts["firstName"]} onChange={ (_e, val) => this.onCheckboxChange('firstName', val)}/>
                         <Checkbox label="Last Name" checked={this.state.opts["lastName"]} onChange={ (_e, val) => this.onCheckboxChange('lastName', val)}/>
-                        <Checkbox label="Skill" checked={this.state.opts["skills.skillName"]} onChange={ (_e, val) => this.onCheckboxChange('skills.skillName', val)}/>
+                        <Checkbox label="Skill" checked={this.state.opts["skills.name"]} onChange={ (_e, val) => this.onCheckboxChange('skills.name', val)}/>
                     </div>
                     <div>
                         <DetailsList
