@@ -9,7 +9,7 @@ export default function(state = initialState, action){
                 .filter( skill => skill.toLowerCase() === action.skill.toLowerCase())
                 .length === 0;
             return isUnique
-                ? [...state, action.interest]
+                ? [...state, action.skill]
                 : state;
         case REPLACE_SKILL_LIST:
             return [ ...action.list ];
