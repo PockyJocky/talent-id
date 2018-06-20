@@ -19,7 +19,8 @@ const initalState = {
     opts: {
         'firstName': false,
         'lastName': false,
-        'skills.skill': true
+        'skills.skill': true,
+        'squadron': false
     }
 }
 
@@ -50,6 +51,11 @@ const columns = [
         key: 'column3',
         name: 'First Name',
         fieldName: 'firstName'
+    },
+    {
+        key: 'column4',
+        name: 'Unit',
+        fieldName: 'squadron'
     }
 ];
 
@@ -103,6 +109,7 @@ export class UserSearchCard extends Component {
                         <Checkbox label="First Name" checked={this.state.opts["firstName"]} onChange={ (_e, val) => this.onCheckboxChange('firstName', val)}/>
                         <Checkbox label="Last Name" checked={this.state.opts["lastName"]} onChange={ (_e, val) => this.onCheckboxChange('lastName', val)}/>
                         <Checkbox label="Skill" checked={this.state.opts["skills.skill"]} onChange={ (_e, val) => this.onCheckboxChange('skills.skill', val)}/>
+                        <Checkbox label="Unit" checked={this.state.opts["squadron"]} onChange={ (_e, val) => this.onCheckboxChange('squadron', val)}/>
                     </div>
                     <div>
                         <DetailsList
