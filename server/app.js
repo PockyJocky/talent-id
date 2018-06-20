@@ -8,8 +8,8 @@ import SourceMapSupport from 'source-map-support';
 import keys from "./config/keys";
 
 // import routes
-import user from '../server/routes/user.server.route'
-import interest from "../server/routes/skills.server.route";
+import user from './routes/user'
+import skill from "./routes/skill";
 
 // define our app using express
 const app = express();
@@ -35,11 +35,12 @@ mongoose
 SourceMapSupport.install();
 
 app.use('/api/user', user);
-app.use('/api/interest', interest);
+app.use('/api/skill', skill);
 
 app.use('/', (req, res) => {
     res.send({ express : 'Api working'});
 });
+
 // catch 404
 app.use((req, res, next) => {
     res.status(404).send('<h2 align=center>Page Not Found!</h2>');
