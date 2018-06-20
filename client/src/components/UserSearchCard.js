@@ -35,7 +35,7 @@ function loadState(props, state = initalState) {
     return state;
 }
 
-const _columns = [
+const columns = [
     {
         key: 'column1',
         name: 'Rank',
