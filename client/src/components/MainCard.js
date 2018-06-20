@@ -11,7 +11,6 @@ import AddUserCard from './AddUserCard';
 
 import '../styles/MainCard.css';
 
-
 class MainCard extends React.Component {
     componentDidMount() {
         this.props.fetchUserList();
