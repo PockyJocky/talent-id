@@ -9,7 +9,7 @@ const User = new Schema({
     rank: String,
     squadron: String,
     skills: [{
-        skillId: Schema.Types.ObjectId,
+        skill: { type: Schema.Types.ObjectId, ref: 'Skill' },
         proficiency: Number,
         interest: Number,
         _id: false

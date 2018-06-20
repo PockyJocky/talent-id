@@ -14,11 +14,12 @@ router.get('/:id', (req, res) => {
     getUserById(req.params.id)
         .then( user => res.json(user) )
         .catch( err => res.status(500).json(err) )
-});
-
-router.post('/', (req, res) => {
-    addUser(req.body)
+    });
+    
+    router.post('/', (req, res) => {
+        addUser(req.body)
         .then( user => res.json(user) )
+        .catch( err => console.log(err) )
         .catch( err => res.status(500).json(err) )
 });
 

@@ -1,8 +1,13 @@
 import Skill from '../models/skill';
 
+function getSkillValidator(name) {
+    return name.toLowerCase();
+}
+
 export function getSkillId(skillName) {
-    return Skill.findOne({ name: skillName }, '_id', { upsert: true })
-        .then( id => id || addSkill({ name: skillName }) );
+    const validator = getSkillValidator(skillName);
+    return Skill.findOne({ validator }, '_id name', { upsert: true })
+        .then( id => id || addSkill({ name: skillName, validator }) )
 }
 
 export function addSkill(skill) {
@@ -11,6 +16,6 @@ export function addSkill(skill) {
 }
 
 export function getSkills() {
-    return Skill.find({}).exec()
-        .then( ({ _id, ...skill }) => ({ ...skill }) );
+    return Skill.find({}).lean().exec()
+        .then( skills => skills.map( ({ name }) => name ) );
 }
