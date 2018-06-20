@@ -3,14 +3,12 @@ import React, {Component} from 'react'
 import { fetchUserList } from "../actions/UserListActions";
 import { fetchInterestList } from "../actions/InterestListActions";
 
-import { Fabric } from "office-ui-fabric-react";
-import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import {Fabric, DetailsList, Checkbox, SearchBox} from "office-ui-fabric-react";
 
 import {connect} from "react-redux";
 
 const fuseOptions = {
-    keys: ['skills.skillName', 'firstName', 'lastName'],
+    keys: ['skills.skillName'],
     threshold: 0.1
 };
 
@@ -20,8 +18,15 @@ const initalState = {
     skills: [],
     merged: [],
     filteredUsers: [],
-    searchBox: ''
+    searchBox: '',
+    opts: {
+        'firstName': false,
+        'lastName': false,
+        'skills.skillName': true
+    }
 }
+
+
 
 function loadState(props, state = initalState) {
     if (props.users !== state.users || props.skills !== state.skills || !state.fuse) {
@@ -43,7 +48,7 @@ function mergeSkillsIntoUsers(users = [], skills = []) {
     });
 }
 
-const _columns = [
+const columns = [
     {
         key: 'column1',
         name: 'Rank',
@@ -59,9 +64,10 @@ const _columns = [
         name: 'First Name',
         fieldName: 'firstName'
     }
-]
+];
 
 export class UserSearchCard extends Component {
+
     constructor(props){
         super(props);
         this.onChange = this.onChange.bind(this)
@@ -81,6 +87,19 @@ export class UserSearchCard extends Component {
         this.setState({ searchBox: event });
     };
 
+    onCheckboxChange(name, val) {
+        const { opts } = this.state;
+        opts[name] = val;
+        let options = [];
+        for(let prop in this.state.opts) {
+            if (this.state.opts[prop]){
+                options.push(prop)
+            }
+        }
+        const fuse = new Fuse(this.state.merged, { ...fuseOptions, keys: options});
+        this.setState({ fuse, opts });
+    }
+
     onClick = (event) => {
         console.log(event.target)
     };
@@ -91,16 +110,22 @@ export class UserSearchCard extends Component {
                 <div>
                     <SearchBox
                             type='text'
-                            placeholder="Search"
+                            placeholder='Search'
                             className='search_box'
                             onChange={this.onChange}
                             value={this.state.searchBox}
                         />
                     <div>
+                        Search by:
+                        <Checkbox label="First Name" checked={this.state.opts["firstName"]} onChange={ (_e, val) => this.onCheckboxChange('firstName', val)}/>
+                        <Checkbox label="Last Name" checked={this.state.opts["lastName"]} onChange={ (_e, val) => this.onCheckboxChange('lastName', val)}/>
+                        <Checkbox label="Skill" checked={this.state.opts["skills.skillName"]} onChange={ (_e, val) => this.onCheckboxChange('skills.skillName', val)}/>
+                    </div>
+                    <div>
                         <DetailsList
                             className='user_list'
                             items={ this.state.filteredUsers }
-                            columns={ _columns }
+                            columns={ columns }
                         />
                     </div>
                 </div>
