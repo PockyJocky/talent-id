@@ -1,7 +1,14 @@
 import Fuse from 'fuse.js';
 import React, {Component} from 'react'
 
-import {Fabric, DetailsList, Checkbox, SearchBox} from "office-ui-fabric-react";
+import {
+    Fabric,
+    DetailsList,
+    Checkbox,
+    ComboBox,
+    SelectableOptionMenuItemType,
+    IComboBoxOption, Label
+} from "office-ui-fabric-react";
 
 import {connect} from "react-redux";
 
@@ -21,7 +28,45 @@ const initalState = {
         'lastName': false,
         'skills.skill': true,
         'squadron': false
+    },
+    options: [{ key: "Header", text: 'Search Parameters:', itemType: SelectableOptionMenuItemType.Header}]
+}
+
+function fillDropdown(props, state) {
+    let options = [];
+    if (props.users[0]) {
+        if (state.opts['skills.skill']) {
+            options.push({key: "skillHeader", text: "Skills:", itemType: SelectableOptionMenuItemType.Header})
+            for (let user in state.users) {
+                for (let skill in state.users[user].skills) {
+                    let option = state.users[user].skills[skill].skill
+                    options.push({key: option, text: option})
+                }
+            }
+        }
+        if (state.opts['firstName']) {
+            options.push({key: "firstNameHeader", text: "First Name:", itemType: SelectableOptionMenuItemType.Header})
+            for (let user in state.users) {
+                let option = state.users[user].firstName
+                options.push({key: option, text: option})
+            }
+        }
+        if (state.opts['lastName']) {
+            options.push({key: "lastNameHeader", text: "Last Name:", itemType: SelectableOptionMenuItemType.Header})
+            for (let user in state.users) {
+                let option = state.users[user].lastName
+                options.push({key: option, text: option})
+            }
+        }
+        if (state.opts['squadron']) {
+            options.push({key: "squadronHeader", text: "Squadron:", itemType: SelectableOptionMenuItemType.Header})
+            for (let user in state.users) {
+                let option = state.users[user].squadron
+                options.push({key: option, text: option})
+            }
+        }
     }
+    return options;
 }
 
 function loadState(props, state = initalState) {
@@ -30,6 +75,9 @@ function loadState(props, state = initalState) {
         state.skills = props.skills;
         state.fuse = new Fuse(state.users, fuseOptions);
     }
+
+    state.options = fillDropdown(props, state);
+
     state.filteredUsers = state.searchBox === ''
         ? state.users
         : state.fuse.search(state.searchBox);
@@ -71,9 +119,10 @@ export class UserSearchCard extends Component {
         return loadState(props, state);
     }
 
-    onChange(event) {
-        console.log(this.state.users)
-        this.setState({ searchBox: event });
+    onChange(option: IComboBoxOption) {
+        let search;
+        if(option){search = option.text}else( search = "")
+        this.setState({ searchBox: search });
     };
 
     onCheckboxChange(name, val) {
@@ -89,23 +138,24 @@ export class UserSearchCard extends Component {
         this.setState({ fuse, opts });
     }
 
-    onClick = (event) => {
-        console.log(event.target)
-    };
-
     render(){
         return(
             <Fabric>
                 <div>
-                    <SearchBox
-                            type='text'
-                            placeholder='Search'
-                            className='search_box'
-                            onChange={this.onChange}
-                            value={this.state.searchBox}
+                    <Label>
+                        Search:
+                    </Label>
+                    <ComboBox
+                        options={this.state.options}
+                        allowFreeform={true}
+                        autoComplete="on"
+                        onChanged={this.onChange}
+                        text={this.state.searchBox}
                         />
                     <div>
-                        Search by:
+                        <Label>
+                            Search by:
+                        </Label>
                         <Checkbox label="First Name" checked={this.state.opts["firstName"]} onChange={ (_e, val) => this.onCheckboxChange('firstName', val)}/>
                         <Checkbox label="Last Name" checked={this.state.opts["lastName"]} onChange={ (_e, val) => this.onCheckboxChange('lastName', val)}/>
                         <Checkbox label="Skill" checked={this.state.opts["skills.skill"]} onChange={ (_e, val) => this.onCheckboxChange('skills.skill', val)}/>
