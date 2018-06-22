@@ -82,12 +82,14 @@ Scenario('make a second person', async (I) => {
 Scenario('can search for people with a specific skill', async (I) => {
     await I.amOnPage('/list');
 
-    I.see('', '#SearchBox1');
-    I.fillField('#SearchBox1', "Programming");
+    I.see('', '#ComboBox1-input');
+    I.fillField('#ComboBox1-input', "Programming");
+    I.pressKey('Enter');
     I.see('John');
     I.dontSee('Micheal');
 
-    I.fillField('#SearchBox1', "Design");
+    I.fillField('#ComboBox1-input', "Design");
+    I.pressKey('Enter');
     I.see('Micheal');
     I.dontSee('John')
 });
