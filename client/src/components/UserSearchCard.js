@@ -7,12 +7,9 @@ import {
     Checkbox,
     ComboBox,
     SelectableOptionMenuItemType,
-<<<<<<< HEAD
     Label
-=======
-    IComboBoxOption, Label
->>>>>>> 528b88f43f82f410936ecdaba26744fe723087c7
-} from "office-ui-fabric-react";
+}
+from "office-ui-fabric-react";
 
 import {connect} from "react-redux";
 
@@ -122,7 +119,7 @@ export class UserSearchCard extends Component {
     static getDerivedStateFromProps(props, state) {
         return loadState(props, state);
     }
-    
+
     onChange(option) {
         let search;
         if(option){search = option.text}else( search = "")
