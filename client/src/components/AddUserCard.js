@@ -246,7 +246,7 @@ class AddUserCard extends React.Component {
                 key='interest'
                 name='skills'
                 render={ helpers => {
-                    const addSkill = _ => helpers.push({ name: '', proficiency: 3, interest: 3 });
+                    const addSkill = _ => helpers.unshift({ name: '', proficiency: 3, interest: 3 });
                     let skillList = values.skills.map( (skill, index) => {
                         const errorMessage = touched.skills
                             && touched.skills[index]
