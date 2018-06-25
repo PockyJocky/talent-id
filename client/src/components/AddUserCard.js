@@ -11,7 +11,12 @@ import { addNewUser } from '../actions/UserActions';
 
 import '../styles/AddUserCard.css';
 
-const rankList = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
+const enlistedRanks = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
+const officerRanks = ['2nd Lt', '1st Lt', 'Capt', 'Maj', 'Lt Col', 'Brig Gen', 'Maj Gen', 'Lt Gen', 'Gen'];
+const otherRanks = [ 'Civilian', 'Contractor' ];
+const rankTypes = [ 'Enlisted', 'Officer', ...otherRanks ];
+const rankList = [ ...enlistedRanks, ...officerRanks, ...otherRanks ];
+
 const squadronList = ['13 IS', '48 IS' ,'548 OSS', '9 IS', '548 ISRG'];
 
 const userValidation = object().shape({
@@ -77,6 +82,7 @@ class AddUserCard extends React.Component {
 
         this.state = {
             pageNum: 0,
+            rankType: 'Enlisted',
         };
     }
 
@@ -155,7 +161,7 @@ class AddUserCard extends React.Component {
 
     renderPage(props) {
         const { pageNum } = this.state;
-        const renderCurrentPage = this.pages[pageNum];
+        const renderCurrentPage = this.pages[pageNum].bind(this);
         
         return (
             <div>
@@ -170,6 +176,33 @@ class AddUserCard extends React.Component {
 
     renderUserForm(props) {
         const { values, errors, touched, setFieldTouched, setFieldValue } = props;
+        const { rankType } = this.state;
+        
+        let ranksToShow;
+        switch (rankType) {
+            case 'Enlisted':
+                ranksToShow = enlistedRanks.map( value => ({ key: value, text: value }) );
+                break;
+            case 'Officer':
+                ranksToShow = officerRanks.map( value => ({ key: value, text: value }) );
+                break;
+            default:
+                ranksToShow = [];
+        }
+
+        const handleRankTypeSelect = ({ key }) => {
+            switch (key) {
+                case 'Enlisted':
+                case 'Officer':
+                    break;
+                default:
+                    setFieldValue('user.rank', key);
+                    setFieldTouched('user.rank', key);
+            }
+
+            this.setState({ rankType: key })
+        };
+
         return [
             <div key='id' className='form_row'>
                 <TextField
@@ -184,17 +217,28 @@ class AddUserCard extends React.Component {
                     required
                 />
                 <Dropdown
+                    key='rank_type'
+                    label='Rank Type'
+                    className='form_input form_input_dropdown user_rank_type'
+                    defaultSelectedKey={rankType}
+                    onChanged={handleRankTypeSelect}
+                    options={rankTypes.map( value => ({ key: value, text: value }) )}
+                    value={rankType}
+                    required
+                />
+                <Dropdown
                     key='rank'
                     className='form_input form_input_dropdown user_rank'
                     label='Rank'
                     placeHolder='Select a rank'
+                    disabled={!ranksToShow.length}
                     defaultSelectedKey={values.user.rank}
                     errorMessage={ touched.user && touched.user.rank && errors.user && errors.user.rank }
                     onBlur={ e => setFieldTouched('user.rank') }
                     onChanged={v => setFieldValue('user.rank', v.key)}
-                    options={rankList.map( val => ({ key: val, text: val }) )}
+                    options={ranksToShow}
                     value={values.user.rank}
-                    required
+                    required={ranksToShow.length}
                 />
             </div>,
             <div key='name' className='form_row'>
