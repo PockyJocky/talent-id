@@ -1,10 +1,9 @@
 import User from '../models/user';
 import { getSkillId } from './skill'
 
-
 function cleanSkills(doc) {
-    const { _id, ...obj } = doc;
-    obj.skill = obj.skill && obj.skill.name
+    const { _id, skill, ...obj } = doc;
+    obj.name = skill && skill.name;
     return obj;
 }
 

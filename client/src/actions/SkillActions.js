@@ -4,7 +4,7 @@ import callApi from '../apiCaller'
 
 export const fetchSkillList = () => {
     return async function(dispatch) {
-        let skills = await callApi('skills', 'GET');
+        let skills = await callApi('skill', 'GET');
         await dispatch(replaceSkillList(skills));
         return skills;
     }

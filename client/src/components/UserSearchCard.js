@@ -14,7 +14,7 @@ from "office-ui-fabric-react";
 import {connect} from "react-redux";
 
 const fuseOptions = {
-    keys: ['skills.skill'],
+    keys: ['skills.name'],
     threshold: 0.1
 };
 
@@ -27,7 +27,7 @@ const initalState = {
     opts: {
         'firstName': false,
         'lastName': false,
-        'skills.skill': true,
+        'skills.name': true,
         'squadron': false
     },
     options: [{ key: "Header", text: 'Search Parameters:', itemType: SelectableOptionMenuItemType.Header}]
@@ -36,14 +36,9 @@ const initalState = {
 function fillDropdown(props, state) {
     let options = [];
     if (props.users[0]) {
-        if (state.opts['skills.skill']) {
-            options.push({key: "skillHeader", text: "Skills:", itemType: SelectableOptionMenuItemType.Header})
-            for (let user in state.users) {
-                for (let skill in state.users[user].skills) {
-                    let option = state.users[user].skills[skill].skill
-                    options.push({key: option, text: option})
-                }
-            }
+        if (state.opts['skills.name']) {
+            options = state.skills.map( name => ({ key: name, text: name }));
+            options.unshift({key: "skillHeader", text: "Skills:", itemType: SelectableOptionMenuItemType.Header});
         }
         if (state.opts['firstName']) {
             options.push({key: "firstNameHeader", text: "First Name:", itemType: SelectableOptionMenuItemType.Header})
@@ -159,7 +154,7 @@ export class UserSearchCard extends Component {
                         </Label>
                         <Checkbox label="First Name" checked={this.state.opts["firstName"]} onChange={ (_e, val) => this.onCheckboxChange('firstName', val)}/>
                         <Checkbox label="Last Name" checked={this.state.opts["lastName"]} onChange={ (_e, val) => this.onCheckboxChange('lastName', val)}/>
-                        <Checkbox label="Skill" checked={this.state.opts["skills.skill"]} onChange={ (_e, val) => this.onCheckboxChange('skills.skill', val)}/>
+                        <Checkbox label="Skill" checked={this.state.opts["skills.name"]} onChange={ (_e, val) => this.onCheckboxChange('skills.name', val)}/>
                         <Checkbox label="Unit" checked={this.state.opts["squadron"]} onChange={ (_e, val) => this.onCheckboxChange('squadron', val)}/>
                     </div>
                     <div>
