@@ -12,7 +12,7 @@ import { addNewUser } from '../actions/UserActions';
 import '../styles/AddUserCard.css';
 
 const enlistedRanks = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
-const officerRanks = ['2nd Lt', '1st Lt', 'Capt', 'Maj', 'Lt Col', 'Brig Gen', 'Maj Gen', 'Lt Gen', 'Gen'];
+const officerRanks = ['2nd Lt', '1st Lt', 'Capt', 'Maj', 'Lt Col', 'Col', 'Brig Gen', 'Maj Gen', 'Lt Gen', 'Gen'];
 const otherRanks = [ 'Civilian', 'Contractor' ];
 const rankTypes = [ 'Enlisted', 'Officer', ...otherRanks ];
 const rankList = [ ...enlistedRanks, ...officerRanks, ...otherRanks ];
