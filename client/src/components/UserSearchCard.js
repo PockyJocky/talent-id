@@ -100,6 +100,21 @@ const columns = [
         key: 'column4',
         name: 'Unit',
         fieldName: 'squadron'
+    },
+    {
+        key: 'column5',
+        name: 'Skills',
+        onRender: ({ skills }) => {
+            console.log(skills);
+            const skillList = skills.map( skill => (
+                <div>
+                    <div key={skill.name}>{ skill.name + ": " } </div>
+                    <div key={skill.interest}> { "Interest level: " + skill.interest }</div>
+                    <div key={skill.proficiency}> { "Skill level: " + skill.proficiency }</div>
+                </div>
+            ));
+            return <div>{ skillList }</div>;
+        }
     }
 ];
 
