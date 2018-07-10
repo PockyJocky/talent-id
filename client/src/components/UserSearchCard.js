@@ -77,6 +77,11 @@ function loadState(props, state = initalState) {
     state.filteredUsers = state.searchBox === ''
         ? state.users
         : state.fuse.search(state.searchBox);
+
+    state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
+        return b.skills[0].interest - a.skills[0].interest;
+    });
+
     return state;
 }
 
@@ -104,49 +109,13 @@ const columns = [
     {
         key: 'column5',
         name: 'Skills',
-        onColumnClick:({ column }) => {
-            const { columns } = { columns };
-            let { sortedItems } = this.state;
-            let isSortedDescending = column.isSortedDescending;
-
-            // If we've sorted this column, flip it.
-            if (column.isSorted) {
-                isSortedDescending = !isSortedDescending;
-            }
-
-            // Sort the items.
-            sortedItems = sortedItems.concat([]).sort((a, b) => {
-                const firstValue = a[column.fieldName || ''];
-                const secondValue = b[column.fieldName || ''];
-
-                if (isSortedDescending) {
-                    return firstValue > secondValue ? -1 : 1;
-                } else {
-                    return firstValue > secondValue ? 1 : -1;
-                }
-            });
-
-            // Reset the items and columns to match the state.
-            this.setState({
-                sortedItems: sortedItems,
-                columns: columns.map(col => {
-                col.isSorted = col.key === column.key;
-
-                if (col.isSorted) {
-                    col.isSortedDescending = isSortedDescending;
-                }
-
-                return col;
-                })
-            });
-        },
+        isSorted: true,
         onRender: ({ skills }) => {
-            console.log(skills);
             const skillList = skills.map( skill => (
                 <div>
-                    <div key={skill.name}>{ skill.name + ": " } </div>
-                    <div key={skill.interest}> { "Interest level: " + skill.interest }</div>
-                    <div key={skill.proficiency}> { "Skill level: " + skill.proficiency }</div>
+                    <div key={"name"}>{ skill.name + ": " } </div>
+                    <div key={"interest"}> { "Interest level: " + skill.interest }</div>
+                    <div key={"proficiency"}> { "Skill level: " + skill.proficiency }</div>
                 </div>
             ));
             return <div>{ skillList }</div>;
@@ -166,12 +135,14 @@ export class UserSearchCard extends Component {
         return loadState(props, state);
     }
 
-    onChange(option) {
+    onChange = (option) => {
         let search;
         if (option) {
             search = option.text
-        } else (search = "")
+        } else (search = "");
+
         this.setState({searchBox: search});
+
     };
 
     onCheckboxChange(name, val) {
