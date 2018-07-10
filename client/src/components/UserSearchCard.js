@@ -78,9 +78,10 @@ function loadState(props, state = initalState) {
         ? state.users
         : state.fuse.search(state.searchBox);
 
-    state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
+    if(state.searchBox !== '')
+    {state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
         return b.skills[0].interest - a.skills[0].interest;
-    });
+    });}
 
     return state;
 }
