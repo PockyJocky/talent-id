@@ -77,6 +77,32 @@ function loadState(props, state = initalState) {
     state.filteredUsers = state.searchBox === ''
         ? state.users
         : state.fuse.search(state.searchBox);
+
+    if(state.searchBox !== ''){
+        state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
+            for (let skill_a in a.skills){
+                for (let skill_b in b.skills){
+                    if((a.skills[skill_a].name === state.searchBox) && (b.skills[skill_b].name === state.searchBox)){
+                        a.skills = a.skills.concat([]).sort((c, d) => {
+                            return ((c.name === state.searchBox) ? -1 : +1)
+                        });
+                        b.skills = b.skills.concat([]).sort((c, d) => {
+                            return ((c.name === state.searchBox) ? -1 : +1)
+                        });
+                        //skill_a and skill_b will equal 0 after skills sort
+                        return ((b.skills[0].interest === a.skills[0].interest) ? ((a.name < b.name) ? -1 : +1) : b.skills[0].interest - a.skills[0].interest);
+                    }
+                }
+            }
+            return 0;
+        });
+    }
+
+    if(state.searchBox !== '')
+    {state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
+        return b.skills[0].interest - a.skills[0].interest;
+    });}
+
     return state;
 }
 
@@ -104,13 +130,13 @@ const columns = [
     {
         key: 'column5',
         name: 'Skills',
+        isSorted: true,
         onRender: ({ skills }) => {
-            console.log(skills);
             const skillList = skills.map( skill => (
                 <div>
-                    <div key={skill.name}>{ skill.name + ": " } </div>
-                    <div key={skill.interest}> { "Interest level: " + skill.interest }</div>
-                    <div key={skill.proficiency}> { "Skill level: " + skill.proficiency }</div>
+                    <div key={"name"}>{ skill.name + ": " } </div>
+                    <div key={"interest"}> { "Interest level: " + skill.interest }</div>
+                    <div key={"proficiency"}> { "Skill level: " + skill.proficiency }</div>
                 </div>
             ));
             return <div>{ skillList }</div>;
@@ -120,7 +146,7 @@ const columns = [
 
 export class UserSearchCard extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this)
         this.state = loadState(props);
@@ -130,27 +156,31 @@ export class UserSearchCard extends Component {
         return loadState(props, state);
     }
 
-    onChange(option) {
+    onChange = (option) => {
         let search;
-        if(option){search = option.text}else( search = "")
-        this.setState({ searchBox: search });
+        if (option) {
+            search = option.text
+        } else (search = "");
+
+        this.setState({searchBox: search});
+
     };
 
     onCheckboxChange(name, val) {
-        const { opts } = this.state;
+        const {opts} = this.state;
         opts[name] = val;
         let options = [];
-        for(let prop in this.state.opts) {
-            if (this.state.opts[prop]){
+        for (let prop in this.state.opts) {
+            if (this.state.opts[prop]) {
                 options.push(prop)
             }
         }
-        const fuse = new Fuse(this.state.users, { ...fuseOptions, keys: options});
-        this.setState({ fuse, opts });
+        const fuse = new Fuse(this.state.users, {...fuseOptions, keys: options});
+        this.setState({fuse, opts});
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <Fabric>
                 <div>
                     <Label>
@@ -162,27 +192,32 @@ export class UserSearchCard extends Component {
                         autoComplete="on"
                         onChanged={this.onChange}
                         text={this.state.searchBox}
-                        />
+                    />
                     <div>
                         <Label>
                             Search by:
                         </Label>
-                        <Checkbox label="First Name" checked={this.state.opts["firstName"]} onChange={ (_e, val) => this.onCheckboxChange('firstName', val)}/>
-                        <Checkbox label="Last Name" checked={this.state.opts["lastName"]} onChange={ (_e, val) => this.onCheckboxChange('lastName', val)}/>
-                        <Checkbox label="Skill" checked={this.state.opts["skills.name"]} onChange={ (_e, val) => this.onCheckboxChange('skills.name', val)}/>
-                        <Checkbox label="Unit" checked={this.state.opts["squadron"]} onChange={ (_e, val) => this.onCheckboxChange('squadron', val)}/>
+                        <Checkbox label="First Name" checked={this.state.opts["firstName"]}
+                                  onChange={(_e, val) => this.onCheckboxChange('firstName', val)}/>
+                        <Checkbox label="Last Name" checked={this.state.opts["lastName"]}
+                                  onChange={(_e, val) => this.onCheckboxChange('lastName', val)}/>
+                        <Checkbox label="Skill" checked={this.state.opts["skills.name"]}
+                                  onChange={(_e, val) => this.onCheckboxChange('skills.name', val)}/>
+                        <Checkbox label="Unit" checked={this.state.opts["squadron"]}
+                                  onChange={(_e, val) => this.onCheckboxChange('squadron', val)}/>
                     </div>
                     <div>
                         <DetailsList
                             className='user_list'
-                            items={ this.state.filteredUsers }
-                            columns={ columns }
+                            items={this.state.filteredUsers}
+                            columns={columns}
                         />
                     </div>
                 </div>
             </Fabric>
         )
     }
+
 }
 
 const mapStateToProps = state => {
