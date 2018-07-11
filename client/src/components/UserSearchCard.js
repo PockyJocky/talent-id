@@ -78,6 +78,26 @@ function loadState(props, state = initalState) {
         ? state.users
         : state.fuse.search(state.searchBox);
 
+    if(state.searchBox !== ''){
+        state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
+            for (let skill_a in a.skills){
+                for (let skill_b in b.skills){
+                    if((a.skills[skill_a].name === state.searchBox) && (b.skills[skill_b].name === state.searchBox)){
+                        a.skills = a.skills.concat([]).sort((c) => {
+                            return ((c.name === state.searchBox) ? -1 : +1)
+                        });
+                        b.skills = b.skills.concat([]).sort((c) => {
+                            return ((c.name === state.searchBox) ? -1 : +1)
+                        });
+                        //skill_a and skill_b will equal 0 after skills sort
+                        return ((b.skills[0].interest === a.skills[0].interest) ? ((a.name < b.name) ? -1 : +1) : b.skills[0].interest - a.skills[0].interest);
+                    }
+                }
+            }
+            return 0;
+        });
+    }
+
     if(state.searchBox !== '')
     {state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
         return b.skills[0].interest - a.skills[0].interest;
