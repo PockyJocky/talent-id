@@ -82,7 +82,6 @@ function loadState(props, state = initalState) {
         ? state.users
         : state.fuse.search(state.searchBox);
 
-    console.log(state.filteredUsers);
     if(state.searchBox !== ''){
         state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
             a.skills = a.skills.concat([]).sort((c, d) => {
