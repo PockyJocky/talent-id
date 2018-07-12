@@ -82,6 +82,7 @@ function loadState(props, state = initalState) {
         ? state.users
         : state.fuse.search(state.searchBox);
 
+    console.log(state.filteredUsers);
     if(state.searchBox !== ''){
         state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
             a.skills = a.skills.concat([]).sort((c, d) => {
@@ -90,31 +91,23 @@ function loadState(props, state = initalState) {
             b.skills = b.skills.concat([]).sort((c, d) => {
                 return ((c.name === state.searchBox) ? -1 : +1)
             });
-            // for (let skill_a in a.skills){
-            //     for (let skill_b in b.skills){
-            //         if((a.skills[skill_a].name === state.searchBox) && (b.skills[skill_b].name === state.searchBox)){
-                        // 
+            for (let skill_a in a.skills){
+                for (let skill_b in b.skills){
+                    if((a.skills[skill_a].name === state.searchBox) && (b.skills[skill_b].name === state.searchBox)){
+                        
                         //skill_a and skill_b will equal 0 after skills sort
                         if(state.sortOpts["interest"]){
-                            console.log(b.skills[0].interest + ' ' + a.skills[0].interest + ' ' + (b.skills[0].interest - a.skills[0].interest));
-                            return ((b.skills[0].interest === a.skills[0].interest) ? ((a.name < b.name) ? -1 : +1) : b.skills[0].interest - a.skills[0].interest);
+                            return ((b.skills[skill_b].interest !== a.skills[skill_a].interest) ? b.skills[skill_b].interest - a.skills[skill_a].interest : ((a.name < b.name) ? -1 : +1));
                         }
                         else{
-                            console.log(b.skills[0].proficiency + ' ' + a.skills[0].proficiency + ' ' + (b.skills[0].proficiency - a.skills[0].proficiency));
-                            return ((b.skills[0].proficiency === a.skills[0].proficiency) ? ((a.name < b.name) ? -1 : +1) : b.skills[0].proficiency - a.skills[0].proficiency);
+                            return ((b.skills[skill_b].proficiency !== a.skills[skill_a].proficiency) ? b.skills[skill_b].proficiency - a.skills[skill_a].proficiency : ((a.name < b.name) ? -1 : +1));
                         }
-                        
-            //         }
-            //     }
-            // }
+                    }
+                }
+            }
             return 0;
         });
     }
-
-    if(state.searchBox !== '')
-    {state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
-        return b.skills[0].interest - a.skills[0].interest;
-    });}
 
     return state;
 }
