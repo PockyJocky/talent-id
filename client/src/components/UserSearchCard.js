@@ -30,6 +30,10 @@ const initalState = {
         'skills.name': true,
         'squadron': false
     },
+    sortOpts: {
+        'interest': true,
+        'proficiency': false
+    },
     options: [{ key: "Header", text: 'Search Parameters:', itemType: SelectableOptionMenuItemType.Header}]
 }
 
@@ -80,28 +84,29 @@ function loadState(props, state = initalState) {
 
     if(state.searchBox !== ''){
         state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
+            a.skills = a.skills.concat([]).sort((c, d) => {
+                return ((c.name === state.searchBox) ? -1 : +1)
+            });
+            b.skills = b.skills.concat([]).sort((c, d) => {
+                return ((c.name === state.searchBox) ? -1 : +1)
+            });
             for (let skill_a in a.skills){
                 for (let skill_b in b.skills){
                     if((a.skills[skill_a].name === state.searchBox) && (b.skills[skill_b].name === state.searchBox)){
-                        a.skills = a.skills.concat([]).sort((c, d) => {
-                            return ((c.name === state.searchBox) ? -1 : +1)
-                        });
-                        b.skills = b.skills.concat([]).sort((c, d) => {
-                            return ((c.name === state.searchBox) ? -1 : +1)
-                        });
+                        
                         //skill_a and skill_b will equal 0 after skills sort
-                        return ((b.skills[0].interest === a.skills[0].interest) ? ((a.name < b.name) ? -1 : +1) : b.skills[0].interest - a.skills[0].interest);
+                        if(state.sortOpts["interest"]){
+                            return ((b.skills[skill_b].interest !== a.skills[skill_a].interest) ? b.skills[skill_b].interest - a.skills[skill_a].interest : ((a.name < b.name) ? -1 : +1));
+                        }
+                        else{
+                            return ((b.skills[skill_b].proficiency !== a.skills[skill_a].proficiency) ? b.skills[skill_b].proficiency - a.skills[skill_a].proficiency : ((a.name < b.name) ? -1 : +1));
+                        }
                     }
                 }
             }
             return 0;
         });
     }
-
-    if(state.searchBox !== '')
-    {state.filteredUsers = state.filteredUsers.concat([]).sort((a,b) => {
-        return b.skills[0].interest - a.skills[0].interest;
-    });}
 
     return state;
 }
@@ -179,6 +184,20 @@ export class UserSearchCard extends Component {
         this.setState({fuse, opts});
     }
 
+    onSortCheckboxChange(name, val) {
+        const {sortOpts} = this.state;
+        // sortOpts[name] = val;
+        for (let prop in this.state.sortOpts) {
+            if (this.state.sortOpts[prop]) {
+                sortOpts[prop] = false;
+            }
+            else{
+                sortOpts[prop] = true;
+            }
+        }
+        this.setState({sortOpts});
+    }
+
     render() {
         return (
             <Fabric>
@@ -205,6 +224,15 @@ export class UserSearchCard extends Component {
                                   onChange={(_e, val) => this.onCheckboxChange('skills.name', val)}/>
                         <Checkbox label="Unit" checked={this.state.opts["squadron"]}
                                   onChange={(_e, val) => this.onCheckboxChange('squadron', val)}/>
+                    </div>
+                    <div>
+                        <Label>
+                            Sort by:
+                        </Label>
+                        <Checkbox label="Interest" checked={this.state.sortOpts["interest"]}
+                                    onChange={(_e, val) => this.onSortCheckboxChange('interest', val)}/>
+                        <Checkbox label="Proficiency" checked={this.state.sortOpts["proficiency"]}
+                                    onChange={(_e, val) => this.onSortCheckboxChange('proficiency', val)}/>
                     </div>
                     <div>
                         <DetailsList
