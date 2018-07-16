@@ -17,7 +17,7 @@ const otherRanks = [ 'Civilian', 'Contractor' ];
 const rankTypes = [ 'Enlisted', 'Officer', ...otherRanks ];
 const rankList = [ ...enlistedRanks, ...officerRanks, ...otherRanks ];
 
-const squadronList = ['13 IS', '48 IS' ,'548 OSS', '9 IS', '548 ISRG'];
+const squadronList = ['13 IS', '48 IS' ,'548 OSS', '9 IS', '548 ISRG', '7 IS'];
 
 const userValidation = object().shape({
     firstName: string('First Name')
