@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import React, {Component} from 'react'
-
+import 'react-bootstrap';
 import {
     Fabric,
     DetailsList,
@@ -200,18 +200,20 @@ export class UserSearchCard extends Component {
 
     render() {
         return (
-            <Fabric>
-                <div>
-                    <Label>
-                        Search:
-                    </Label>
-                    <ComboBox
-                        options={this.state.options}
-                        allowFreeform={true}
-                        autoComplete="on"
-                        onChanged={this.onChange}
-                        text={this.state.searchBox}
-                    />
+                <div className="landing container">
+                    <div className="form-group">
+                        <Label>
+                            <h3 className="text-white">Search:</h3>
+                        </Label>
+                        <ComboBox
+                            options={this.state.options}
+                            allowFreeform={true}
+                            autoComplete="on"
+                            onChanged={this.onChange}
+                            text={this.state.searchBox}
+                            className="form-control"
+                        />
+                    </div>
                     <div>
                         <Label>
                             Search by:
@@ -242,7 +244,6 @@ export class UserSearchCard extends Component {
                         />
                     </div>
                 </div>
-            </Fabric>
         )
     }
 

@@ -9,6 +9,7 @@ import { object, string, mixed, number, array } from 'yup';
 
 import { addNewUser } from '../actions/UserActions';
 
+import 'react-bootstrap';
 import '../styles/AddUserCard.css';
 
 const enlistedRanks = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
@@ -111,49 +112,49 @@ class AddUserCard extends React.Component {
         switch (pageNum) {
             case 0:
                 buttons = [
-                    <DefaultButton
+                    <button
                         key='next'
-                        className='next_page_button'
+                        className='btn btn-primary'
                         onClick={ e => this.nextPage()}
                         disabled={!touched || !touched.user || (errors && errors.user)}
                     >
                         Next
-                    </DefaultButton>
+                    </button>
                 ];
                 break;
             case 1:
                 buttons = [
-                    <DefaultButton
+                    <button
                         key='prev'
-                        className='prev_page_button'
+                        className='btn btn-dark'
                         onClick={ e => this.prevPage()}
                     >
                         Prev
-                    </DefaultButton>,
-                    <DefaultButton
+                    </button>,
+                    <button
                         key='next'
-                        className='next_page_button'
+                        className='btn btn-primary'
                         onClick={ e => this.nextPage()}
                         disabled={errors && errors.skills}
                     >
                         Next
-                    </DefaultButton>
+                    </button>
                 ];
                 break;
             default:
                 buttons = [
-                    <DefaultButton
+                    <button
                         key='submit'
-                        className='submit_page_button'
+                        className='btn btn-success'
                         onClick={ e => this.handleSubmit(values)}
                     >
                         Submit
-                    </DefaultButton>
+                    </button>
                 ];
         }
 
         return (
-            <div key='actions' className='actions'>
+            <div key='actions' className='container pt-5'>
                 { buttons }
             </div>
         );
@@ -164,12 +165,14 @@ class AddUserCard extends React.Component {
         const renderCurrentPage = this.pages[pageNum].bind(this);
         
         return (
-            <div>
-                Let's Start With Some Basic Information
-                <Form>
-                    { renderCurrentPage(props) }
-                    { this.renderCurrentActions(props) }
-                </Form>
+            <div className="container pt-3 px-5 landing">
+
+                <h2 className="text-white">Let's Start With Some Basic Information</h2>
+                    <Form>
+                        { renderCurrentPage(props) }
+                        { this.renderCurrentActions(props) }
+                    </Form>
+
             </div>
         );
     }
@@ -204,81 +207,117 @@ class AddUserCard extends React.Component {
         };
 
         return [
-            <div key='id' className='form_row'>
-                <TextField
-                    key='edipi'
-                    className='form_input form_input_text user_edipi'
-                    label='DOD ID Number'
-                    name='user.edipi'
-                    errorMessage={ touched.user && touched.user.edipi && errors.user && errors.user.edipi }
-                    onBlur={ e => setFieldTouched('user.edipi') }
-                    onChanged={v => setFieldValue('user.edipi', v)}
-                    value={values.user.edipi}
-                    required
-                />
-                <Dropdown
-                    key='rank_type'
-                    label='Rank Type'
-                    className='form_input form_input_dropdown user_rank_type'
-                    defaultSelectedKey={rankType}
-                    onChanged={handleRankTypeSelect}
-                    options={rankTypes.map( value => ({ key: value, text: value }) )}
-                    value={rankType}
-                    required
-                />
-                <Dropdown
-                    key='rank'
-                    className='form_input form_input_dropdown user_rank'
-                    label='Rank'
-                    placeHolder='Select a rank'
-                    disabled={!ranksToShow.length}
-                    defaultSelectedKey={values.user.rank}
-                    errorMessage={ touched.user && touched.user.rank && errors.user && errors.user.rank }
-                    onBlur={ e => setFieldTouched('user.rank') }
-                    onChanged={v => setFieldValue('user.rank', v.key)}
-                    options={ranksToShow}
-                    value={values.user.rank}
-                    required={ranksToShow.length}
-                />
-            </div>,
-            <div key='name' className='form_row'>
-                <TextField
-                    key='firstName'
-                    className='form_input form_input_text user_first_name'
-                    name='user.firstName'
-                    label='First Name'
-                    errorMessage={ touched.user && touched.user.firstName && errors.user && errors.user.firstName }
-                    onBlur={e => setFieldTouched('user.firstName')}
-                    onChanged={v => setFieldValue('user.firstName', v)}
-                    value={values.user.firstName}
-                    required
-                />
-                <TextField
-                    key='lastName'
-                    className='form_input form_input_text user_last_name'
-                    name='user.lastName'
-                    label='Last Name'
-                    errorMessage={ touched.user && touched.user.lastName && errors.user && errors.user.lastName }
-                    onBlur={ e => setFieldTouched('user.lastName') }
-                    onChanged={v => setFieldValue('user.lastName', v)}
-                    value={values.user.lastName}
-                    required
-                />
-            </div>,
-            <div key='org' className='form_row'>
-                <Dropdown
-                    key='unit'
-                    className='form_input form_input_dropdown user_unit'
-                    label='Unit'
-                    placeHolder='Select a unit'
-                    defaultSelectedKey={values.user.squadron}
-                    errorMessage={ touched.user && touched.user.squadron && errors.user && errors.user.squadron }
-                    onBlur={ e => setFieldTouched('user.squadron') }
-                    onChanged={v => setFieldValue('user.squadron', v.key)}
-                    options={squadronList.map( val => ({ key: val, text: val }) )}
-                    value={values.user.squadron}
-                    required
-                />
+            <div className="container mt-2 pt-2 text-left">
+                <div key="name" className="row">
+                    <div className="col-lg-4 d-none d-lg-block mt-2">
+                        <label>First Name<span className="text-danger">*</span></label>
+                    </div>
+                    <div className="col-lg-8 d-none d-lg-block">
+                        <input
+                            key='firstName'
+                            className='form-control'
+                            name='user.firstName'
+                            errorMessage={ touched.user && touched.user.firstName && errors.user && errors.user.firstName }
+                            onBlur={e => setFieldTouched('user.firstName')}
+                            onChanged={v => setFieldValue('user.firstName', v)}
+                            value={values.user.firstName}
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-lg-4 d-none d-lg-block mt-2">
+                        <label>Last Name<span className="text-danger">*</span></label>
+                    </div>
+                    <div className="col-lg-8 d-none d-lg-block">
+                        <input
+                            key='lastName'
+                            className='form-control'
+                            name='user.lastName'
+                            errorMessage={ touched.user && touched.user.lastName && errors.user && errors.user.lastName }
+                            onBlur={ e => setFieldTouched('user.lastName') }
+                            onChanged={v => setFieldValue('user.lastName', v)}
+                            value={values.user.lastName}
+                            required
+                        />
+
+                    </div>
+                </div>,
+                <div key='id'>
+                    <div className="row">
+                        <div className="col-lg-4 d-none d-lg-block mt-2">
+                            <label>DOD EDIPI <span className="text-danger">*</span></label>
+                        </div>
+                        <div className="col-lg-8 d-none d-lg-block">
+                            <input
+                                type="text"
+                                key='edipi'
+                                className='form-control'
+                                name='user.edipi'
+                                errorMessage={ touched.user && touched.user.edipi && errors.user && errors.user.edipi }
+                                onBlur={ e => setFieldTouched('user.edipi') }
+                                onChanged={v => setFieldValue('user.edipi', v)}
+                                value={values.user.edipi}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-4 d-none d-lg-block mt-2">
+                            <label>Rank Type<span className="text-danger">*</span></label>
+                        </div>
+                        <div className="col-lg-8 d-none d-lg-block mt-2">
+                            <Dropdown
+                                key='rank_type'
+                                className='form-control'
+                                defaultSelectedKey={rankType}
+                                onChanged={handleRankTypeSelect}
+                                options={rankTypes.map( value => ({ key: value, text: value }) )}
+                                value={rankType}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-4 d-none d-lg-block mt-2">
+                            <label>Rank<span className="text-danger">*</span></label>
+                        </div>
+                        <div className="col-lg-8 d-none d-lg-block mt-2">
+                            <Dropdown
+                                key='rank'
+                                className='form-control'
+                                placeHolder='Select a rank'
+                                disabled={!ranksToShow.length}
+                                defaultSelectedKey={values.user.rank}
+                                errorMessage={ touched.user && touched.user.rank && errors.user && errors.user.rank }
+                                onBlur={ e => setFieldTouched('user.rank') }
+                                onChanged={v => setFieldValue('user.rank', v.key)}
+                                options={ranksToShow}
+                                value={values.user.rank}
+                                required={ranksToShow.length}
+                            />
+                        </div>
+                    </div>
+                </div>,
+                <div key='org' className='row'>
+                    <div className="col-lg-4 d-none d-lg-block mt-2">
+                        <label>Unit<span className="text-danger">*</span></label>
+                    </div>
+                    <div className="col-lg-8 d-none d-lg-block mt-2">
+                        <Dropdown
+                            key='unit'
+                            className='form-control'
+                            placeHolder='Select a unit'
+                            defaultSelectedKey={values.user.squadron}
+                            errorMessage={ touched.user && touched.user.squadron && errors.user && errors.user.squadron }
+                            onBlur={ e => setFieldTouched('user.squadron') }
+                            onChanged={v => setFieldValue('user.squadron', v.key)}
+                            options={squadronList.map( val => ({ key: val, text: val }) )}
+                            value={values.user.squadron}
+                            required
+                        />
+                    </div>
+                </div>
             </div>
         ];
     }
@@ -383,13 +422,15 @@ class AddUserCard extends React.Component {
 
     render() {
         return (
-            <div className='add_user_card'>
-                <Formik
-                    initialValues={initialValues}
-                    onSubmit={values => this.handleSubmit(values)}
-                    validationSchema={validationSchema}
-                    render={props => this.renderPage(props)}
-                />
+            <div className='container d-flex h-100 align-items-center'>
+                <div className="mx-auto text-center">
+                    <Formik
+                        initialValues={initialValues}
+                        onSubmit={values => this.handleSubmit(values)}
+                        validationSchema={validationSchema}
+                        render={props => this.renderPage(props)}
+                    />
+                </div>
             </div>
         );
     }

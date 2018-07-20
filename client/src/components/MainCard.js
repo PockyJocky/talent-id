@@ -9,7 +9,9 @@ import WelcomeCard from "./WelcomeCard";
 import UserSearchCard from "./UserSearchCard";
 import AddUserCard from './AddUserCard';
 
+import 'react-bootstrap';
 import '../styles/MainCard.css';
+
 
 class MainCard extends React.Component {
     componentDidMount() {
@@ -19,11 +21,13 @@ class MainCard extends React.Component {
 
     render() {
         return (
+
             <div className="main_card">
                 <Route exact path='/' component={WelcomeCard}/>
                 <Route path='/list' component={UserSearchCard}/>
                 <Route path='/new' component={AddUserCard}/>
             </div>
+
         );
     }
 }
