@@ -9,7 +9,7 @@ import createHistory from 'history/createBrowserHistory'
 import { Router } from 'react-router'
 
 import MainCard from "./components/MainCard";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeIcons } from '@uifabric/icons';
 initializeIcons();
 

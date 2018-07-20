@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Formik, Form, FieldArray } from 'formik';
 import { object, string, mixed, number, array } from 'yup';
 
 import { addNewUser } from '../actions/UserActions';
 
-import 'react-bootstrap';
+import { computerSciece } from '../const/skillNames.js';
+
+// import 'react-bootstrap';
 import '../styles/AddUserCard.css';
+import SkillPopover from './SkillPopover.js'
 
 const enlistedRanks = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
 const officerRanks = ['2nd Lt', '1st Lt', 'Capt', 'Maj', 'Lt Col', 'Col', 'Brig Gen', 'Maj Gen', 'Lt Gen', 'Gen'];
@@ -84,7 +84,15 @@ class AddUserCard extends React.Component {
         this.state = {
             pageNum: 0,
             rankType: 'Enlisted',
+            popoverOpen: false
         };
+    }
+
+    toggle = () => {
+        this.setState({
+            popoverOpen: !this.state.popoverOpen
+        });
+        console.log(this.state.popoverOpen);
     }
 
     prevPage() {
@@ -98,7 +106,8 @@ class AddUserCard extends React.Component {
         if (pageNum < this.pages.length - 1)
             this.setState({ pageNum: pageNum + 1 });
     }
-    
+
+
     handleSubmit({ user, skills }) {
         this.props.addUser({ ...user, skills })
             .then( () => this.props.history.push('/list') );
@@ -217,9 +226,8 @@ class AddUserCard extends React.Component {
                             key='firstName'
                             className='form-control'
                             name='user.firstName'
-                            errorMessage={ touched.user && touched.user.firstName && errors.user && errors.user.firstName }
                             onBlur={e => setFieldTouched('user.firstName')}
-                            onChanged={v => setFieldValue('user.firstName', v)}
+                            onChange={v => setFieldValue('user.firstName', v.target.value)}
                             value={values.user.firstName}
                             required
                         />
@@ -234,9 +242,8 @@ class AddUserCard extends React.Component {
                             key='lastName'
                             className='form-control'
                             name='user.lastName'
-                            errorMessage={ touched.user && touched.user.lastName && errors.user && errors.user.lastName }
                             onBlur={ e => setFieldTouched('user.lastName') }
-                            onChanged={v => setFieldValue('user.lastName', v)}
+                            onChange={v => setFieldValue('user.lastName', v.target.value)}
                             value={values.user.lastName}
                             required
                         />
@@ -254,9 +261,8 @@ class AddUserCard extends React.Component {
                                 key='edipi'
                                 className='form-control'
                                 name='user.edipi'
-                                errorMessage={ touched.user && touched.user.edipi && errors.user && errors.user.edipi }
                                 onBlur={ e => setFieldTouched('user.edipi') }
-                                onChanged={v => setFieldValue('user.edipi', v)}
+                                onChange={v => setFieldValue('user.edipi', v.target.value)}
                                 value={values.user.edipi}
                                 required
                             />
@@ -322,79 +328,39 @@ class AddUserCard extends React.Component {
         ];
     }
 
-    renderInterestForm(props) {
-        const { values, errors, touched, setFieldTouched, setFieldValue } = props;
+    renderInterestForm() {
         return (
-            <FieldArray
-                key='interest'
-                name='skills'
-                render={ helpers => {
-                    const addSkill = _ => helpers.unshift({ name: '', proficiency: 3, interest: 3 });
-                    let skillList = values.skills.map( (skill, index) => {
-                        const errorMessage = touched.skills
-                            && touched.skills[index]
-                            && touched.skills[index].name
-                            && errors.skills
-                            && errors.skills[index]
-                            && errors.skills[index].name;
-                        return (
-                            <div className='form_row' key={index}>
-                                <TextField
-                                    key='name'
-                                    label='Skill:'
-                                    className='form_input form_input_text skill_name'
-                                    name={`skills.${index}.name`}
-                                    errorMessage={errorMessage}
-                                    value={values.skills[index].name}
-                                    onChanged={v => setFieldValue(`skills.${index}.name`, v)}
-                                    onBlur={e => setFieldTouched(`skills.${index}.name`)}
-                                    required
-                                />
-                                <div className='skill_sliders'>
-                                    <Slider
-                                        label='Proficiency'
-                                        className='form_input form_input_slider skill_proficiency'
-                                        onBlur={e => setFieldTouched(`skills.${index}.proficiency`)}
-                                        onChange={v => setFieldValue(`skills.${index}.proficiency`, v)}
-                                        defaultValue={3}
-                                        step={1}
-                                        min={1}
-                                        max={5}
-                                        showValue={false}
-                                    />
-                                    <Slider
-                                        label='Interest'
-                                        className='form_input form_input_slider skill_interest'
-                                        onBlur={e => setFieldTouched(`skills.${index}.interest`)}
-                                        onChange={v => setFieldValue(`skills.${index}.interest`, v)}
-                                        defaultValue={3}
-                                        step={1}
-                                        min={1}
-                                        max={5}
-                                        showValue={false}
-                                    />
-                                </div>
-                                <IconButton
-                                    title='Remove'
-                                    disabled={values.skills.length <= 1}
-                                    iconProps={{ iconName: 'Trash' }}
-                                    className='input_button remove_button'
-                                    onClick={e => helpers.remove(index)}
-                                />
+            <div className="row">
+                <div className="col-lg-8 d-block d-lg-block">
+                    <div id="skillsAccordian">
+                        <div className="card">
+                            <div className="card-header">
+                                <a className="card-link" data-toggle="collapse" href="#compSci">
+                                    Computer Sciences
+                                </a>
                             </div>
-                        );
-                    });
-
-                    return [
-                            <div key='list' className='skill_list'>
-                                { skillList }
-                            </div>,
-                            <DefaultButton key='add' className='add_button' onClick={addSkill}>
-                                Add Another Skill
-                            </DefaultButton>
-                    ];
-                }}
-            />
+                            <div id="collapseOne" className="collapse show" data-parent="#skillsAccordian">
+                                <div className="card-body">
+                                    <div className="row">
+                                        {
+                                            computerSciece.map(skill => (
+                                                <div className="col">
+                                                    <SkillPopover skill={skill} />
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-lg-4 d-block d-lg-block">
+                    <div className="well">
+                        Contains Clicked Tags
+                    </div>
+                </div>
+            </div>
         );
     }
 
