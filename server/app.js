@@ -8,11 +8,19 @@ import SourceMapSupport from 'source-map-support';
 import keys from "./config/keys";
 
 // import routes
-import user from './routes/user'
-import skill from "./routes/skill";
+/*
+@user
+@skill
+@education
+
+*/
+import user from './routes/api/user'
+import skill from "./routes/api/skill";
+import profile from "./routes/api/profile";
 
 // define our app using express
 const app = express();
+
 
 // configure app
 app.use(cors());

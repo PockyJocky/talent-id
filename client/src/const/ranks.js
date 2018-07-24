@@ -1,0 +1,21 @@
+export const ranks = [
+    {value: 'Airman Basic', label: 'Airman Basic', link: 'Enlisted'},
+    {value: 'Airman', label: 'Airman', link: 'Enlisted'},
+    {value: 'Airman First Class', label: 'Airman First Class', link: 'Enlisted'},
+    {value: 'Senior Airman', label: 'Senior Airman', link: 'Enlisted'},
+    {value: 'Staff Sargent', label: 'Staff Sargent', link: 'Enlisted'},
+    {value: 'Technical Sargent', label: 'Technical Sargent', link: 'Enlisted'},
+    {value: 'Master Sargent', label: 'Master Sargent', link: 'Enlisted'},
+    {value: 'Senior Master Sargent', label: 'Senior Master Sargent', link: 'Enlisted'},
+    {value: 'Chief Master Sargent', label: 'Chief Master Sargent', link: 'Enlisted'},
+    {value: '2nd Lieutenant', label: '2nd Lieutenant', link: 'Officer'},
+    {value: '1st Lieutenant', label: '1st Lieutenant', link: 'Officer'},
+    {value: 'Captain', label: 'Captain', link: 'Officer'},
+    {value: 'Major', label: 'Major', link: 'Officer'},
+    {value: 'Lieutenant Colonel', label: 'Lieutenant Colonel', link: 'Officer'},
+    {value: 'Colonel', label: 'Colonel', link: 'Officer'},
+    {value: 'Brigadier General', label: 'Brigadier General', link: 'Officer'},
+    {value: 'Major General', label: 'Major General', link: 'Officer'},
+    {value: 'Lieutenant General', label: 'Lieutenant General', link: 'Officer'},
+    {value: 'General', label: 'General', link: 'Officer'}
+]

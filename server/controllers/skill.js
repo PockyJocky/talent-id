@@ -1,4 +1,4 @@
-import Skill from '../models/skill';
+import Skill from '../models/Skill';
 
 function getSkillValidator(name) {
     return name.toLowerCase();

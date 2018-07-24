@@ -10,7 +10,7 @@ import { computerSciece } from '../const/skillNames.js';
 
 // import 'react-bootstrap';
 import '../styles/AddUserCard.css';
-import SkillPopover from './SkillPopover.js'
+import SkillPopover from './helpers/SkillPopover.js'
 
 const enlistedRanks = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
 const officerRanks = ['2nd Lt', '1st Lt', 'Capt', 'Maj', 'Lt Col', 'Col', 'Brig Gen', 'Maj Gen', 'Lt Gen', 'Gen'];

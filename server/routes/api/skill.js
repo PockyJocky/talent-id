@@ -1,8 +1,8 @@
 import express from 'express';
 
-import { getSkills } from "../controllers/skill"
-
 const router = express.Router();
+
+import { getSkills } from "../../controllers/skill"
 
 router.get('/', (req, res) => {
     getSkills()
