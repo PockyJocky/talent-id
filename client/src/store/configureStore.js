@@ -19,8 +19,7 @@ const initialState = {};
 // export default store;
 
 const middleware = [
-    thunk,
-    ...middleware
+    thunk
 ];
 
 export default function configureStore(initialState, ...middleware) {

@@ -1,4 +1,5 @@
 export const squadronList = [
+    {value: '', label: 'Select Your Squadron'},
     {value: '13 IS', label: '13 IS'},
     {value: '48 IS', label: '48 IS'},
     {value: '548 OSS', label: '548 OSS'},

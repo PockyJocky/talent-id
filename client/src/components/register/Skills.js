@@ -13,8 +13,12 @@ class Skills extends Component {
     constructor(props){
         super(props);
         this.state = {
-            popoverOpen: false
+            popoverOpen: false,
+            skillsTree: []
         };
+
+        this.onClick = this.onClick.bind(this);
+
     }
 
     toggle = () => {
@@ -23,6 +27,10 @@ class Skills extends Component {
         });
 
     };
+
+    onClick(e){
+
+    }
 
     render(){
         const { user } = this.props.auth;

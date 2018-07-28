@@ -1,4 +1,5 @@
 export const ranks = [
+    {value: '', label: '', link: 'Enlisted'},
     {value: 'Airman Basic', label: 'Airman Basic', link: 'Enlisted'},
     {value: 'Airman', label: 'Airman', link: 'Enlisted'},
     {value: 'Airman First Class', label: 'Airman First Class', link: 'Enlisted'},
@@ -8,6 +9,7 @@ export const ranks = [
     {value: 'Master Sargent', label: 'Master Sargent', link: 'Enlisted'},
     {value: 'Senior Master Sargent', label: 'Senior Master Sargent', link: 'Enlisted'},
     {value: 'Chief Master Sargent', label: 'Chief Master Sargent', link: 'Enlisted'},
+    {value: '', label: '', link: 'Officer'},
     {value: '2nd Lieutenant', label: '2nd Lieutenant', link: 'Officer'},
     {value: '1st Lieutenant', label: '1st Lieutenant', link: 'Officer'},
     {value: 'Captain', label: 'Captain', link: 'Officer'},

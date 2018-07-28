@@ -31,7 +31,7 @@ const store = configureStore(initialState);
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
-            <div>
+            <div className="container">
                 <Route exact path="/" component={Landing} />
                 <Route path="/new" component={Register} />
                 <Route path="/skills" component={Skills} />

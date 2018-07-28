@@ -1,12 +1,22 @@
 import React from 'react'
 
 
-import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+// import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import {
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    FormGroup,
+    Label,
+    Input,
+    FormText
+} from 'reactstrap';
 import {connect} from "react-redux";
 
 import PropTypes from 'prop-types';
 
-import {buildSkillTree} from "../../actions/SkillActions";
+import { buildSkillTree } from "../../actions/SkillActions";
 
 class SkillPopover extends React.Component {
     constructor(props) {
@@ -16,7 +26,8 @@ class SkillPopover extends React.Component {
         this.onClick = this.onClick.bind(this);
         this.onChange = this.onChange.bind(this);
         this.state = {
-            popoverOpen: false,
+            modal: false,
+            closeAll: false,
             skills: [],
             desire: '',
             proficiency: ''
@@ -25,12 +36,15 @@ class SkillPopover extends React.Component {
 
     toggle() {
         this.setState({
-            popoverOpen: !this.state.popoverOpen
+            modal: !this.state.modal
         });
 
     }
 
     onClick(e){
+        this.setState({
+           closeAll: false
+        });
         // this.state.skills.push(e);
         // this.setState({ skills: [...this.state.skills] });
         const newSkill = {
@@ -48,48 +62,32 @@ class SkillPopover extends React.Component {
     render() {
         return (
             <span className="badge badge-pill badge-primary" id={this.props.skill} onClick={this.toggle}> {this.props.skill}
-                <Popover placement="right" isOpen={this.state.popoverOpen} target={this.props.skill} toggle={this.toggle}>
-                    <PopoverHeader>{this.props.skill} Confidence</PopoverHeader>
-                    <PopoverBody>
-                        <div className='container'>
-                            <div className='form-group'>
-                                <label className="text-dark">{this.props.skill} Proficiency</label>
-                                <input
-                                    type='range'
-                                    className='form-control-range'
-                                    min='1'
-                                    max='5'
-                                    name='proficiency'
-                                    onChange={this.onChange}
-                                />
-                            </div>
-                            <div className='form-group'>
-                                <label className="text-dark">{this.props.skill} Desire</label>
-                                <input
-                                    type='range'
-                                    className='form-control-range'
-                                    min='1'
-                                    max='5'
-                                    name='desire'
-                                    onChange={this.onChange}
-                                />
-                            </div>
-                            <div className='form-group'>
-                                <button
-                                    className='btn btn-dark btn-sm'
-                                    onClick={() => this.onClick({
-                                        skill_name: this.props.skill,
-                                        skill_proficiency: this.state.proficiency,
-                                        skill_desire: this.state.desire
-                                    })}
-                                >
-                                    Commit
-                                </button>
-                            </div>
+                <Modal
+                    isOpen={this.state.modal}
+                    toggle={this.toggle}
+                    className={this.props.className}
+                >
+                    <ModalHeader
+                        toggle={this.toggle}
+                    >
+                        {this.props.skill} Proficiency
+                    </ModalHeader>
+                    <ModalBody>
+                        <FormGroup>
+                            <Label for={ this.props.skill + '_proficiency' }>Proficiency</Label>
+                            <Input
+                                name={ this.props.skill + '_proficiency' }
+                                type='range'
+                                max='5'
+                                min='1'
+                                
+                            />
+                        </FormGroup>
+                    </ModalBody>
+                    <ModalFooter>
 
-                        </div>
-                    </PopoverBody>
-                </Popover>
+                    </ModalFooter>
+                </Modal>
             </span>
         );
     }

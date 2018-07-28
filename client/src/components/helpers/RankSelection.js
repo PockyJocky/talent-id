@@ -7,8 +7,8 @@ const RankSelection = ({
     value,
     error,
     info,
-    onChange,
     options,
+    onChange,
 }) => {
     const selectOptions = options.map(option => (
         <option key={option.label} value={option.value}>
@@ -38,8 +38,8 @@ RankSelection.propTypes = {
     value: PropTypes.string,
     info: PropTypes.string,
     error: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-    options: PropTypes.array
+    options: PropTypes.array,
+    onChange: PropTypes.func.isRequired
 };
 
 
