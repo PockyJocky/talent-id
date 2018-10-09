@@ -28,7 +28,7 @@
 ### Who do I talk to? ###
 
 * Contact: 
-* https://github.com/demonintherough/talent-id/issues
+* https://github.com/PockyJocky/talent-id/issues
 * Zach Wilder: zachary.wilder.1@us.af.mil
 * Jack Shira: jack.shira@us.af.mil 
 * Joseph Duggan: joseph.duggan@us.af.mil        
