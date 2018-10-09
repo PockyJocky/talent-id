@@ -10,7 +10,7 @@
 
 * Summary of set up:
 
-1.  `git clone git@github.com:demonintherough/talent-id.git`
+1.  `git clone git@github.com:pockyjocky/talent-id.git`
 1.  `npm install`
 
 * How to run tests:
