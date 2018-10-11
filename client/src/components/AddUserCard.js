@@ -38,6 +38,7 @@ const userValidation = object().shape({
 const skillValidation = object().shape({
     name: string()
         .label('Skill')
+        .trim()
         .required('You must provide a skill.'),
     skill: number()
         .label('Proficiency')
@@ -53,7 +54,20 @@ const skillValidation = object().shape({
 
 const validationSchema = object().shape({
     user: userValidation,
-    skills: array().of(skillValidation).min(1)
+    skills: array().of(skillValidation).min(1).test({
+        name: 'Unique name',
+        message: 'You cannot have duplicate skills',
+        test: arr => {
+            for(let i = 0; i < arr.length-1; i++){
+                for(let j = 1; j < arr.length; j++){
+                    if(arr[i].name === arr[j].name){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+    })
 });
 
 const initialValues = {
