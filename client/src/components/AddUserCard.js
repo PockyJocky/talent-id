@@ -10,6 +10,7 @@ import { object, string, mixed, number, array } from 'yup';
 import { addNewUser } from '../actions/UserActions';
 
 import '../styles/AddUserCard.css';
+import { filteredAssign } from '@uifabric/utilities';
 
 const enlistedRanks = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
 const officerRanks = ['2nd Lt', '1st Lt', 'Capt', 'Maj', 'Lt Col', 'Col', 'Brig Gen', 'Maj Gen', 'Lt Gen', 'Gen'];
@@ -56,12 +57,12 @@ const validationSchema = object().shape({
     user: userValidation,
     skills: array().of(skillValidation).min(1).test({
         name: 'Unique name',
-        message: 'You cannot have duplicate skills',
+        message: 'You cannot have duplicate skills.',
         test: arr => {
             for(let i = 0; i < arr.length-1; i++){
                 for(let j = 1; j < arr.length; j++){
-                    if(arr[i].name === arr[j].name){
-                        return false;
+                    if((i !== j) && (arr[i].name.trim() === arr[j].name.trim())){
+                        return false
                     }
                 }
             }
@@ -102,14 +103,30 @@ class AddUserCard extends React.Component {
 
     prevPage() {
         const { pageNum } = this.state;
-        if (pageNum > 0)
-            this.setState({ pageNum: pageNum - 1})
+        if (pageNum > 0){
+            if(pageNum === 2){
+                if(window.confirm("Returning to the previous page will reset all Proficiency and Interest sliders. Click \'OK\' to continue.")){
+                    this.setState({ pageNum: pageNum - 1})
+                }
+            }
+            else{
+                this.setState({ pageNum: pageNum - 1 })
+            }
+        }
     }
 
     nextPage() {
         const { pageNum } = this.state;
-        if (pageNum < this.pages.length - 1)
-            this.setState({ pageNum: pageNum + 1 });
+        if (pageNum < this.pages.length - 1){
+            if(pageNum === 1){
+                if(window.confirm("Double-check all Proficiency and Interest sliders. Click \'OK\' to continue.")){
+                    this.setState({ pageNum: pageNum + 1})
+                }
+            }
+            else{
+                this.setState({ pageNum: pageNum + 1 })
+            }
+        }
     }
     
     handleSubmit({ user, skills }) {
@@ -156,6 +173,13 @@ class AddUserCard extends React.Component {
                 break;
             default:
                 buttons = [
+                    <DefaultButton
+                        key='prev'
+                        className='prev_page_button'
+                        onClick={ e => this.prevPage()  }
+                    >
+                        Prev
+                    </DefaultButton>,
                     <DefaultButton
                         key='submit'
                         className='submit_page_button'
@@ -304,7 +328,7 @@ class AddUserCard extends React.Component {
                 key='interest'
                 name='skills'
                 render={ helpers => {
-                    const addSkill = _ => helpers.unshift({ name: '', proficiency: 3, interest: 3 });
+                    const addSkill = _ => helpers.push({ name: '', proficiency: 3, interest: 3 });
                     let skillList = values.skills.map( (skill, index) => {
                         const errorMessage = touched.skills
                             && touched.skills[index]
@@ -382,11 +406,11 @@ class AddUserCard extends React.Component {
         ))
         return [
             <div className='form_row' key='name'>
-                <span className='review_user_rank'>{ user.rank }</span>
+                <span className='review_user_rank'>{ user.rank }&nbsp;</span>
                 <span className='review_user_name'>{ `${user.firstName} ${user.lastName}` }</span>
             </div>,
             <div className='form_row' key='org'>
-                <span className='review_user_org'>{ user.squadron }</span>
+                <span className='review_user_org'>{ user.squadron }&nbsp;</span>
                 <span className='review_user_id'>{ user.edipi }</span>
             </div>,
             <div className='form_row' key='skills'>
