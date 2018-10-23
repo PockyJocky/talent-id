@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js';
 import React, {Component} from 'react'
+import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 
 import {
     Fabric,
@@ -146,6 +147,27 @@ const columns = [
             ));
             return <div>{ skillList }</div>;
         }
+    },
+    { 
+      key: "column6", 
+      name: "Modifiers",
+      fieldName: 'modifiers',
+      onRender: () => (
+        <div>
+            <IconButton
+                title='Edit'
+                iconProps={{ iconName: 'Edit' }}
+                className='input_button remove_button'
+                //onClick={e => helpers.remove(index)}
+            /> 
+          <IconButton
+                title='Remove'
+                iconProps={{ iconName: 'Trash' }}
+                className='input_button remove_button'
+                //onClick={e => helpers.remove(index)}
+            />        
+        </div>
+      )         
     }
 ];
 
