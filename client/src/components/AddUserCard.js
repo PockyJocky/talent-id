@@ -105,7 +105,7 @@ class AddUserCard extends React.Component {
         const { pageNum } = this.state;
         if (pageNum > 0){
             if(pageNum === 2){
-                if(window.confirm("Returning to the previous page will reset all Proficiency and Interest sliders. Click \'OK\' to continue.")){
+                if(window.confirm("Returning to the previous page will reset all Proficiency and Interest sliders. Click 'OK' to continue.")){
                     this.setState({ pageNum: pageNum - 1})
                 }
             }
@@ -119,7 +119,7 @@ class AddUserCard extends React.Component {
         const { pageNum } = this.state;
         if (pageNum < this.pages.length - 1){
             if(pageNum === 1){
-                if(window.confirm("Double-check all Proficiency and Interest sliders. Click \'OK\' to continue.")){
+                if(window.confirm("Double-check all Proficiency and Interest sliders. Click 'OK' to continue.")){
                     this.setState({ pageNum: pageNum + 1})
                 }
             }

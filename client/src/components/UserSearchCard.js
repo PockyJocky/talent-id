@@ -8,7 +8,8 @@ import {
     Checkbox,
     ComboBox,
     SelectableOptionMenuItemType,
-    Label
+    Label,
+    htmlElementProperties
 }
 from "office-ui-fabric-react";
 
@@ -164,7 +165,7 @@ const columns = [
                 title='Remove'
                 iconProps={{ iconName: 'Trash' }}
                 className='input_button remove_button'
-                //onClick={e => helpers.remove(index)}
+                //onClick={e => this.props.removeUser(this.state.filteredUsers[index])}
             />        
         </div>
       )         
@@ -220,6 +221,17 @@ export class UserSearchCard extends Component {
         this.setState({sortOpts});
     }
 
+    removeItem(item) {
+        let { items } = this.state.users;
+        let index = item.index;
+        
+        if(window.confirm("This action will perminently remove this user's information. Click 'OK' to continue.")){
+            this.setState({
+                items: items.splice(index,1) 
+              });
+        } 
+      }
+
     render() {
         return (
             <Fabric>
@@ -261,6 +273,7 @@ export class UserSearchCard extends Component {
                             className='user_list'
                             items={this.state.filteredUsers}
                             columns={columns}
+                            onItemInvoked = {Selection => this.removeItem(Selection)}
                         />
                     </div>
                 </div>
