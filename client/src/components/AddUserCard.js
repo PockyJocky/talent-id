@@ -12,6 +12,7 @@ import { addNewUser } from '../actions/UserActions';
 import '../styles/AddUserCard.css';
 import { filteredAssign } from '@uifabric/utilities';
 
+//variable initalization
 const enlistedRanks = ['AB', 'Amn', 'A1C', 'SrA', 'SSgt', 'TSgt', 'MSgt', 'SMSgt', 'CMSgt'];
 const officerRanks = ['2nd Lt', '1st Lt', 'Capt', 'Maj', 'Lt Col', 'Col', 'Brig Gen', 'Maj Gen', 'Lt Gen', 'Gen'];
 const otherRanks = [ 'Civilian', 'Contractor' ];
@@ -20,6 +21,7 @@ const rankList = [ ...enlistedRanks, ...officerRanks, ...otherRanks ];
 
 const squadronList = ['13 IS', '48 IS' ,'548 OSS', '9 IS', '548 ISRG', '7 IS'];
 
+//form input validation objects
 const userValidation = object().shape({
     firstName: string('First Name')
         .required('You must provide a first name.'),
@@ -53,6 +55,7 @@ const skillValidation = object().shape({
         .default(3),
 });
 
+//what happens when you don't pass form validation
 const validationSchema = object().shape({
     user: userValidation,
     skills: array().of(skillValidation).min(1).test({
@@ -71,6 +74,7 @@ const validationSchema = object().shape({
     })
 });
 
+//inital values of this page
 const initialValues = {
     user: {
         firstName: '',
@@ -86,6 +90,7 @@ const initialValues = {
     }]
 };
 
+//the actual page code
 class AddUserCard extends React.Component {
     constructor(props) {
         super(props);
@@ -101,6 +106,7 @@ class AddUserCard extends React.Component {
         };
     }
 
+    //previous page button
     prevPage() {
         const { pageNum } = this.state;
         if (pageNum > 0){
@@ -115,6 +121,7 @@ class AddUserCard extends React.Component {
         }
     }
 
+    //next page button
     nextPage() {
         const { pageNum } = this.state;
         if (pageNum < this.pages.length - 1){
@@ -128,18 +135,24 @@ class AddUserCard extends React.Component {
             }
         }
     }
-    
+
+    //submit
     handleSubmit({ user, skills }) {
+        //references redux actions from UserActions.js
         this.props.addUser({ ...user, skills })
+        //redirects the user to the list page
             .then( () => this.props.history.push('/list') );
     }
 
+    //render the current page
     renderCurrentActions(props) {
         let buttons;
         const { pageNum } = this.state;
         const { touched, errors, values } = props;
 
+        //read the current page number and generate the appropriate buttons
         switch (pageNum) {
+            //welcome card
             case 0:
                 buttons = [
                     <DefaultButton
@@ -152,6 +165,7 @@ class AddUserCard extends React.Component {
                     </DefaultButton>
                 ];
                 break;
+            //user add card
             case 1:
                 buttons = [
                     <DefaultButton
@@ -171,6 +185,7 @@ class AddUserCard extends React.Component {
                     </DefaultButton>
                 ];
                 break;
+            //submit card
             default:
                 buttons = [
                     <DefaultButton
@@ -197,14 +212,16 @@ class AddUserCard extends React.Component {
         );
     }
 
+    //render the upper level form container
     renderPage(props) {
         const { pageNum } = this.state;
         const renderCurrentPage = this.pages[pageNum].bind(this);
-        
+
         return (
             <div>
-                Let's Start With Some Basic Information
+                "Let's Start With Some Basic Information"
                 <Form>
+                    //conditional render of each step in the submittion process
                     { renderCurrentPage(props) }
                     { this.renderCurrentActions(props) }
                 </Form>
@@ -215,7 +232,7 @@ class AddUserCard extends React.Component {
     renderUserForm(props) {
         const { values, errors, touched, setFieldTouched, setFieldValue } = props;
         const { rankType } = this.state;
-        
+
         let ranksToShow;
         switch (rankType) {
             case 'Enlisted':
@@ -228,6 +245,8 @@ class AddUserCard extends React.Component {
                 ranksToShow = [];
         }
 
+        //handle what happens when the user selects a value in the
+        //  RankTypeSelect dropdown menu
         const handleRankTypeSelect = ({ key }) => {
             switch (key) {
                 case 'Enlisted':
@@ -241,6 +260,7 @@ class AddUserCard extends React.Component {
             this.setState({ rankType: key })
         };
 
+        //form structure, input feilds, dropdowns, etc...
         return [
             <div key='id' className='form_row'>
                 <TextField
@@ -249,7 +269,7 @@ class AddUserCard extends React.Component {
                     label='DOD ID Number'
                     name='user.edipi'
                     errorMessage={ touched.user && touched.user.edipi && errors.user && errors.user.edipi }
-                    onBlur={ e => setFieldTouched('user.edipi') }
+                    onBlur={ e => setFieldTouched('user.edipi') } //what happens when you leave the field
                     onChanged={v => setFieldValue('user.edipi', v)}
                     value={values.user.edipi}
                     required
@@ -324,11 +344,14 @@ class AddUserCard extends React.Component {
     renderInterestForm(props) {
         const { values, errors, touched, setFieldTouched, setFieldValue } = props;
         return (
+          //array of fields for each interest that the user submits
             <FieldArray
                 key='interest'
                 name='skills'
                 render={ helpers => {
+                    //arrow function addSkill
                     const addSkill = _ => helpers.push({ name: '', proficiency: 3, interest: 3 });
+                    //initalizes skill list and does form validation
                     let skillList = values.skills.map( (skill, index) => {
                         const errorMessage = touched.skills
                             && touched.skills[index]
@@ -337,6 +360,7 @@ class AddUserCard extends React.Component {
                             && errors.skills[index]
                             && errors.skills[index].name;
                         return (
+                            //describes the structure of each of the rows in the list
                             <div className='form_row' key={index}>
                                 <TextField
                                     key='name'
@@ -419,6 +443,7 @@ class AddUserCard extends React.Component {
         ];
     }
 
+    //main render
     render() {
         return (
             <div className='add_user_card'>
@@ -433,10 +458,12 @@ class AddUserCard extends React.Component {
     }
 }
 
+//action dispatcher
 const mapDispatchToProps = dispatch => {
     return{
         addUser: user => dispatch(addNewUser(user)),
     }
 };
 
+//connects the dispatcher to the page
 export default connect(undefined, mapDispatchToProps)(AddUserCard);

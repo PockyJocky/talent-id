@@ -13,10 +13,12 @@ import '../styles/MainCard.css';
 
 class MainCard extends React.Component {
     componentDidMount() {
+        //fetch the user and skill lists from the backend
         this.props.fetchUserList();
         this.props.fetchSkillList();
     }
 
+    //conditionally render a page based off of what url you are on
     render() {
         return (
             <div className="main_card">
@@ -28,6 +30,7 @@ class MainCard extends React.Component {
     }
 }
 
+//redux stuff, allows you to reference the actions described in this code
 const mapDispatchToProps = dispatch => {
     return {
         fetchUserList: () => dispatch(fetchUserList()),
@@ -35,4 +38,5 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
+//connects the main card to the dispatcher
 export default withRouter( connect(undefined, mapDispatchToProps)(MainCard) );
